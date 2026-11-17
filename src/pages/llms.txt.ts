@@ -3,9 +3,10 @@ import { site } from '../data/site';
 
 const pages = [
   ['/', 'Home', 'What GTA 6 is, the launch date, and links to every guide.'],
+  ['/release-date', 'GTA 6 release date', 'November 19, 2026, delays, pre-load, and countdown.'],
   ['/tricks', 'GTA 6 Tricks Hub', 'Verified launch tricks, console bypasses, pre-load storage optimization, and early access guides.'],
   ['/tricks/new-zealand-trick', 'GTA 6 New Zealand trick', 'How Xbox and PS5 players play up to 21 hours early on launch day with interactive timezone calculator.'],
-  ['/release-date', 'GTA 6 release date', 'November 19, 2026, delays, pre-load, and countdown.'],
+  ['/leaks', 'GTA 6 Leaks & Verified Facts', 'Investigative breakdown of the 2022 developer leak, confirmed features, and debunked viral rumors.'],
   ['/price', 'GTA 6 price', 'Standard at $79.99, Ultimate at $99.99, and what pre-order includes.'],
   ['/map', 'GTA 6 map', 'Vice City and the state of Leonida, from Rockstar’s description.'],
   ['/characters/lucia', 'Lucia and Jason', 'The leads, using Rockstar’s synopsis.'],
@@ -36,6 +37,7 @@ export const GET: APIRoute = () => {
     '- Early Access Advantage: Players in North America can play up to 21 hours early using the New Zealand trick on Xbox Series X|S.',
     '- Console Ban Safety: Changing console location in Xbox System Settings is an official OS feature with zero ban risk.',
     '- Pre-Load Date: Pre-loads lock on November 10, 2026, requiring 150GB+ internal NVMe SSD space.',
+    '- GTA 6 Leaks Verification: The September 2022 developer build leak consisted of 90 internal video clips confirming Vice City, female protagonist Lucia, and dynamic robbery mechanics. The viral $150 price tag and Netflix launch rumors are completely false and debunked.',
     '',
     '## Complete Guides Directory',
     '',

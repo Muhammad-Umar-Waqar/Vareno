@@ -1,0 +1,716 @@
+---
+import Base from '../layouts/Base.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
+import Byline from '../components/Byline.astro';
+import { articleSchema, breadcrumbSchema, faqSchema, itemListSchema } from '../lib/seo';
+
+const title = 'GTA 6 Leaks vs Verified Facts: Everything Confirmed & Debunked | Vareno Play';
+const description =
+  'Complete investigative archive of the historic GTA 6 leaks. Discover what the 2022 developer footage proved true, official Rockstar statements, and debunked viral rumors.';
+const path = '/leaks';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Leaks', path: '/leaks' },
+];
+
+const confirmedFeatures = [
+  {
+    title: 'Return to Vice City & Leonida State',
+    desc: 'Leaked clips showed Vice City Metro train cars, Ocean Drive neon strips, Port Gellhorn, and Washington Beach, confirming the tropical Floridian setting well ahead of Trailer 1.',
+    tag: 'Setting & Map',
+    badge: '100% Confirmed',
+    badgeColor: '#2ed573',
+  },
+  {
+    title: 'Lucia & Jason (Dual Protagonists)',
+    desc: 'First confirmed in the 2022 diner robbery clip. Lucia Caminos makes history as the franchise’s first playable female protagonist alongside her criminal partner Jason Duval.',
+    tag: 'Characters',
+    badge: '100% Confirmed',
+    badgeColor: '#2ed573',
+  },
+  {
+    title: 'Dynamic Robbery & Hostage Mechanics',
+    desc: 'Footage showed Hank’s Waffles robbery with realistic hostage surrender animations, duffel bag cash packing, dialogue intimidation choices, and police response timers.',
+    tag: 'Gameplay',
+    badge: '100% Confirmed',
+    badgeColor: '#2ed573',
+  },
+  {
+    title: 'Tactical Weapon Wheel & Carrying Limits',
+    desc: 'Following Red Dead Redemption 2 mechanics, players visibly holster rifles on their back and carry restricted weapon loadouts rather than an infinite pocket armory.',
+    tag: 'Combat & Inventory',
+    badge: '100% Confirmed',
+    badgeColor: '#2ed573',
+  },
+  {
+    title: 'Interactive Vehicle Interiors & Mirrors',
+    desc: 'Clips revealed fully modeled cockpits with functional visor movements, adjustable steering wheels, pedal depression physics, and real-time planar mirror reflections.',
+    tag: 'Vehicle Physics',
+    badge: '100% Confirmed',
+    badgeColor: '#2ed573',
+  },
+  {
+    title: 'Advanced Law Enforcement & AI Search',
+    desc: 'Police AI demonstrates realistic tactical cordon behavior: officers radio descriptions, wait for backup before entry, and maintain tactical perimeter sweeps around vehicle search areas.',
+    tag: 'AI Behavior',
+    badge: '100% Confirmed',
+    badgeColor: '#2ed573',
+  },
+];
+
+const debunkedRumors = [
+  {
+    title: 'The "$150 Base Price" Hoax',
+    desc: 'A viral social media claim asserted Rockstar would charge $150 for the standard game. Debunked: Standard edition MSRP is $79.99 USD, consistent with standard AAA release tiers.',
+    tag: 'Pricing Myth',
+    badge: 'Debunked Hoax',
+    badgeColor: '#ff4757',
+  },
+  {
+    title: 'The "GTA 6 on Netflix" Streaming Rumor',
+    desc: 'Online searches surged asking if GTA 6 is coming to Netflix. Debunked: Netflix only licenses the mobile versions of the old GTA Trilogy. GTA 6 is a full PS5 and Xbox console exclusive.',
+    tag: 'Platform Myth',
+    badge: 'Debunked Hoax',
+    badgeColor: '#ff4757',
+  },
+  {
+    title: 'The "Procedural AI Infinite Map" Leak',
+    desc: 'Rumors suggested Rockstar was using generative AI to make an infinitely expanding US map. Debunked: Leonida is meticulously handcrafted by thousands of artists with deep environmental density.',
+    tag: 'World Design',
+    badge: 'Debunked Hoax',
+    badgeColor: '#ff4757',
+  },
+  {
+    title: 'The "Indefinite Delay to 2027" Rumor',
+    desc: 'Recurring rumors claim development was restarted after the leak. Debunked: Take-Two Interactive explicitly reaffirmed the November 19, 2026 launch window in quarterly SEC filings.',
+    tag: 'Schedule Myth',
+    badge: 'Debunked Hoax',
+    badgeColor: '#ff4757',
+  },
+];
+
+const timelineEvents = [
+  {
+    date: 'September 18, 2022',
+    title: 'The Unprecedented 90-Video Leak',
+    desc: 'A user named "teapotuberhacker" posted a 3GB archive containing 90 early test videos of Grand Theft Auto VI on GTAForums, downloaded from Rockstar Games internal Slack channels.',
+  },
+  {
+    date: 'September 19, 2022',
+    title: 'Rockstar Games Official Statement',
+    desc: 'Rockstar confirmed an unauthorized network intrusion, stating: "We are extremely disappointed to have any details of our next game shared with you in this way... We do not anticipate any disruption to our live game services nor any long-term effect on the development of our ongoing projects."',
+  },
+  {
+    date: 'August 23, 2023',
+    title: 'UK Crown Court Trial Verdict',
+    desc: 'An 18-year-old member of the Lapsus$ hacking group was found guilty by a jury at Southwark Crown Court in London for the cyber intrusion against Rockstar Games, Take-Two, and Uber.',
+  },
+  {
+    date: 'December 4, 2023',
+    title: 'Official Trailer 1 Validates Leaks',
+    desc: 'Rockstar released Trailer 1, validating almost every core element seen in the early leak: Vice City, neon beaches, Florida wildlife, social media culture, and protagonists Lucia and Jason.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'What did the 2022 GTA 6 leaks actually confirm?',
+    a: 'The September 2022 leaks confirmed that GTA 6 returns to Vice City in the state of Leonida, features dual protagonists Lucia and Jason, introduces limited weapon carry limits, and upgrades robbery and police AI mechanics.',
+  },
+  {
+    q: 'Is the rumor of a $150 GTA 6 price real?',
+    a: 'No. The $150 price tag rumor was a viral social media hoax. Standard edition pricing is $79.99 USD, with collector and ultimate editions reaching $99.99 USD based on Take-Two retail announcements.',
+  },
+  {
+    q: 'Is GTA 6 coming to Netflix?',
+    a: 'No. Grand Theft Auto VI will not be on Netflix. The confusion arose because Netflix Games offers mobile remasters of the Grand Theft Auto: The Trilogy. GTA 6 launches exclusively on PlayStation 5 and Xbox Series X|S.',
+  },
+  {
+    q: 'Did the 2022 leaks delay GTA 6?',
+    a: 'No. Rockstar Games issued an official statement on September 19, 2022 confirming that the intrusion would cause zero long-term impact on the game’s development timeline. The November 19, 2026 launch date remains locked.',
+  },
+  {
+    q: 'Is GTA 6 leaked gameplay safe to view?',
+    a: 'Discussing and reporting on the leak history is standard legal gaming journalism. However, downloading or distributing copyrighted developer build source code violates Take-Two Interactive intellectual property rights.',
+  },
+  {
+    q: 'Will GTA 6 be released on PC at launch?',
+    a: 'No. Take-Two Interactive and Rockstar Games confirmed that Grand Theft Auto VI launches day-one exclusively on PlayStation 5 and Xbox Series X|S on November 19, 2026, with a PC version anticipated post-launch.',
+  },
+  {
+    q: 'What was the legal outcome of the GTA 6 hack?',
+    a: 'The hacker responsible, associated with the Lapsus$ group, was convicted by London’s Southwark Crown Court in August 2023 following a trial regarding the security intrusions into Rockstar Games and Uber.',
+  },
+  {
+    q: 'How big is the leaked GTA 6 map compared to GTA 5?',
+    a: 'Community mapping projects analyzing leaked coordinates show the Leonida map is estimated to be approximately 2.5 times larger than GTA 5’s San Andreas, featuring multiple distinct cities, wetlands, and island keys.',
+  },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  schemas={[
+    articleSchema({ headline: 'GTA 6 Leaks vs Verified Facts: Everything Confirmed & Debunked', description, path }),
+    breadcrumbSchema(crumbs),
+    faqSchema(faqs),
+    itemListSchema({
+      name: 'GTA 6 Confirmed Features & Debunked Leaks',
+      description,
+      items: [
+        ...confirmedFeatures.map((f) => ({ name: f.title, url: '/leaks#confirmed', description: f.desc })),
+        ...debunkedRumors.map((r) => ({ name: r.title, url: '/leaks#debunked', description: r.desc })),
+      ],
+    }),
+  ]}
+>
+  <InnerPageLayout
+    pageTitle="GTA 6 Leaks &amp; Verified Facts"
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.webp"
+    accentColor="#f5b400"
+  >
+    <!-- ══════════════════════════════════════════════════════════
+         INTRO / HERO SUMMARY
+         ══════════════════════════════════════════════════════════ -->
+    <section class="leaks-intro-hub" data-reveal>
+      <div class="col-meta-box">
+        <div class="status-live-beacon">
+          <span class="beacon-pulse"></span>
+          <span class="beacon-text">Investigative Fact-Check Archive · &gt;10,000 Searches</span>
+        </div>
+
+        <h2 class="col-heading">GTA 6 Leaks vs Reality: Confirmed Features &amp; Debunked Rumors</h2>
+        <p class="col-lead">
+          Between the historic September 2022 developer build intrusion and launch day, thousands of rumors have flooded the internet. Here is the verified journalistic breakdown of what the leaked footage actually proved true, official Rockstar responses, and debunked viral hoaxes.
+        </p>
+
+        <div class="byline-card">
+          <Byline />
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         AEO & GEO EVIDENCE PANEL (AI SEARCH EXTRACTION BLOCK)
+         ══════════════════════════════════════════════════════════ -->
+    <section class="aeo-evidence-section" data-reveal>
+      <div class="aeo-evidence-card">
+        <div class="aeo-badge">
+          <span class="aeo-dot"></span>
+          <span>AEO Fast Facts · Primary Source Extraction</span>
+        </div>
+        <h3 class="aeo-title">Executive Summary: What You Need to Know</h3>
+        <p class="aeo-claim">
+          The <strong>September 2022 GTA 6 leak</strong> consisted of 90 early developer video clips confirming a return to <strong>Vice City (Leonida)</strong>, dual playable protagonists <strong>Lucia and Jason</strong>, and dynamic robbery mechanics. Rockstar Games confirmed the intrusion on Sept 19, 2022, affirming development would proceed without disruption. The viral <strong>$150 price tag</strong> and <strong>Netflix streaming</strong> rumors are completely false.
+        </p>
+        <div class="aeo-meta-grid">
+          <div class="aeo-meta-item">
+            <span class="aeo-meta-label">Primary Source</span>
+            <span class="aeo-meta-val">Rockstar Games Official Statement (Sept 19, 2022)</span>
+          </div>
+          <div class="aeo-meta-item">
+            <span class="aeo-meta-label">Legal Outcome</span>
+            <span class="aeo-meta-val">Southwark Crown Court Verdict (Aug 2023)</span>
+          </div>
+          <div class="aeo-meta-item">
+            <span class="aeo-meta-label">Verified Scope</span>
+            <span class="aeo-meta-val">90 Internal Video Clips Confirmed Genuine</span>
+          </div>
+          <div class="aeo-meta-item">
+            <span class="aeo-meta-label">Launch Status</span>
+            <span class="aeo-meta-val">Nov 19, 2026 Locked (Take-Two SEC)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         THE GREEN ZONE: CONFIRMED FEATURES FROM LEAKS
+         ══════════════════════════════════════════════════════════ -->
+    <section class="leak-group-section" id="confirmed" data-reveal>
+      <div class="section-label-row">
+        <span class="sec-pill sec-pill--green">The Green Zone</span>
+        <h3 class="sec-title">What the Leaks Proved 100% Genuine</h3>
+      </div>
+
+      <div class="leak-grid">
+        {confirmedFeatures.map((f) => (
+          <div class="leak-card leak-card--confirmed">
+            <div class="lc-top">
+              <span class="lc-badge" style={`--bc: ${f.badgeColor}`}>{f.badge}</span>
+              <span class="lc-tag">{f.tag}</span>
+            </div>
+            <h4 class="lc-title">{f.title}</h4>
+            <p class="lc-desc">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         THE RED ZONE: DEBUNKED VIRAL MYTHS & HOAXES
+         ══════════════════════════════════════════════════════════ -->
+    <section class="leak-group-section" id="debunked" data-reveal>
+      <div class="section-label-row">
+        <span class="sec-pill sec-pill--red">The Red Zone</span>
+        <h3 class="sec-title">Debunked Viral Rumors &amp; Fake Leaks</h3>
+      </div>
+
+      <div class="leak-grid">
+        {debunkedRumors.map((r) => (
+          <div class="leak-card leak-card--debunked">
+            <div class="lc-top">
+              <span class="lc-badge" style={`--bc: ${r.badgeColor}`}>{r.badge}</span>
+              <span class="lc-tag">{r.tag}</span>
+            </div>
+            <h4 class="lc-title">{r.title}</h4>
+            <p class="lc-desc">{r.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         TIMELINE: THE HISTORIC 2022 LEAK & LEGAL IMPACT
+         ══════════════════════════════════════════════════════════ -->
+    <section class="timeline-section" data-reveal>
+      <div class="nzt-box">
+        <div class="nzt-header">
+          <span class="nzt-badge">Historical Record</span>
+          <h2 class="nzt-title">The Historic Leak Timeline &amp; Legal Resolution</h2>
+          <p class="nzt-desc">
+            How the largest developer build leak in video game history unfolded, and how Rockstar Games persevered to release Trailer 1.
+          </p>
+        </div>
+
+        <div class="timeline-track">
+          {timelineEvents.map((ev, i) => (
+            <div class="timeline-node">
+              <div class="tl-marker">{i + 1}</div>
+              <div class="tl-content">
+                <span class="tl-date">{ev.date}</span>
+                <h3 class="tl-title">{ev.title}</h3>
+                <p class="tl-desc">{ev.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         AEO FAQ ACCORDION
+         ══════════════════════════════════════════════════════════ -->
+    <section class="nzt-faq-grid" data-reveal>
+      <div class="nzt-box">
+        <div class="nzt-header">
+          <span class="nzt-badge">Frequently Asked Questions</span>
+          <h2 class="nzt-title">GTA 6 Leaks &amp; Rumors Q&amp;A</h2>
+        </div>
+        <div class="faq-accordion">
+          {faqs.map((faq, i) => (
+            <details class="faq-item" id={`faq-${i + 1}`}>
+              <summary class="faq-question">
+                <span>{faq.q}</span>
+                <span class="faq-arrow" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </InnerPageLayout>
+</Base>
+
+<style>
+  .leaks-intro-hub {
+    margin-bottom: 2.5rem;
+  }
+
+  /* ══════════════════════════════════════════════════
+     AEO Evidence Card
+     ══════════════════════════════════════════════════ */
+  .aeo-evidence-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .aeo-evidence-card {
+    background: radial-gradient(ellipse at top left, rgba(245, 180, 0, 0.1), transparent 70%), rgba(16, 19, 26, 0.88);
+    border: 1px solid rgba(245, 180, 0, 0.35);
+    border-radius: 1.25rem;
+    padding: 2.25rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .aeo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(245, 180, 0, 0.15);
+    border: 1px solid rgba(245, 180, 0, 0.4);
+    border-radius: 999px;
+    color: #f5b400;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.85rem;
+  }
+
+  .aeo-dot {
+    width: 6px;
+    height: 6px;
+    background: #f5b400;
+    border-radius: 50%;
+  }
+
+  .aeo-title {
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    font-weight: 800;
+    color: var(--paper);
+    margin: 0 0 0.85rem 0;
+  }
+
+  .aeo-claim {
+    color: var(--paper);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .aeo-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1.25rem;
+  }
+
+  .aeo-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .aeo-meta-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  .aeo-meta-val {
+    font-family: var(--display);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--paper);
+  }
+
+  /* ══════════════════════════════════════════════════
+     Section Label Row
+     ══════════════════════════════════════════════════ */
+  .leak-group-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .sec-pill {
+    padding: 0.22rem 0.7rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 999px;
+  }
+
+  .sec-pill--green {
+    background: rgba(46, 213, 115, 0.15);
+    border: 1px solid rgba(46, 213, 115, 0.45);
+    color: #2ed573;
+  }
+
+  .sec-pill--red {
+    background: rgba(255, 71, 87, 0.15);
+    border: 1px solid rgba(255, 71, 87, 0.45);
+    color: #ff4757;
+  }
+
+  .sec-title {
+    font-family: var(--display);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 800;
+    color: var(--paper);
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════════════════
+     Leak Cards Grid
+     ══════════════════════════════════════════════════ */
+  .leak-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .leak-card {
+    background: rgba(16, 19, 26, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    padding: 1.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .leak-card--confirmed:hover {
+    transform: translateY(-4px);
+    border-color: rgba(46, 213, 115, 0.5);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(46, 213, 115, 0.12);
+  }
+
+  .leak-card--debunked:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 71, 87, 0.5);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 71, 87, 0.12);
+  }
+
+  .lc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.15rem;
+  }
+
+  .lc-badge {
+    padding: 0.22rem 0.65rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--bc);
+    color: var(--bc);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+  }
+
+  .lc-tag {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .lc-title {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--paper);
+    line-height: 1.35;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .lc-desc {
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════════════════
+     Timeline Section
+     ══════════════════════════════════════════════════ */
+  .timeline-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .nzt-box {
+    background: rgba(16, 19, 26, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    backdrop-filter: blur(16px);
+  }
+
+  .nzt-header {
+    margin-bottom: 2rem;
+  }
+
+  .nzt-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(245, 180, 0, 0.12);
+    border: 1px solid rgba(245, 180, 0, 0.35);
+    border-radius: 999px;
+    color: #f5b400;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+
+  .nzt-title {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-weight: 800;
+    color: var(--paper);
+    line-height: 1.25;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .nzt-desc {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 52rem;
+    margin: 0;
+  }
+
+  .timeline-track {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid rgba(245, 180, 0, 0.2);
+    margin-left: 0.75rem;
+  }
+
+  .timeline-node {
+    position: relative;
+  }
+
+  .tl-marker {
+    position: absolute;
+    left: -2.75rem;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background: #f5b400;
+    color: #0b0d12;
+    border-radius: 50%;
+    font-family: var(--display);
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px rgba(245, 180, 0, 0.5);
+  }
+
+  .tl-content {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .tl-date {
+    display: inline-block;
+    font-family: var(--display);
+    font-size: 0.78rem;
+    color: #f5b400;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-title {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--paper);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .tl-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════════════════
+     FAQ Accordion
+     ══════════════════════════════════════════════════ */
+  .nzt-faq-grid {
+    margin-top: 3.5rem;
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .faq-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(245, 180, 0, 0.35);
+    background: rgba(245, 180, 0, 0.03);
+  }
+
+  .faq-question {
+    padding: 1.15rem 1.35rem;
+    font-family: var(--display);
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--paper);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-arrow {
+    font-size: 1.25rem;
+    color: #f5b400;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-arrow {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.35rem 1.25rem 1.35rem;
+  }
+
+  .faq-answer p {
+    color: var(--muted);
+    font-size: 0.98rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+</style>

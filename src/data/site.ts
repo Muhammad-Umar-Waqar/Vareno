@@ -24,16 +24,25 @@ export const socials = [
   { name: 'Instagram', href: 'https://www.instagram.com/VarenoPlay/' },
 ] as const;
 
-export const nav = [
+export const primaryNav = [
   { href: '/release-date', label: 'Release date' },
   { href: '/tricks', label: 'Tricks' },
-  { href: '/price', label: 'Price' },
+  { href: '/leaks', label: 'Leaks' },
   { href: '/map', label: 'Map' },
-  { href: '/characters/lucia', label: 'Lucia' },
-  { href: '/platforms', label: 'Platforms' },
-  { href: '/trailers', label: 'Trailers' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/tools/portrait', label: 'Your photo' },
+  { href: '/price', label: 'Price' },
+] as const;
+
+export const moreNav = [
+  { href: '/characters/lucia', label: 'Characters', desc: 'Lucia Caminos & Jason Duval' },
+  { href: '/platforms', label: 'Platforms', desc: 'PS5, Xbox Series X|S & PC' },
+  { href: '/trailers', label: 'Trailers', desc: 'Official 4K trailers & breakdowns' },
+  { href: '/blog', label: 'Guides & News', desc: 'Launch analysis & development' },
+  { href: '/tools/portrait', label: 'Your Photo Tool', desc: 'Leonida AI portrait generator' },
+] as const;
+
+export const nav = [
+  ...primaryNav,
+  ...moreNav.map((m) => ({ href: m.href, label: m.label })),
 ] as const;
 
 export const stores = [
