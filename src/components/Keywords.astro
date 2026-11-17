@@ -4,6 +4,8 @@ const keywords = [
   { term: 'when does gta 6 come out', kd: 'hard', volume: '>100K', href: '/release-date' },
   { term: 'gta 6 price', kd: 'medium', volume: '>10K', href: '/price' },
   { term: 'how much is gta 6', kd: 'medium', volume: '>10K', href: '/price' },
+  { term: 'gta 6 leaks', kd: 'easy', volume: '>10K', href: '/leaks' },
+  { term: 'gta 6 new zealand trick', kd: 'easy', volume: '>10K', href: '/tricks/new-zealand-trick' },
   { term: 'gta 6 map', kd: 'hard', volume: '>10K', href: '/map' },
   { term: 'will gta 6 be on pc', kd: 'easy', volume: '>10K', href: '/platforms' },
   { term: 'gta 6 pre order', kd: 'hard', volume: '>10K', href: '/price' },
@@ -12,20 +14,99 @@ const keywords = [
   { term: 'gta 6 delay', kd: 'easy', volume: '>10K', href: '/release-date' },
   { term: 'rockstar games gta 6', kd: 'easy', volume: '>10K', href: '/release-date' },
   { term: 'gta 6 gameplay', kd: 'easy', volume: '>10K', href: '/trailers' },
+  { term: "gta 6 collector's edition", kd: 'medium', volume: '>10K', href: '/price' },
+  { term: 'gta 6 august 27 presentation', kd: 'easy', volume: '>10K', href: '/trailers' },
+  { term: 'will gta 6 have online', kd: 'easy', volume: '>1K', href: '/platforms' },
+  { term: 'is gta 6 out', kd: 'hard', volume: '>10K', href: '/release-date' },
+  { term: 'will gta 6 be crossplay', kd: 'easy', volume: '>1K', href: '/platforms' },
+  { term: 'how many days till gta 6', kd: 'easy', volume: '>1K', href: '/release-date' },
+  { term: 'did gta 6 get delayed again', kd: 'easy', volume: '>1K', href: '/blog/gta-6-delay-history' },
+  { term: 'how long has gta 6 been in development', kd: 'easy', volume: '>1K', href: '/blog/how-long-has-gta-6-been-in-development' },
+  { term: 'how much is gta 6 pre order', kd: 'medium', volume: '>1K', href: '/price' },
 ];
 ---
 
 <section class="keywords-section" data-reveal>
   <div class="kw-header">
     <h2>Trending searches</h2>
-    <p>The GTA 6 questions people are asking right now</p>
+    <p>The GTA 6 questions people and search engines are asking right now</p>
   </div>
   <div class="kw-grid">
     {keywords.map(kw => (
-      <a href={kw.href} class={`kw-pill kw-${kw.kd}`}>
+      <a href={kw.href} class={`kw-pill kw-${kw.kd}`} aria-label={`Explore keyword: ${kw.term}`}>
         <span class="kw-term">{kw.term}</span>
         <span class="kw-vol">{kw.volume}</span>
       </a>
     ))}
   </div>
 </section>
+
+<style>
+.keywords-section {
+  padding: 1.5rem 0;
+}
+.kw-header {
+  margin-bottom: 1.25rem;
+}
+.kw-header h2 {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--paper, #fff);
+  margin: 0 0 0.35rem 0;
+}
+.kw-header p {
+  color: var(--muted, rgba(255, 255, 255, 0.55));
+  font-size: 0.88rem;
+  margin: 0;
+}
+.kw-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.kw-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.38rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(16, 19, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: 0.82rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.kw-pill:hover {
+  transform: translateY(-2px);
+  background: rgba(245, 180, 0, 0.1);
+  border-color: rgba(245, 180, 0, 0.4);
+}
+.kw-term {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+.kw-pill:hover .kw-term {
+  color: #fff;
+}
+.kw-vol {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+}
+.kw-easy .kw-vol {
+  color: #2ed573;
+  background: rgba(46, 213, 115, 0.15);
+}
+.kw-medium .kw-vol {
+  color: #f5b400;
+  background: rgba(245, 180, 0, 0.15);
+}
+.kw-hard .kw-vol {
+  color: #ff4757;
+  background: rgba(255, 71, 87, 0.15);
+}
+</style>
