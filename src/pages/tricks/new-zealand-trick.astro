@@ -1,0 +1,652 @@
+---
+import Base from '../../layouts/Base.astro';
+import InnerPageLayout from '../../components/InnerPageLayout.astro';
+import Byline from '../../components/Byline.astro';
+import Countdown from '../../components/Countdown.astro';
+import GuideIcon from '../../components/icons/GuideIcon.astro';
+import { articleSchema, breadcrumbSchema, faqSchema } from '../../lib/seo';
+
+const title = 'GTA 6 New Zealand Trick: Play Up to 21 Hours Early | Vareno Play';
+const description =
+  'Searches for the GTA 6 New Zealand trick surged over 5,000%. Step-by-step Xbox Series X|S and PS5 early access guide, time zone unlock table, and ban risk breakdown.';
+const path = '/tricks/new-zealand-trick';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Tricks', path: '/tricks/new-zealand-trick' },
+  { name: 'New Zealand Trick', path: '/tricks/new-zealand-trick' },
+];
+
+const faqs = [
+  {
+    q: 'What is the GTA 6 New Zealand trick?',
+    a: 'The New Zealand trick is a console setting workaround where players switch their system region to New Zealand (UTC+13) to access rolling midnight digital releases up to 21 hours earlier than North American local times.',
+  },
+  {
+    q: 'Does the New Zealand trick work on Xbox Series X|S for GTA 6?',
+    a: 'Yes. Xbox allows users to change console location in System Settings without changing account region or re-purchasing the game, enabling immediate access once midnight strikes in New Zealand.',
+  },
+  {
+    q: 'Does the New Zealand trick work on PlayStation 5 for GTA 6?',
+    a: 'Not simply by changing settings. PS5 licenses are tied to the country where the PSN account was created. Playing early requires creating a New Zealand PSN account and purchasing via NZ PSN gift cards.',
+  },
+  {
+    q: 'Can you get banned for using the New Zealand trick on Xbox?',
+    a: 'No. Changing console location is an official system setting provided by Microsoft. Neither Xbox nor game publishers have historically banned accounts for changing console location to play rolling releases early.',
+  },
+  {
+    q: 'How many hours early can you play GTA 6 using the trick?',
+    a: 'Depending on your local time zone, New Zealand reaches midnight 13 hours ahead of London (GMT), 18 hours ahead of New York (EST), and 21 hours ahead of Los Angeles (PST).',
+  },
+  {
+    q: 'Will Rockstar Games block the New Zealand trick for GTA 6?',
+    a: 'If Rockstar implements a simultaneous global unlock time (e.g. 00:00 UTC worldwide), the trick will not work. If they use a staggered midnight local rollout, Xbox players will successfully play early.',
+  },
+];
+
+const timezones = [
+  { region: 'New Zealand (NZDT)', time: '12:00 AM (Midnight)', date: 'Nov 19, 2026', diff: 'Earliest Worldwide (+0 hrs)', status: 'First to Unlock' },
+  { region: 'Australia (AEST)', time: '10:00 PM', date: 'Nov 18, 2026', diff: '2 Hours Behind NZ', status: 'Very Early' },
+  { region: 'Japan (JST)', time: '8:00 PM', date: 'Nov 18, 2026', diff: '4 Hours Behind NZ', status: 'Early' },
+  { region: 'Pakistan / India (PKT/IST)', time: '4:00 PM / 4:30 PM', date: 'Nov 18, 2026', diff: '7.5 Hours Behind NZ', status: 'Afternoon Access' },
+  { region: 'United Kingdom (GMT)', time: '11:00 AM', date: 'Nov 18, 2026', diff: '13 Hours Behind NZ', status: '13h Advantage' },
+  { region: 'US East Coast (EST)', time: '6:00 AM', date: 'Nov 18, 2026', diff: '18 Hours Behind NZ', status: '18h Advantage' },
+  { region: 'US Central (CST)', time: '5:00 AM', date: 'Nov 18, 2026', diff: '19 Hours Behind NZ', status: '19h Advantage' },
+  { region: 'US West Coast (PST)', time: '3:00 AM', date: 'Nov 18, 2026', diff: '21 Hours Behind NZ', status: '21h Advantage' },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  schemas={[
+    articleSchema({ headline: 'GTA 6 New Zealand trick: early access guide', description, path }),
+    breadcrumbSchema(crumbs),
+    faqSchema(faqs),
+  ]}
+>
+  <InnerPageLayout
+    pageTitle="The GTA 6 New Zealand Trick"
+    crumbs={crumbs}
+    heroImg="/images/gta6-beach-logo.webp"
+    accentColor="#39d0ff"
+  >
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 1: VIRAL SEARCH TREND OVERVIEW & EXPLANATION
+         ══════════════════════════════════════════════════════════ -->
+    <section class="two-col-countdown" data-reveal>
+      <div class="col-meta-box">
+        <div class="status-live-beacon">
+          <span class="beacon-pulse"></span>
+          <span class="beacon-text">Viral Trend · +5,000% Search Surge</span>
+        </div>
+
+        <h2 class="col-heading">How to Play GTA 6 Up to 21 Hours Early</h2>
+        <p class="col-lead">
+          Google Search Trends report searches for the <strong>"GTA 6 New Zealand trick"</strong> surged by more than 5,000% as gamers prepare for the November 19, 2026 launch. Here is the verified technical guide on how it works, platform compatibility, and step-by-step instructions.
+        </p>
+
+        <div class="byline-card">
+          <Byline />
+        </div>
+
+        <ul class="col-quick-facts">
+          <li>
+            <span class="fact-icon">⚡</span>
+            <span><strong>Xbox Series X|S:</strong> Fully supported in 4 simple clicks (zero ban risk).</span>
+          </li>
+          <li>
+            <span class="fact-icon">🎮</span>
+            <span><strong>PlayStation 5:</strong> Requires secondary New Zealand PSN account & NZ currency.</span>
+          </li>
+          <li>
+            <span class="fact-icon">⏱</span>
+            <span><strong>Time Advantage:</strong> Up to 21 hours early for West Coast players, 18 hours for East Coast.</span>
+          </li>
+          <li>
+            <span class="fact-icon">📅</span>
+            <span><strong>Pre-Load Required:</strong> Pre-loads lock on November 10, 2026 for seamless day-one unlock.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-countdown-board">
+        <div class="cdb-header">
+          <span class="cdb-badge">New Zealand Midnight Target</span>
+          <span class="cdb-utc">UTC+13 / NZDT</span>
+        </div>
+        <p class="cdb-intro">Countdown to midnight in Auckland &amp; Wellington, New Zealand (first territory to unlock):</p>
+        <Countdown targetISO="2026-11-18T11:00:00.000Z" />
+        <p class="cdb-note">
+          When this clock hits zero, consoles set to New Zealand will attempt digital authorization.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 2: WHAT IS THE NEW ZEALAND TRICK?
+         ══════════════════════════════════════════════════════════ -->
+    <section class="nzt-content-section" data-reveal>
+      <div class="nzt-box">
+        <div class="nzt-header">
+          <span class="nzt-badge">Core Concept</span>
+          <h2 class="nzt-title">What Is the New Zealand Trick?</h2>
+        </div>
+        <div class="nzt-body">
+          <p>
+            The <strong>"New Zealand Trick"</strong> is a well-established console exploit in gaming. Because the Earth rotates from east to west, New Zealand (NZDT, UTC+13) is one of the very first inhabited time zones to cross into a new calendar day.
+          </p>
+          <p>
+            When major video game publishers launch a title with a <em>"rolling midnight local"</em> release schedule (unlocking at 12:00 AM on November 19 in each country's respective time zone), New Zealand players gain access hours before the rest of the planet. By digitally placing your console in New Zealand, players outside the region trick the licensing verification server into granting early access.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 3: WORLDWIDE UNLOCK TIME CONVERSION TABLE
+         ══════════════════════════════════════════════════════════ -->
+    <section class="nzt-table-section" data-reveal>
+      <div class="nzt-box">
+        <div class="nzt-header">
+          <span class="nzt-badge">Time Zone Converter</span>
+          <h2 class="nzt-title">What Time Can You Play in Your Region?</h2>
+          <p class="nzt-desc">
+            When New Zealand strikes midnight on Thursday, November 19, here is what the exact local clock will show in your territory:
+          </p>
+        </div>
+
+        <div class="nzt-table-wrap">
+          <table class="nzt-table">
+            <thead>
+              <tr>
+                <th scope="col">Territory</th>
+                <th scope="col">Local Date &amp; Time</th>
+                <th scope="col">Time Advantage</th>
+                <th scope="col">Early Access Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {timezones.map((tz) => (
+                <tr>
+                  <td><strong>{tz.region}</strong></td>
+                  <td><code>{tz.time} ({tz.date})</code></td>
+                  <td>{tz.diff}</td>
+                  <td><span class="nzt-status-pill">{tz.status}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 4: XBOX SERIES X|S STEP-BY-STEP TUTORIAL
+         ══════════════════════════════════════════════════════════ -->
+    <section class="nzt-guide-section" data-reveal>
+      <div class="nzt-box nzt-box--xbox">
+        <div class="nzt-header">
+          <span class="nzt-badge nzt-badge--green">Xbox Series X|S Guide</span>
+          <h2 class="nzt-title">How to Do the New Zealand Trick on Xbox</h2>
+          <p class="nzt-desc">
+            Microsoft makes region changing a built-in operating system feature. You do <strong>not</strong> need a VPN, and you do <strong>not</strong> need to re-purchase the game in New Zealand dollars.
+          </p>
+        </div>
+
+        <div class="nzt-steps">
+          <div class="nzt-step">
+            <span class="nzt-step-num">1</span>
+            <div class="nzt-step-info">
+              <h3>Pre-Order &amp; Pre-Load Normally</h3>
+              <p>Purchase GTA 6 on your primary account from your normal local Microsoft Store (e.g. US, UK, EU, or Canada). Pre-load the full 150GB+ installation files starting November 10, 2026.</p>
+            </div>
+          </div>
+
+          <div class="nzt-step">
+            <span class="nzt-step-num">2</span>
+            <div class="nzt-step-info">
+              <h3>Open Console System Settings</h3>
+              <p>Press the Xbox Guide button on your controller, navigate to <strong>Profile &amp; system</strong> &gt; <strong>Settings</strong> &gt; <strong>System</strong> &gt; <strong>Language &amp; location</strong>.</p>
+            </div>
+          </div>
+
+          <div class="nzt-step">
+            <span class="nzt-step-num">3</span>
+            <div class="nzt-step-info">
+              <h3>Switch Location to New Zealand</h3>
+              <p>Under the <strong>Location</strong> dropdown menu, scroll down and select <strong>New Zealand</strong>. (Leave your Language set to English).</p>
+            </div>
+          </div>
+
+          <div class="nzt-step">
+            <span class="nzt-step-num">4</span>
+            <div class="nzt-step-info">
+              <h3>Restart Your Console</h3>
+              <p>Select the <strong>Restart now</strong> button on screen. Once your Xbox restarts, launch Grand Theft Auto VI when midnight hits in New Zealand (11:00 AM GMT / 6:00 AM EST on Nov 18).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nzt-alert nzt-alert--tip">
+          <strong>Pro-Tip:</strong> Once GTA 6 officially unlocks in your actual home region, you can switch your Xbox location back to your home country immediately without losing any save files, achievements, or progress.
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 5: PLAYSTATION 5 WORKAROUND & LIMITATIONS
+         ══════════════════════════════════════════════════════════ -->
+    <section class="nzt-guide-section" data-reveal>
+      <div class="nzt-box nzt-box--ps5">
+        <div class="nzt-header">
+          <span class="nzt-badge nzt-badge--blue">PlayStation 5 Guide</span>
+          <h2 class="nzt-title">Can You Do It on PlayStation 5? (The Hard Way)</h2>
+          <p class="nzt-desc">
+            Sony PlayStation handles region locking differently than Microsoft. Changing your PS5 system time or location setting in console menus does <strong>not</strong> unlock games early because game licenses are cryptographically locked to the region where your PlayStation Network account was created.
+          </p>
+        </div>
+
+        <div class="nzt-body">
+          <p>
+            To use the New Zealand trick on PS5, you must follow the secondary account method:
+          </p>
+          <ol class="nzt-ps5-list">
+            <li>
+              <strong>Create a New PSN Profile:</strong> Create a brand-new PlayStation Network account on your console or via web browser, and select <strong>New Zealand</strong> as your country/region.
+            </li>
+            <li>
+              <strong>Purchase NZD PSN Gift Cards:</strong> Since your local credit card will not work on a New Zealand PSN account, buy digital New Zealand PlayStation Store gift cards from reputable digital retailers (such as Play-Asia, CDKeys, or Amazon).
+            </li>
+            <li>
+              <strong>Redeem and Pre-Order:</strong> Redeem the gift cards on your NZ account, purchase GTA 6 from the New Zealand PlayStation Store, and download the game.
+            </li>
+            <li>
+              <strong>Enable Console Sharing:</strong> In <em>Settings &gt; Users and Accounts &gt; Other &gt; Console Sharing and Offline Play</em>, make sure sharing is enabled. This allows you to play the game on your primary profile once it unlocks!
+            </li>
+          </ol>
+          <div class="nzt-alert nzt-alert--warning">
+            <strong>Warning for PS5 Players:</strong> This method requires purchasing the game in New Zealand Dollars (NZD), which can be more expensive due to currency conversion rates. For most players, waiting the extra few hours is recommended over buying a second copy.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 6: CAN YOU GET BANNED? (MYTH VS REALITY)
+         ══════════════════════════════════════════════════════════ -->
+    <section class="nzt-faq-editorial" data-reveal>
+      <div class="nzt-box">
+        <div class="nzt-header">
+          <span class="nzt-badge">Safety &amp; Compliance</span>
+          <h2 class="nzt-title">Can You Get Banned for the New Zealand Trick?</h2>
+        </div>
+        <div class="nzt-body">
+          <div class="nzt-verdict-card">
+            <span class="nzt-verdict-tag">Official Verdict: 100% Safe</span>
+            <p>
+              <strong>You will NOT be banned on Xbox.</strong> Microsoft has publicly acknowledged this practice for years (including during launch events for <em>Call of Duty</em>, <em>Forza Horizon</em>, <em>Elden Ring</em>, and <em>Starfield</em>). Even the official Xbox social media accounts regularly post humorous memes welcoming thousands of gamers "moving to New Zealand for the weekend."
+            </p>
+            <p>
+              Changing your console location is a standard operating system feature designed for travelers and expats. It does not tamper with game code, crack DRM, or use unauthorized third-party software.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 7: THE VIRAL WORK LEAVE / PTO PHENOMENON
+         ══════════════════════════════════════════════════════════ -->
+    <section class="nzt-pto-section" data-reveal>
+      <div class="nzt-box">
+        <div class="nzt-header">
+          <span class="nzt-badge">Cultural Phenomenon</span>
+          <h2 class="nzt-title">The "GTA 6 PTO Request" Surge</h2>
+          <p class="nzt-desc">
+            Along with the New Zealand trick, corporate HR platforms report record-breaking employee paid time off (PTO) requests for Thursday, November 19 and Friday, November 20, 2026.
+          </p>
+        </div>
+        <div class="nzt-body">
+          <p>
+            With 13 years having passed since the release of GTA V in 2013, an entire generation of gamers who were teenagers now hold full-time jobs. Taking launch week off has become a collective cultural event.
+          </p>
+
+          <div class="nzt-pto-card">
+            <h3>Sample Gamers' Time-Off Request:</h3>
+            <blockquote>
+              "I am requesting annual leave on November 19 and 20, 2026. A once-in-a-decade media milestone is launching, and I will be exploring Vice City. My phone will be on silent, but I will return fully refreshed on Monday."
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 8: FREQUENTLY ASKED QUESTIONS (AEO SCHEMA)
+         ══════════════════════════════════════════════════════════ -->
+    <section class="nzt-faq-grid" data-reveal>
+      <div class="nzt-box">
+        <div class="nzt-header">
+          <span class="nzt-badge">Frequently Asked Questions</span>
+          <h2 class="nzt-title">New Zealand Trick Q&amp;A</h2>
+        </div>
+        <div class="faq-accordion">
+          {faqs.map((faq, i) => (
+            <details class="faq-item" id={`faq-${i + 1}`}>
+              <summary class="faq-question">
+                <span>{faq.q}</span>
+                <span class="faq-arrow" aria-hidden="true">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </InnerPageLayout>
+</Base>
+
+<style>
+  .nzt-content-section,
+  .nzt-table-section,
+  .nzt-guide-section,
+  .nzt-faq-editorial,
+  .nzt-pto-section,
+  .nzt-faq-grid {
+    margin-top: 3.5rem;
+  }
+
+  .nzt-box {
+    background: rgba(16, 19, 26, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    backdrop-filter: blur(16px);
+  }
+
+  .nzt-box--xbox {
+    border-color: rgba(16, 124, 65, 0.4);
+    background: radial-gradient(ellipse at top left, rgba(16, 124, 65, 0.12), transparent 70%), rgba(16, 19, 26, 0.75);
+  }
+
+  .nzt-box--ps5 {
+    border-color: rgba(0, 112, 209, 0.4);
+    background: radial-gradient(ellipse at top left, rgba(0, 112, 209, 0.12), transparent 70%), rgba(16, 19, 26, 0.75);
+  }
+
+  .nzt-header {
+    margin-bottom: 2rem;
+  }
+
+  .nzt-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(57, 208, 255, 0.12);
+    border: 1px solid rgba(57, 208, 255, 0.3);
+    border-radius: 999px;
+    color: #39d0ff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+
+  .nzt-badge--green {
+    background: rgba(16, 124, 65, 0.2);
+    border-color: rgba(16, 124, 65, 0.5);
+    color: #2ed573;
+  }
+
+  .nzt-badge--blue {
+    background: rgba(0, 112, 209, 0.2);
+    border-color: rgba(0, 112, 209, 0.5);
+    color: #4a9eff;
+  }
+
+  .nzt-title {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-weight: 800;
+    color: var(--paper);
+    line-height: 1.25;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .nzt-desc {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 52rem;
+    margin: 0;
+  }
+
+  .nzt-body p {
+    color: var(--paper);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Table styles */
+  .nzt-table-wrap {
+    overflow-x: auto;
+    margin-top: 1rem;
+    border-radius: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .nzt-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  .nzt-table th {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--paper);
+    padding: 1rem 1.25rem;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nzt-table td {
+    padding: 1rem 1.25rem;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .nzt-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .nzt-status-pill {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(57, 208, 255, 0.12);
+    border: 1px solid rgba(57, 208, 255, 0.3);
+    border-radius: 4px;
+    color: #39d0ff;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  /* Steps */
+  .nzt-steps {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .nzt-step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .nzt-step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: #107c41;
+    color: #fff;
+    font-weight: 800;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .nzt-step-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.15rem;
+    color: var(--paper);
+  }
+
+  .nzt-step-info p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* Alerts */
+  .nzt-alert {
+    padding: 1.25rem;
+    border-radius: 0.85rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .nzt-alert--tip {
+    background: rgba(57, 208, 255, 0.08);
+    border: 1px solid rgba(57, 208, 255, 0.25);
+    color: #d1f4ff;
+  }
+
+  .nzt-alert--warning {
+    background: rgba(255, 107, 61, 0.08);
+    border: 1px solid rgba(255, 107, 61, 0.25);
+    color: #ffe0d6;
+  }
+
+  /* PS5 list */
+  .nzt-ps5-list {
+    padding-left: 1.5rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .nzt-ps5-list li {
+    margin-bottom: 0.85rem;
+  }
+
+  .nzt-ps5-list strong {
+    color: var(--paper);
+  }
+
+  /* Verdict card */
+  .nzt-verdict-card {
+    background: rgba(46, 213, 115, 0.08);
+    border: 1px solid rgba(46, 213, 115, 0.25);
+    border-radius: 0.85rem;
+    padding: 1.75rem;
+  }
+
+  .nzt-verdict-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #2ed573;
+    color: #05060a;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  /* PTO Card */
+  .nzt-pto-card {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px dashed rgba(245, 180, 0, 0.3);
+    border-radius: 0.85rem;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .nzt-pto-card h3 {
+    margin: 0 0 0.75rem 0;
+    color: #f5b400;
+    font-size: 1.1rem;
+  }
+
+  .nzt-pto-card blockquote {
+    margin: 0;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* FAQ Accordion */
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .faq-item {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .faq-item[open] {
+    border-color: rgba(57, 208, 255, 0.3);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    font-weight: 700;
+    color: var(--paper);
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-arrow {
+    font-size: 1.25rem;
+    color: #39d0ff;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-arrow {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+</style>

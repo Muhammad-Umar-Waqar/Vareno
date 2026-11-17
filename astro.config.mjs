@@ -27,6 +27,7 @@ export default defineConfig({
           item.changefreq = 'daily';
         } else if (
           url.includes('/release-date') ||
+          url.includes('/tricks') ||
           url.includes('/price') ||
           url.includes('/map') ||
           url.includes('/platforms') ||

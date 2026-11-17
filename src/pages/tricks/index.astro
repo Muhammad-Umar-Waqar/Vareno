@@ -1,0 +1,195 @@
+---
+import Base from '../../layouts/Base.astro';
+import InnerPageLayout from '../../components/InnerPageLayout.astro';
+import Byline from '../../components/Byline.astro';
+import { articleSchema, breadcrumbSchema } from '../../lib/seo';
+
+const title = 'GTA 6 Tricks, Early Access & Launch Workarounds | Vareno Play';
+const description =
+  'Verified GTA 6 early access tricks, console region bypasses, midnight unlock schedules, and pre-load optimizations for Xbox Series X|S and PS5.';
+const path = '/tricks';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Tricks', path: '/tricks' },
+];
+
+const tricks = [
+  {
+    title: 'The New Zealand Trick (Play Up to 21 Hours Early)',
+    desc: 'How Xbox and PS5 players switch console locations to unlock GTA 6 early when midnight hits in New Zealand (UTC+13). Complete step-by-step tutorial and time zone conversions.',
+    badge: 'Trending +5,000%',
+    badgeColor: '#2ed573',
+    href: '/tricks/new-zealand-trick',
+    tag: 'Early Access',
+    stat: '21h Early',
+  },
+  {
+    title: 'Pre-Load Storage & Day-One Patch Preparation',
+    desc: 'How to pre-load the 150GB+ installation files starting November 10, 2026, verify SSD clearance, and ensure the Day-0 authorization patch downloads in standby.',
+    badge: 'Hardware & Storage',
+    badgeColor: '#39d0ff',
+    href: '/release-date',
+    tag: 'Pre-Load',
+    stat: 'Nov 10 Lock',
+  },
+  {
+    title: 'The "GTA 6 PTO" Workplace Leave Guide',
+    desc: 'Why corporate HR departments are seeing unprecedented annual leave requests for November 19 & 20, 2026. Gamer request templates and launch-week preparation.',
+    badge: 'Cultural Phenomenon',
+    badgeColor: '#f5b400',
+    href: '/tricks/new-zealand-trick#faq-6',
+    tag: 'Work Leave',
+    stat: 'Nov 19 PTO',
+  },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  schemas={[
+    articleSchema({ headline: 'GTA 6 Tricks and Early Access Guides', description, path }),
+    breadcrumbSchema(crumbs),
+  ]}
+>
+  <InnerPageLayout
+    pageTitle="GTA 6 Tricks & Early Access"
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.webp"
+    accentColor="#2ed573"
+  >
+    <section class="tricks-intro-hub" data-reveal>
+      <div class="col-meta-box">
+        <div class="status-live-beacon">
+          <span class="beacon-pulse"></span>
+          <span class="beacon-text">Early Access &amp; Optimization Vault</span>
+        </div>
+
+        <h2 class="col-heading">Verified GTA VI Tricks &amp; Console Workarounds</h2>
+        <p class="col-lead">
+          Explore proven technical workarounds, time-zone exploits, and launch-day preparation strategies to maximize your play time and unlock Vice City as early as possible.
+        </p>
+
+        <div class="byline-card">
+          <Byline />
+        </div>
+      </div>
+    </section>
+
+    <!-- TRICKS GRID -->
+    <section class="tricks-grid-section" data-reveal>
+      <div class="tricks-grid">
+        {tricks.map((t) => (
+          <a class="trick-card" href={t.href}>
+            <div class="tc-top">
+              <span class="tc-badge" style={`--bc: ${t.badgeColor}`}>{t.badge}</span>
+              <span class="tc-stat">{t.stat}</span>
+            </div>
+            <h3 class="tc-title">{t.title}</h3>
+            <p class="tc-desc">{t.desc}</p>
+            <div class="tc-footer">
+              <span class="tc-cta">Read Guide →</span>
+              <span class="tc-tag">{t.tag}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </InnerPageLayout>
+</Base>
+
+<style>
+  .tricks-intro-hub {
+    margin-bottom: 3rem;
+  }
+
+  .tricks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .trick-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(16, 19, 26, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .trick-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(46, 213, 115, 0.4);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .tc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .tc-badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--bc);
+    color: var(--bc);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+  }
+
+  .tc-stat {
+    font-family: var(--display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--paper);
+  }
+
+  .tc-title {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--paper);
+    line-height: 1.35;
+    margin: 0 0 0.85rem 0;
+  }
+
+  .tc-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+    flex-grow: 1;
+  }
+
+  .tc-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 1.25rem;
+  }
+
+  .tc-cta {
+    color: #2ed573;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .tc-tag {
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+</style>

@@ -4,6 +4,7 @@ import { site } from '../data/site';
 const pages = [
   ['/', 'Home', 'What GTA 6 is, the launch date, and links to every guide.'],
   ['/release-date', 'GTA 6 release date', 'November 19, 2026, delays, pre-load, and countdown.'],
+  ['/tricks/new-zealand-trick', 'GTA 6 New Zealand trick', 'How Xbox and PS5 players play up to 21 hours early on launch day.'],
   ['/price', 'GTA 6 price', 'Standard at $79.99, Ultimate at $99.99, and what pre-order includes.'],
   ['/map', 'GTA 6 map', 'Vice City and the state of Leonida, from Rockstar’s description.'],
   ['/characters/lucia', 'Lucia and Jason', 'The leads, using Rockstar’s synopsis.'],
