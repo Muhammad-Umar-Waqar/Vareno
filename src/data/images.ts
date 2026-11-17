@@ -6,14 +6,14 @@ export const logo = {
 };
 
 export const cover = {
-  src: '/images/.webp',
+  src: '/images/gta6-hero.webp',
   width: 2000,
   height: 900,
   alt: 'Grand Theft Auto VI artwork with Jason and Lucia',
 };
 
 export const og = {
-  src: '/images/.webp',
+  src: '/images/og.webp',
   width: 1200,
   height: 630,
   alt: 'Vareno Play, gaming, clips, and entertainment',
