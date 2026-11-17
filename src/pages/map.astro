@@ -1,0 +1,497 @@
+---
+import Base from '../layouts/Base.astro';
+import Byline from '../components/Byline.astro';
+import Sources from '../components/Sources.astro';
+import AdSlot from '../components/AdSlot.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
+import CtaDashedGrid from '../components/CtaDashedGrid.astro';
+import GlowingCard from '../components/GlowingCard.astro';
+import FaqList from '../components/FaqList.astro';
+import Keywords from '../components/Keywords.astro';
+import GuideIcon from '../components/icons/GuideIcon.astro';
+import { sources } from '../data/site';
+import { articleSchema, breadcrumbSchema, faqSchema } from '../lib/seo';
+
+const title = 'GTA 6 Map: Leonida and Vice City Guide | Vareno Play';
+const description =
+  'The GTA 6 map covers Vice City and the state of Leonida. Rockstar has not posted a labeled player map. This page uses the setting the studio describes.';
+const path = '/map';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Map', path },
+];
+const faqs = [
+  {
+    q: 'What is on the GTA 6 map?',
+    a: 'Rockstar sets GTA 6 in Vice City and the wider state of Leonida. The studio calls Vice City the sunniest place in America and describes a criminal conspiracy across Leonida. A labeled map for players is not on the GTA VI page.',
+  },
+  {
+    q: 'How big is the GTA 6 map compared to GTA 5?',
+    a: 'Rockstar describes Leonida as the largest and most immersive evolution of the Grand Theft Auto series yet, spanning urban Vice City, dense wetlands, rural highways, and mountain regions.',
+  },
+  {
+    q: 'What real-world state is Leonida based on?',
+    a: 'Leonida is Rockstar’s satirical reimagining of Florida, featuring Vice City (Miami), coastal keys, national park swamplands, and inland country counties.',
+  },
+];
+
+const regions = [
+  {
+    icon: 'city',
+    badge: 'Metropolis',
+    title: 'Vice City Metro',
+    desc: 'The sparkling neon-drenched jewel of Leonida. Ocean Beach, downtown high-rises, nightlife clubs, and luxury marinas.',
+    stat: 'Metropolitan',
+    statLabel: 'Urban Core',
+    glowColor: '#39d0ff',
+  },
+  {
+    icon: 'mountain',
+    badge: 'Wilderness',
+    title: 'Mount Kalaga',
+    desc: 'Officially named in Rockstar’s character dossier for Jason. A rugged northern wilderness terrain of peaks, forests, and backwoods.',
+    stat: 'Northern',
+    statLabel: 'Wild Country',
+    glowColor: '#f7c948',
+  },
+  {
+    icon: 'swamp',
+    badge: 'Wetlands',
+    title: 'Grassrivers Swamps',
+    desc: 'Expansive Everglades-style marshlands with airboats, alligator sanctuaries, and off-grid criminal operations.',
+    stat: 'Everglades',
+    statLabel: 'Biome',
+    glowColor: '#4ade80',
+  },
+  {
+    icon: 'island',
+    badge: 'Archipelago',
+    title: 'The Leonida Keys',
+    desc: 'Sun-bleached island chains connected by scenic overseas bridges, coral reefs, and seaside motels.',
+    stat: 'Overseas',
+    statLabel: 'Coastline',
+    glowColor: '#ff5c8a',
+  },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  schemas={[
+    articleSchema({ headline: 'GTA 6 map', description, path }),
+    breadcrumbSchema(crumbs),
+    faqSchema(faqs),
+  ]}
+>
+  <InnerPageLayout pageTitle="GTA 6 Map &amp; Setting" crumbs={crumbs} heroImg="/images/gta6-car.jpg" accentColor="#39d0ff">
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 1: TOP 2-COLUMN MAP OVERVIEW
+         ══════════════════════════════════════════════════════════ -->
+    <section class="two-col-map-hero" data-reveal>
+      <div class="map-meta-col">
+        <span class="map-badge">Leonida State Cartography</span>
+        <h2 class="map-heading">Vice City, USA &amp; Beyond</h2>
+        <p class="map-lead">{faqs[0].a}</p>
+        <Byline />
+      </div>
+
+      <div class="map-intel-card">
+        <div class="mic-top">
+          <span class="mic-pill">OFFICIAL GEOGRAPHY</span>
+          <span class="mic-coords">25.7617° N, 80.1918° W</span>
+        </div>
+        <h3 class="mic-title">The State of Leonida</h3>
+        <p class="mic-desc">
+          "The biggest, most immersive evolution of the Grand Theft Auto series yet." — Rockstar Games official press release.
+        </p>
+        <div class="mic-biomes">
+          <span class="biome-pill"><GuideIcon name="city" size={14} /> Vice City</span>
+          <span class="biome-pill"><GuideIcon name="swamp" size={14} /> Grassrivers</span>
+          <span class="biome-pill"><GuideIcon name="mountain" size={14} /> Mount Kalaga</span>
+          <span class="biome-pill"><GuideIcon name="island" size={14} /> Coastal Keys</span>
+        </div>
+      </div>
+    </section>
+
+    <AdSlot />
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 2: 2-COLUMN LORE & OFFICIAL CONFIRMATIONS
+         ══════════════════════════════════════════════════════════ -->
+    <section class="two-col-lore-split" data-reveal>
+      <div class="lore-dashed-col">
+        <CtaDashedGrid
+          badge="Setting Dossier"
+          title="Vice City &amp;"
+          highlight="The Conspiracy"
+          leadText="Jason and Lucia are pulled across the entire state of Leonida after a robbery spirals out of control."
+          ctaText="Explore Characters"
+          ctaHref="/characters/lucia"
+          secondaryCtaText="Release Timeline"
+          secondaryCtaHref="/release-date"
+        >
+          <p>
+            <a href={sources.rockstar.url} rel="noopener noreferrer">Rockstar’s GTA VI portal</a> designates the setting
+            as “Vice City, USA” before expanding outward to the state of Leonida.
+          </p>
+          <p>
+            Rockstar’s official character files also cite <strong>Mount Kalaga</strong>, confirming that GTA VI expands far
+            beyond city boundaries into deep wilderness and mountainous terrain.
+          </p>
+        </CtaDashedGrid>
+      </div>
+
+      <div class="lore-visual-col">
+        <div class="lore-img-card">
+          <div class="lic-wrap">
+            <img src="/images/gta6-rooftop.jpg" alt="Vice City Skyline at Sunset" loading="lazy" />
+            <div class="lic-veil"></div>
+            <span class="lic-caption">Vice City Skyline Overlook</span>
+          </div>
+          <div class="lic-body">
+            <p>
+              Rockstar has avoided publishing early speculative coastlines. This guide relies strictly on confirmed locations
+              verified across official media drops.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 3: GLOWING REGIONAL CARDS
+         ══════════════════════════════════════════════════════════ -->
+    <GlowingCard
+      title="Confirmed Regions &amp; Biomes"
+      subtitle="Interactive analysis of confirmed territories across the state of Leonida."
+      items={regions}
+    />
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 4: SCENE CARDS GRID
+         ══════════════════════════════════════════════════════════ -->
+    <section class="map-scenes-section" data-reveal>
+      <div class="mss-header">
+        <h2 class="map-section-title">Explore Scenes From The Portrait Tool</h2>
+        <p class="map-section-sub">
+          Generate fan-art character portraits placed inside these authentic Leonida environments.
+        </p>
+      </div>
+
+      <div class="map-scene-grid">
+        <a class="map-scene-card" href="/tools/portrait">
+          <div class="map-scene-icon"><GuideIcon name="island" size={22} /></div>
+          <div class="map-scene-body">
+            <strong class="map-scene-name">Beach at dusk</strong>
+            <span class="map-scene-desc">Palms, wet sand, and a low sun. Golden-hour Vice City coastline.</span>
+          </div>
+          <span class="map-scene-arrow">→</span>
+        </a>
+        <a class="map-scene-card" href="/tools/portrait">
+          <div class="map-scene-icon"><GuideIcon name="city" size={22} /></div>
+          <div class="map-scene-body">
+            <strong class="map-scene-name">Downtown at night</strong>
+            <span class="map-scene-desc">Wet asphalt and glass towers reflecting neon city lights.</span>
+          </div>
+          <span class="map-scene-arrow">→</span>
+        </a>
+        <a class="map-scene-card" href="/tools/portrait">
+          <div class="map-scene-icon"><GuideIcon name="road" size={22} /></div>
+          <div class="map-scene-body">
+            <strong class="map-scene-name">Wetlands highway</strong>
+            <span class="map-scene-desc">Golden hour and a wide Leonida sky over swamp roads.</span>
+          </div>
+          <span class="map-scene-arrow">→</span>
+        </a>
+        <a class="map-scene-card" href="/tools/portrait">
+          <div class="map-scene-icon"><GuideIcon name="sun" size={22} /></div>
+          <div class="map-scene-body">
+            <strong class="map-scene-name">Boardwalk sunset</strong>
+            <span class="map-scene-desc">A seaside walk and soft wheel lights at dusk.</span>
+          </div>
+          <span class="map-scene-arrow">→</span>
+        </a>
+        <a class="map-scene-card" href="/tools/portrait">
+          <div class="map-scene-icon"><GuideIcon name="mask" size={22} /></div>
+          <div class="map-scene-body">
+            <strong class="map-scene-name">Original character look</strong>
+            <span class="map-scene-desc">Restyle clothes and lighting — without copying Lucia or Jason.</span>
+          </div>
+          <span class="map-scene-arrow">→</span>
+        </a>
+        <a class="map-scene-card map-scene-card--cta" href="/tools/portrait">
+          <div class="map-scene-icon"><GuideIcon name="camera" size={22} /></div>
+          <div class="map-scene-body">
+            <strong class="map-scene-name">Launch Portrait Tool</strong>
+            <span class="map-scene-desc">Upload your photo and place yourself in a coastal city scene.</span>
+          </div>
+          <span class="map-scene-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Aceternity Simple FAQs with Background -->
+    <FaqList
+      title="GTA 6 Map &amp; Setting FAQ"
+      subtitle="Frequently asked questions concerning map size, scale, biomes, and exploration in Grand Theft Auto VI."
+      badge="Geography Intel"
+      items={faqs}
+    />
+
+    <Keywords />
+
+    <Sources items={[sources.rockstar, sources.jason, sources.trailers]} />
+  </InnerPageLayout>
+</Base>
+
+<style>
+/* ── TOP 2-COLUMN MAP OVERVIEW ───────────────────────────────── */
+.two-col-map-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+.map-badge {
+  display: inline-block;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #39d0ff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(57, 208, 255, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.map-heading {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+
+.map-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.map-intel-card {
+  background: linear-gradient(135deg, rgba(57, 208, 255, 0.08) 0%, rgba(14, 10, 24, 0.7) 100%);
+  border: 1px solid rgba(57, 208, 255, 0.25);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.mic-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.mic-pill {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #39d0ff;
+  letter-spacing: 0.08em;
+}
+
+.mic-coords {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mic-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.mic-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+.mic-biomes {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.biome-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: #fff;
+}
+
+/* ── 2-COLUMN LORE ───────────────────────────────────────────── */
+.two-col-lore-split {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.lore-img-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.lic-wrap {
+  position: relative;
+  height: 220px;
+}
+.lic-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lic-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+}
+.lic-caption {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.lic-body {
+  padding: 1.5rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+.lic-body p { margin: 0; }
+
+/* ── SCENE CARDS GRID ────────────────────────────────────────── */
+.map-scenes-section {
+  margin-bottom: 4rem;
+}
+
+.mss-header {
+  margin-bottom: 2rem;
+}
+
+.map-section-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.03em;
+}
+
+.map-section-sub {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.map-scene-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.map-scene-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.4rem 1.6rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
+}
+.map-scene-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(57, 208, 255, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+}
+.map-scene-card--cta {
+  border-color: rgba(247, 201, 72, 0.3);
+  background: rgba(247, 201, 72, 0.06);
+}
+.map-scene-card--cta:hover {
+  border-color: rgba(247, 201, 72, 0.6);
+}
+
+.map-scene-icon {
+  font-size: 1.85rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.map-scene-body { flex: 1; }
+.map-scene-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+.map-scene-desc {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+}
+.map-scene-arrow {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.1rem;
+  align-self: center;
+  transition: transform 0.2s, color 0.2s;
+}
+.map-scene-card:hover .map-scene-arrow {
+  transform: translateX(4px);
+  color: #39d0ff;
+}
+
+@media (max-width: 900px) {
+  .two-col-map-hero,
+  .two-col-lore-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+</style>

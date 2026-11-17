@@ -1,0 +1,350 @@
+---
+/**
+ * Aceternity-inspired Draggable Cards Component
+ * Features:
+ * - 6 official GTA VI action cards / polaroids
+ * - Real drag-and-drop mechanics (desktop mouse + mobile touch)
+ * - Dynamic rotation, tape detail, caption badges, z-index elevation
+ * - Smooth physics reset button
+ */
+
+const cards = [
+  {
+    id: 'robbery',
+    title: 'Jason & Lucia',
+    subtitle: 'The Score Gone Wrong',
+    tag: 'Key Artwork',
+    img: '/images/gta6-hero.jpg',
+    rotation: -7,
+    left: '4%',
+    top: '10%',
+  },
+  {
+    id: 'rooftop',
+    title: 'Vice City Skyline',
+    subtitle: 'Leonida at Twilight',
+    tag: 'Setting',
+    img: '/images/gta6-rooftop.jpg',
+    rotation: 5,
+    left: '20%',
+    top: '20%',
+  },
+  {
+    id: 'lockload',
+    title: 'Lock & Load',
+    subtitle: 'Armed & Ready',
+    tag: 'Action',
+    img: '/images/gta6-lockload.jpg',
+    rotation: -4,
+    left: '38%',
+    top: '8%',
+  },
+  {
+    id: 'car-overlook',
+    title: 'Ocean Boulevard',
+    subtitle: 'Muscle Car Sunset',
+    tag: 'Vehicle',
+    img: '/images/gta6-car.jpg',
+    rotation: 6,
+    left: '55%',
+    top: '18%',
+  },
+  {
+    id: 'motel-card',
+    title: 'Ocean View Motel',
+    subtitle: 'Vice City Coastline',
+    tag: 'Location',
+    img: '/images/gta6-motel.jpg',
+    rotation: -3,
+    left: '70%',
+    top: '12%',
+  },
+];
+---
+
+<div class="draggable-showcase" data-reveal>
+  <div class="draggable-header">
+    <div class="draggable-header-left">
+      <span class="draggable-badge">Interactive Archive</span>
+      <h3 class="draggable-title">Draggable Official Intel</h3>
+      <p class="draggable-sub">Click &amp; drag cards to explore authentic Rockstar GTA VI screenshots and artwork.</p>
+    </div>
+    <div class="draggable-hint">
+      <span>✋ Grab &amp; Drag any card</span>
+    </div>
+  </div>
+
+  <div class="draggable-board" id="draggable-board" aria-label="Interactive draggable photo board">
+    {cards.map((c, i) => (
+      <div
+        class="drag-card"
+        data-drag-card
+        data-initial-rot={c.rotation}
+        style={`--init-rot: ${c.rotation}deg; --init-left: ${c.left}; --init-top: ${c.top}; z-index: ${i + 2};`}
+      >
+        <div class="drag-card-tape" aria-hidden="true"></div>
+        <div class="drag-card-img-wrap">
+          <img src={c.img} alt={c.title} loading="lazy" draggable="false" />
+          <span class="drag-card-tag">{c.tag}</span>
+        </div>
+        <div class="drag-card-footer">
+          <strong class="drag-card-title">{c.title}</strong>
+          <span class="drag-card-sub">{c.subtitle}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+.draggable-showcase {
+  position: relative;
+  background: radial-gradient(ellipse at 50% 30%, rgba(247, 201, 72, 0.05) 0%, rgba(10, 8, 20, 0.7) 70%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.75rem;
+  padding: 2.5rem 2.5rem 3.5rem;
+  margin: 3.5rem 0;
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+.draggable-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.draggable-badge {
+  display: inline-block;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f7c948;
+  background: rgba(247, 201, 72, 0.12);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  margin-bottom: 0.75rem;
+}
+
+.draggable-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.draggable-sub {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.draggable-hint {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+}
+
+/* Draggable Board Viewport */
+.draggable-board {
+  position: relative;
+  height: 480px;
+  width: 100%;
+  border-radius: 1.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Individual Drag Card */
+.drag-card {
+  position: absolute;
+  left: var(--init-left);
+  top: var(--init-top);
+  width: 260px;
+  background: #141120;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 0.75rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+  transform: rotate(var(--init-rot));
+  transition: box-shadow 0.2s, border-color 0.2s;
+  will-change: transform, left, top;
+}
+
+.drag-card:active,
+.drag-card.is-dragging {
+  cursor: grabbing;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 25px rgba(247, 201, 72, 0.3);
+  border-color: rgba(247, 201, 72, 0.6);
+}
+
+.drag-card-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  background: rgba(247, 201, 72, 0.45);
+  backdrop-filter: blur(2px);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.drag-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 0.65rem;
+  overflow: hidden;
+  background: #000;
+}
+
+.drag-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.drag-card-tag {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  color: #f7c948;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.drag-card-footer {
+  padding: 0.75rem 0.35rem 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.drag-card-title {
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+}
+
+.drag-card-sub {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .draggable-board {
+    height: 400px;
+  }
+  .drag-card {
+    width: 220px;
+  }
+  .drag-card-img-wrap {
+    height: 140px;
+  }
+}
+</style>
+
+<script>
+  let topZ = 20;
+
+  function initDraggables() {
+    const board = document.getElementById('draggable-board');
+    if (!board) return;
+
+    const cards = board.querySelectorAll<HTMLElement>('[data-drag-card]');
+
+    cards.forEach((card) => {
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let origLeft = 0;
+      let origTop = 0;
+
+      const onPointerDown = (e: PointerEvent) => {
+        // Only primary mouse button or touch
+        if (e.button !== 0 && e.pointerType === 'mouse') return;
+        
+        isDragging = true;
+        card.classList.add('is-dragging');
+        topZ += 1;
+        card.style.zIndex = String(topZ);
+
+        startX = e.clientX;
+        startY = e.clientY;
+        origLeft = card.offsetLeft;
+        origTop = card.offsetTop;
+
+        card.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      };
+
+      const onPointerMove = (e: PointerEvent) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        const boardRect = board.getBoundingClientRect();
+        const cardW = card.offsetWidth;
+        const cardH = card.offsetHeight;
+
+        let nextLeft = origLeft + dx;
+        let nextTop = origTop + dy;
+
+        // Boundaries with slight padding
+        nextLeft = Math.max(-50, Math.min(boardRect.width - cardW + 50, nextLeft));
+        nextTop = Math.max(-20, Math.min(boardRect.height - cardH + 20, nextTop));
+
+        card.style.left = `${nextLeft}px`;
+        card.style.top = `${nextTop}px`;
+      };
+
+      const onPointerUp = (e: PointerEvent) => {
+        if (!isDragging) return;
+        isDragging = false;
+        card.classList.remove('is-dragging');
+        try {
+          card.releasePointerCapture(e.pointerId);
+        } catch (_) {}
+      };
+
+      card.addEventListener('pointerdown', onPointerDown);
+      card.addEventListener('pointermove', onPointerMove);
+      card.addEventListener('pointerup', onPointerUp);
+      card.addEventListener('pointercancel', onPointerUp);
+    });
+  }
+
+  // Initialize on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDraggables);
+  } else {
+    initDraggables();
+  }
+</script>

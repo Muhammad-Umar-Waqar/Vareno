@@ -1,0 +1,70 @@
+---
+import { site } from '../data/site';
+import { remaining } from '../lib/time';
+
+const start = remaining();
+---
+
+<div class="clock" data-launch={site.launchISO} aria-live="polite">
+  <div class="clock-board" data-clock-board>
+    <div class="clock-cell">
+      <strong data-days>{start.days}</strong>
+      <span>Days</span>
+    </div>
+    <div class="clock-cell">
+      <strong data-hours>{start.hours}</strong>
+      <span>Hours</span>
+    </div>
+    <div class="clock-cell">
+      <strong data-minutes>{start.minutes}</strong>
+      <span>Minutes</span>
+    </div>
+    <div class="clock-cell">
+      <strong data-seconds>{start.seconds}</strong>
+      <span>Seconds</span>
+    </div>
+  </div>
+  <span class="clock-note" data-clock-note>until 5:00 a.m. UTC on November 19, 2026</span>
+</div>
+
+<script>
+  const clocks = document.querySelectorAll('[data-launch]');
+
+  clocks.forEach((node) => {
+    const days = node.querySelector('[data-days]');
+    const hours = node.querySelector('[data-hours]');
+    const minutes = node.querySelector('[data-minutes]');
+    const seconds = node.querySelector('[data-seconds]');
+    const note = node.querySelector('[data-clock-note]');
+    const end = Date.parse(node.getAttribute('data-launch') || '');
+    if (
+      !(days instanceof HTMLElement) ||
+      !(hours instanceof HTMLElement) ||
+      !(minutes instanceof HTMLElement) ||
+      !(seconds instanceof HTMLElement) ||
+      Number.isNaN(end)
+    ) {
+      return;
+    }
+
+    const render = () => {
+      const ms = end - Date.now();
+      if (ms <= 0) {
+        days.textContent = '0';
+        hours.textContent = '0';
+        minutes.textContent = '0';
+        seconds.textContent = '0';
+        if (note) note.textContent = 'November 19, 2026 has arrived';
+        return;
+      }
+      const total = Math.floor(ms / 1000);
+      days.textContent = String(Math.floor(total / 86400));
+      hours.textContent = String(Math.floor((total % 86400) / 3600));
+      minutes.textContent = String(Math.floor((total % 3600) / 60));
+      seconds.textContent = String(total % 60);
+    };
+
+    render();
+    window.setInterval(render, 1000);
+  });
+</script>

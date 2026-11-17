@@ -1,0 +1,31 @@
+---
+const keywords = [
+  { term: 'gta 6 release date', kd: 'hard', volume: '>100K', href: '/release-date' },
+  { term: 'when does gta 6 come out', kd: 'hard', volume: '>100K', href: '/release-date' },
+  { term: 'gta 6 price', kd: 'medium', volume: '>10K', href: '/price' },
+  { term: 'how much is gta 6', kd: 'medium', volume: '>10K', href: '/price' },
+  { term: 'gta 6 map', kd: 'hard', volume: '>10K', href: '/map' },
+  { term: 'will gta 6 be on pc', kd: 'easy', volume: '>10K', href: '/platforms' },
+  { term: 'gta 6 pre order', kd: 'hard', volume: '>10K', href: '/price' },
+  { term: 'gta 6 trailer 3', kd: 'easy', volume: '>10K', href: '/trailers' },
+  { term: 'gta 6 lucia', kd: 'easy', volume: '>10K', href: '/characters/lucia' },
+  { term: 'gta 6 delay', kd: 'easy', volume: '>10K', href: '/release-date' },
+  { term: 'rockstar games gta 6', kd: 'easy', volume: '>10K', href: '/release-date' },
+  { term: 'gta 6 gameplay', kd: 'easy', volume: '>10K', href: '/trailers' },
+];
+---
+
+<section class="keywords-section" data-reveal>
+  <div class="kw-header">
+    <h2>Trending searches</h2>
+    <p>The GTA 6 questions people are asking right now</p>
+  </div>
+  <div class="kw-grid">
+    {keywords.map(kw => (
+      <a href={kw.href} class={`kw-pill kw-${kw.kd}`}>
+        <span class="kw-term">{kw.term}</span>
+        <span class="kw-vol">{kw.volume}</span>
+      </a>
+    ))}
+  </div>
+</section>

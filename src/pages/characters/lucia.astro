@@ -1,0 +1,534 @@
+---
+import Base from '../../layouts/Base.astro';
+import Byline from '../../components/Byline.astro';
+import FaqList from '../../components/FaqList.astro';
+import Sources from '../../components/Sources.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import Keywords from '../../components/Keywords.astro';
+import CharTooltips from '../../components/CharTooltips.astro';
+import InnerPageLayout from '../../components/InnerPageLayout.astro';
+import { sources } from '../../data/site';
+import { articleSchema, breadcrumbSchema, faqSchema } from '../../lib/seo';
+
+const title = 'GTA 6 Lucia and Jason, the Two Leads | Vareno Play';
+const description =
+  'Lucia and Jason are the leads of GTA 6. Rockstar’s synopsis puts them in a Leonida conspiracy after a score goes wrong. The full quotation is below.';
+const path = '/characters/lucia';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Lucia & Jason', path },
+];
+const faqs = [
+  {
+    q: 'Who is Lucia in GTA 6?',
+    a: 'Lucia is one of the two leads in GTA 6, with Jason. Rockstar’s synopsis says they already know the deck is stacked against them, and that an easy score goes wrong and pulls them into a conspiracy across the state of Leonida.',
+  },
+  {
+    q: 'Who is Jason in GTA 6?',
+    a: 'Jason is the other lead, paired with Lucia. Rockstar says the two have to rely on each other to get out alive. His page on the studio site also points to Mount Kalaga. A full biography is not printed there.',
+  },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  schemas={[
+    articleSchema({ headline: 'GTA 6 Lucia and Jason', description, path }),
+    breadcrumbSchema(crumbs),
+    faqSchema(faqs),
+  ]}
+>
+  <InnerPageLayout
+    pageTitle="Lucia & Jason"
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.jpg"
+    accentColor="#ff5c8a"
+  >
+    <Byline />
+    <p class="char-lead" data-reveal>{faqs[0].a}</p>
+    <AdSlot />
+
+    <!-- Animated Character Tooltip Avatars -->
+    <div class="char-tooltip-wrap" data-reveal>
+      <CharTooltips />
+    </div>
+
+    <!-- Official Synopsis Callout -->
+    <section class="char-synopsis-card" data-reveal>
+      <span class="char-synopsis-badge">Official Rockstar Synopsis</span>
+      <blockquote class="char-quote">
+        "Jason and Lucia have always known the deck is stacked against them. But when an easy score goes wrong, they
+        find themselves on the darkest side of the sunniest place in America, in the middle of a criminal conspiracy
+        stretching across the state of Leonida — forced to rely on each other more than ever if they want to make it
+        out alive."
+      </blockquote>
+      <cite class="char-cite">— Rockstar Games, Vice City USA Synopsis</cite>
+    </section>
+
+    <!-- Character Spotlights Grid -->
+    <section class="char-grid" data-reveal>
+      <div class="char-card char-card--lucia">
+        <div class="char-card-header">
+          <span class="char-badge">Protagonist</span>
+          <h2 class="char-name">Lucia</h2>
+        </div>
+        <p class="char-desc">
+          First female lead in modern 3D GTA history. Incarcerated at the start of Trailer 1, she navigates Vice City
+          armed, determined, and partnered with Jason in high-stakes armed robberies across Leonida.
+        </p>
+        <ul class="char-facts">
+          <li><strong>Role:</strong> Co-lead protagonist</li>
+          <li><strong>Setting:</strong> Vice City &amp; Leonida</li>
+          <li><strong>First Appearance:</strong> Trailer 1 (Dec 2023)</li>
+        </ul>
+      </div>
+
+      <div class="char-card char-card--jason" id="jason">
+        <div class="char-card-header">
+          <span class="char-badge char-badge--jason">Protagonist</span>
+          <h2 class="char-name">Jason</h2>
+        </div>
+        <p class="char-desc">
+          Lucia’s partner in crime. Rockstar’s official page places him near Mount Kalaga, navigating tactical heists
+          and dangerous street escapes. Together, their dynamic forms the core narrative engine of GTA VI.
+        </p>
+        <ul class="char-facts">
+          <li><strong>Role:</strong> Co-lead protagonist</li>
+          <li><strong>Setting:</strong> Vice City &amp; Mount Kalaga</li>
+          <li><strong>Partnership:</strong> Trust &amp; high-risk heists</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ANGLED HUD ARTWORK SHOWCASE (Image 2 Reference) -->
+    <section class="hud-showcase-section" data-reveal>
+      <div class="hud-header">
+        <span class="hud-badge">Tactical HUD Dossier</span>
+        <h2 class="hud-title">Leonida Outlaw Showcase</h2>
+        <p class="hud-sub">High-resolution tactical visual dossier of Lucia Caminos and Jason Duval across the state of Leonida.</p>
+      </div>
+
+      <div class="hud-angled-grid">
+        <!-- Main Large Angled Card (Jason & Lucia Armed Action) -->
+        <div class="hud-card hud-card--main">
+          <div class="hud-card-clip">
+            <img src="/images/gta6-hero.jpg" alt="Lucia and Jason Armed Heist" loading="lazy" decoding="async" />
+            <div class="hud-card-overlay">
+              <span class="hud-tag">Dual Protagonists</span>
+              <h3 class="hud-card-label">Jason &amp; Lucia</h3>
+              <p class="hud-card-sub">Vice City Armed Escapade</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Stacked Angled Cards (Matching Image 2) -->
+        <div class="hud-stack">
+          <!-- Card 1: Tactical Rooftop Overlook -->
+          <div class="hud-card hud-card--slant">
+            <div class="hud-card-clip">
+              <img src="/images/gta6-rooftop.jpg" alt="Vice City Rooftop Overlook" loading="lazy" decoding="async" />
+              <div class="hud-card-overlay">
+                <span class="hud-tag">Tactical Overlook</span>
+                <h4 class="hud-card-label">Vice City Skyline</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Muscle Car Sunset -->
+          <div class="hud-card hud-card--slant">
+            <div class="hud-card-clip">
+              <img src="/images/gta6-car.jpg" alt="Sunset Muscle Car" loading="lazy" decoding="async" />
+              <div class="hud-card-overlay">
+                <span class="hud-tag">Partners in Crime</span>
+                <h4 class="hud-card-label">Trust &amp; Survival</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom GTA VI Neon Branding Callout -->
+          <div class="hud-neon-brand">
+            <div class="hud-wm-wrap">
+              <span class="hud-wm-gta">grand theft auto</span>
+              <span class="hud-wm-vi">VI</span>
+            </div>
+            <div class="hud-brand-info">
+              <strong>OFFICIAL CHARACTER DOSSIER</strong>
+              <small>Take-Two Interactive &amp; Rockstar Games</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Keywords />
+
+    <section class="char-section" data-reveal>
+      <h2 class="char-section-title">Official Background &amp; Sources</h2>
+      <p>
+        Read <a href={sources.jason.url} rel="noopener noreferrer">Rockstar’s Jason page</a> for the studio’s own framing.
+        The state they move through is covered on the <a href="/map">GTA 6 map</a> page. The price of each edition, which
+        Take-Two ties to actions in their story for the Ultimate edition, is on
+        <a href="/price">how much is GTA 6</a>.
+      </p>
+    </section>
+
+    <FaqList items={faqs} />
+    <Sources items={[sources.rockstar, sources.jason]} />
+  </InnerPageLayout>
+</Base>
+
+<style>
+.char-lead {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2rem;
+  max-width: 72ch;
+}
+
+.char-tooltip-wrap {
+  margin-bottom: 2.5rem;
+}
+
+.char-synopsis-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255,92,138,0.08) 0%, rgba(5,4,10,0.7) 100%);
+  border: 1px solid rgba(255,92,138,0.25);
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  backdrop-filter: blur(10px);
+}
+
+.char-synopsis-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff5c8a;
+  background: rgba(255,92,138,0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 1.25rem;
+}
+
+.char-quote {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.6;
+  color: #fff;
+  margin: 0 0 1rem;
+  border-left: 3px solid #ff5c8a;
+  padding-left: 1.25rem;
+}
+
+.char-cite {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  display: block;
+  font-style: normal;
+}
+
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.char-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.char-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+.char-card--lucia:hover {
+  border-color: rgba(255,92,138,0.4);
+  box-shadow: 0 16px 40px rgba(255,92,138,0.12);
+}
+.char-card--jason:hover {
+  border-color: rgba(247,201,72,0.4);
+  box-shadow: 0 16px 40px rgba(247,201,72,0.12);
+}
+
+.char-badge {
+  font-size: 0.7rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ff5c8a;
+  background: rgba(255,92,138,0.12);
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  display: inline-block;
+}
+.char-badge--jason {
+  color: #f7c948;
+  background: rgba(247,201,72,0.12);
+}
+
+.char-name {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.75rem;
+  color: #fff;
+  margin: 0.5rem 0 0;
+  letter-spacing: -0.03em;
+}
+
+.char-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.char-facts {
+  list-style: none;
+  padding: 0;
+  margin: auto 0 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+.char-facts strong {
+  color: #fff;
+}
+
+.char-section {
+  margin-bottom: 3rem;
+}
+.char-section-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+.char-section p {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.75;
+}
+.char-section a {
+  color: #ff5c8a;
+  text-underline-offset: 3px;
+}
+
+/* ── ANGLED HUD SHOWCASE (Image 2 Reference) ─────────────────── */
+.hud-showcase-section {
+  margin: 3.5rem 0;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #0e0a1a 0%, #06050a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+.hud-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+}
+
+.hud-badge {
+  display: inline-block;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff5c8a;
+  background: rgba(255, 92, 138, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 0.8rem;
+}
+
+.hud-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.hud-sub {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 2-Column Angled Layout matching Image 2 */
+.hud-angled-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.hud-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: #000;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hud-card:hover {
+  transform: translateY(-4px);
+  border-color: #ff5c8a;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 92, 138, 0.3);
+}
+
+.hud-card--main {
+  min-height: 480px;
+}
+
+.hud-card-clip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hud-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.hud-card:hover img {
+  transform: scale(1.04);
+}
+
+.hud-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.75rem;
+  background: linear-gradient(to top, rgba(5, 4, 10, 0.92) 0%, rgba(5, 4, 10, 0.4) 60%, transparent 100%);
+}
+
+.hud-tag {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff5c8a;
+  background: rgba(255, 92, 138, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+
+.hud-card-label {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.2rem;
+}
+
+.hud-card-sub {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* Slanted Stack Cards */
+.hud-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hud-card--slant {
+  height: 190px;
+}
+
+/* Bottom GTA VI Neon Watermark Brand (Image 2 style) */
+.hud-neon-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+}
+
+.hud-wm-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.hud-wm-gta {
+  font-family: 'Pricedown', 'Impact', sans-serif;
+  font-size: 0.85rem;
+  color: #ffffff;
+  line-height: 1;
+  text-transform: lowercase;
+}
+
+.hud-wm-vi {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ff5c8a;
+  text-shadow: 0 0 15px rgba(255, 92, 138, 0.7);
+  line-height: 1;
+}
+
+.hud-brand-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.hud-brand-info strong {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+.hud-brand-info small {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 860px) {
+  .hud-angled-grid {
+    grid-template-columns: 1fr;
+  }
+  .hud-card--main {
+    min-height: 340px;
+  }
+}
+
+</style>

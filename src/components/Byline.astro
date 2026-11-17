@@ -1,0 +1,15 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  updated?: string;
+  updatedISO?: string;
+}
+
+const { updated = site.updatedLabel, updatedISO = site.updatedISO } = Astro.props;
+---
+
+<p class="byline">
+  By <a href="/about">{site.author}</a>. Updated <time datetime={updatedISO}>{updated}</time>.
+  <a href="/editorial-policy">How we source this</a>.
+</p>

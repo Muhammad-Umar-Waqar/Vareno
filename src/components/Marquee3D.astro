@@ -1,0 +1,262 @@
+---
+/**
+ * Aceternity-inspired 3D Marquee
+ * Features:
+ * - 3D isometric perspective projection (rotateX, rotateZ, skewX)
+ * - Multi-column infinite continuous scrolling in opposite directions
+ * - Real Rockstar GTA VI screenshots and action artwork
+ * - Edge fade masks for high-end cinematic depth
+ */
+
+const column1 = [
+  { img: '/images/gta6-gas-station.jpg',   title: 'Gas Station Heist' },
+  { img: '/images/gta6-rooftop.jpg',       title: 'Vice City Skyline' },
+  { img: '/images/gta6-lockload.jpg',      title: 'Lock & Load Action' },
+  { img: '/images/gta6-post-vicecity.jpg', title: 'Vice City Postcard' },
+  { img: '/images/gta6-shot-vc1.jpg',      title: 'Downtown Neon Streets' },
+];
+
+const column2 = [
+  { img: '/images/gta6-beach-logo.jpg',     title: 'Beachfront Key Art' },
+  { img: '/images/gta6-car.jpg',            title: 'Sunset Muscle Car' },
+  { img: '/images/gta6-official-cover.jpg', title: 'Official Cover Art' },
+  { img: '/images/gta6-motel.jpg',          title: 'Ocean View Motel' },
+  { img: '/images/gta6-shot-duval.jpg',     title: 'Jason Duval in Action' },
+];
+
+const column3 = [
+  { img: '/images/gta6-hero.jpg',             title: 'Jason & Lucia Robbery' },
+  { img: '/images/gta6-album.jpg',            title: 'The Album Cover Art' },
+  { img: '/images/gta6-post-keys.jpg',        title: 'Leonida Keys Postcard' },
+  { img: '/images/gta6-post-grassrivers.jpg', title: 'Grassrivers Wetlands' },
+  { img: '/images/gta6-shot-lucia.jpg',       title: 'Lucia Caminos in Action' },
+];
+
+// Duplicate for loop
+const c1 = [...column1, ...column1];
+const c2 = [...column2, ...column2];
+const c3 = [...column3, ...column3];
+---
+
+<section class="marquee-3d-section" data-reveal aria-label="3D Visual Showcase">
+  <div class="marquee-3d-header">
+    <span class="m3d-badge">Cinematic Media</span>
+    <h3 class="m3d-title">3D Visual Engine</h3>
+    <p class="m3d-sub">Isometric perspective projection of Vice City in-game captures and promotional renders.</p>
+  </div>
+
+  <div class="marquee-3d-viewport">
+    <div class="marquee-3d-world">
+
+      <!-- Column 1: Scrolls Up -->
+      <div class="m3d-col m3d-col-up" aria-hidden="true">
+        <div class="m3d-track">
+          {c1.map((item) => (
+            <div class="m3d-card">
+              <img src={item.img} alt={item.title} loading="lazy" />
+              <div class="m3d-card-veil"></div>
+              <span class="m3d-card-tag">{item.title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Column 2: Scrolls Down -->
+      <div class="m3d-col m3d-col-down" aria-hidden="true">
+        <div class="m3d-track">
+          {c2.map((item) => (
+            <div class="m3d-card">
+              <img src={item.img} alt={item.title} loading="lazy" />
+              <div class="m3d-card-veil"></div>
+              <span class="m3d-card-tag">{item.title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Column 3: Scrolls Up -->
+      <div class="m3d-col m3d-col-up" aria-hidden="true">
+        <div class="m3d-track">
+          {c3.map((item) => (
+            <div class="m3d-card">
+              <img src={item.img} alt={item.title} loading="lazy" />
+              <div class="m3d-card-veil"></div>
+              <span class="m3d-card-tag">{item.title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Gradient Edge Fades -->
+    <div class="m3d-fade m3d-fade-top" aria-hidden="true"></div>
+    <div class="m3d-fade m3d-fade-bottom" aria-hidden="true"></div>
+  </div>
+</section>
+
+<style>
+.marquee-3d-section {
+  position: relative;
+  margin: 4.5rem 0 3.5rem;
+  overflow: hidden;
+}
+
+.marquee-3d-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.m3d-badge {
+  display: inline-block;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f7c948;
+  background: rgba(247, 201, 72, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 0.75rem;
+}
+
+.m3d-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.5rem;
+}
+
+.m3d-sub {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+/* 3D Viewport */
+.marquee-3d-viewport {
+  position: relative;
+  height: 520px;
+  width: 100%;
+  overflow: hidden;
+  perspective: 1200px;
+  border-radius: 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #08060f;
+}
+
+/* Isometric 3D Transformed Canvas */
+.marquee-3d-world {
+  position: absolute;
+  top: -40%;
+  left: -20%;
+  width: 140%;
+  height: 180%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  transform: rotateX(24deg) rotateZ(-14deg) skewX(-8deg);
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+/* Columns */
+.m3d-col {
+  width: 260px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.m3d-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.m3d-col-up .m3d-track {
+  animation: scrollUp 55s linear infinite;
+}
+
+.m3d-col-down .m3d-track {
+  animation: scrollDown 60s linear infinite;
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes scrollDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* Individual Card */
+.m3d-card {
+  position: relative;
+  height: 200px;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+  background: #110e1a;
+}
+
+.m3d-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.m3d-card-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+}
+
+.m3d-card-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Edge fades */
+.m3d-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 5;
+}
+.m3d-fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, #08060f 15%, transparent 100%);
+}
+.m3d-fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #08060f 15%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+  .marquee-3d-viewport {
+    height: 380px;
+  }
+  .m3d-col {
+    width: 180px;
+  }
+  .m3d-card {
+    height: 150px;
+  }
+}
+</style>

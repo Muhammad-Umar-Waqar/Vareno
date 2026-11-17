@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { socials } from '../data/site';
+import { breadcrumbSchema } from '../lib/seo';
+
+const title = 'Contact Vareno Play about the GTA 6 Guide | Vareno Play';
+const description =
+  'Send GTA 6 guide corrections to Vareno Play on YouTube, TikTok, or Instagram. The site has no separate newsroom inbox.';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Contact', path: '/contact' },
+];
+---
+
+<Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
+  <article class="shell prose">
+    <Crumbs items={crumbs} />
+    <h1>Contact</h1>
+    <p class="lead">
+      For a wrong date, a broken store link, or a line that no longer matches Rockstar, message @VarenoPlay on one of
+      the networks below. There is no separate email inbox for this guide.
+    </p>
+    <ul>
+      {socials.map((item) => (
+        <li>
+          <a href={item.href} rel="noopener noreferrer">{item.name}</a>
+        </li>
+      ))}
+    </ul>
+    <p>
+      Say which page you mean, and link the Rockstar or Take-Two page that disagrees. The
+      <a href="/editorial-policy">editorial policy</a> is what we update against.
+    </p>
+  </article>
+</Base>

@@ -1,0 +1,787 @@
+---
+import Base from '../layouts/Base.astro';
+import Byline from '../components/Byline.astro';
+import FaqList from '../components/FaqList.astro';
+import Sources from '../components/Sources.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Keywords from '../components/Keywords.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
+import { sources } from '../data/site';
+import { articleSchema, breadcrumbSchema, faqSchema } from '../lib/seo';
+
+const title = 'GTA 6 Trailers, Clips, Screenshots & Media | Vareno Play';
+const description =
+  'Explore Vice City and beyond. Official Rockstar Games GTA 6 trailers, video clips, 4K screenshots, Ultimate Edition benefits, and wallpapers.';
+const path = '/trailers';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Trailers & Media', path },
+];
+const faqs = [
+  {
+    q: 'Is there a GTA 6 trailer 3?',
+    a: 'Rockstar’s trailer page numbers two trailers: Trailer 1 on December 4, 2023, and Trailer 2 on May 6, 2025. The later films are An Extended Look on August 27, 2026, and the Launch Trailer on October 15, 2026. None of them is titled Trailer 3.',
+  },
+  {
+    q: 'Where is the GTA 6 gameplay?',
+    a: 'Rockstar has not posted a separate gameplay reel under that name. Trailer 2, An Extended Look, and the Launch Trailer are the long official looks, and the studio hosts them on its trailer page. An Extended Look runs 26 minutes and 48 seconds on that listing.',
+  },
+  {
+    q: 'What was the August 27 GTA 6 presentation?',
+    a: 'August 27, 2026 is the date Rockstar gives An Extended Look, a 26-minute-48-second film on the official trailer page. It sits between Trailer 2 and the October 15, 2026 Launch Trailer.',
+  },
+];
+
+/* Category 1: Official Videos */
+const videos = [
+  {
+    title: 'Grand Theft Auto VI Trailer 1',
+    date: 'Dec 4, 2023',
+    runtime: '1m 31s',
+    img: '/images/gta6-hero.jpg',
+    url: sources.trailers.url,
+  },
+  {
+    title: 'Grand Theft Auto VI Trailer 2',
+    date: 'May 6, 2025',
+    runtime: '2m 47s',
+    img: '/images/gta6-car.jpg',
+    url: sources.trailers.url,
+  },
+  {
+    title: 'Grand Theft Auto VI An Extended Look',
+    date: 'Aug 27, 2026',
+    runtime: '26m 48s',
+    img: '/images/gta6-rooftop.jpg',
+    url: sources.trailers.url,
+  },
+  {
+    title: 'Grand Theft Auto VI Launch Trailer',
+    date: 'Oct 15, 2026',
+    runtime: '3m 12s',
+    img: '/images/gta6-lockload.jpg',
+    url: sources.trailers.url,
+  },
+];
+
+/* Category 2: Video Clips */
+const clips = [
+  {
+    title: 'Official Cover Art Animation',
+    runtime: '0m 30s',
+    img: '/images/gta6-official-cover.jpg',
+  },
+  {
+    title: 'Jason Duval Video Clip',
+    runtime: '1m 15s',
+    img: '/images/gta6-shot-duval.jpg',
+  },
+  {
+    title: 'Lucia Caminos Video Clip',
+    runtime: '1m 20s',
+    img: '/images/gta6-shot-lucia.jpg',
+  },
+];
+
+/* Category 3: Screenshots */
+const screenshots = [
+  {
+    title: 'Jason and Lucia 14 (Gas Station Robbery)',
+    img: '/images/gta6-gas-station.jpg',
+    date: 'Key Screenshot',
+  },
+  {
+    title: 'Lucia Caminos 17 (Action Stance)',
+    img: '/images/gta6-shot-lucia.jpg',
+    date: 'Key Screenshot',
+  },
+  {
+    title: 'Vice City 27 (Marina & Skyline)',
+    img: '/images/gta6-shot-vc2.jpg',
+    date: 'Key Screenshot',
+  },
+  {
+    title: 'Vice City Downtown Neon Nights',
+    img: '/images/gta6-shot-vc1.jpg',
+    date: 'Key Screenshot',
+  },
+];
+
+/* Category 4: Ultimate Edition Benefits */
+const ultimateBenefits = [
+  {
+    title: 'Ultimate Edition Exclusive Artwork',
+    img: '/images/gta6-album.jpg',
+    desc: 'Digital bonus art book & soundtrack preview',
+  },
+  {
+    title: "’80 Rapid Glacius Sports Coupe",
+    img: '/images/gta6-motel.jpg',
+    desc: 'Exclusive custom modified classic muscle car',
+  },
+  {
+    title: 'Leonida Keys Outlaw Apparel',
+    img: '/images/gta6-beach-logo.jpg',
+    desc: 'Dual protagonist wardrobe unlock',
+  },
+];
+
+/* Category 5: Vintage Vice City Pack */
+const vintagePacks = [
+  {
+    title: 'Vintage Vice City Pack 01',
+    img: '/images/gta6-post-vicecity.jpg',
+    desc: 'Official Vice City retro postcard asset',
+  },
+  {
+    title: '’70 Rapid Stallion Pack',
+    img: '/images/gta6-post-keys.jpg',
+    desc: 'Leonida Keys vintage vehicle set',
+  },
+  {
+    title: 'Vintage Vice City Outfits and Hairstyles 03',
+    img: '/images/gta6-post-grassrivers.jpg',
+    desc: 'Retro 80s neon apparel collection',
+  },
+];
+
+/* Category 6: Artwork & Wallpapers */
+const wallpapers = [
+  {
+    title: 'Jason and Lucia Rooftop 4K',
+    img: '/images/gta6-rooftop.jpg',
+    desc: 'Official 4K desktop wallpaper',
+  },
+  {
+    title: 'Jason and Lucia Lock and Load',
+    img: '/images/gta6-lockload.jpg',
+    desc: 'High-resolution promo poster art',
+  },
+  {
+    title: 'The Album Cover Art',
+    img: '/images/gta6-album.jpg',
+    desc: 'Official soundtrack key illustration',
+  },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  schemas={[
+    articleSchema({ headline: 'GTA 6 trailer and gameplay so far', description, path }),
+    breadcrumbSchema(crumbs),
+    faqSchema(faqs),
+  ]}
+>
+  <InnerPageLayout
+    pageTitle="Explore Vice City & Beyond"
+    crumbs={crumbs}
+    heroImg="/images/gta6-gas-station.jpg"
+    accentColor="#ff5ba8"
+  >
+    <Byline />
+
+    <!-- SUB-BANNER INTRO (Matching Image 3 Reference) -->
+    <div class="rm-banner" data-reveal>
+      <div class="rm-banner-head">
+        <span class="rm-eyebrow">Official Media Archive</span>
+        <h2 class="rm-banner-title">EXPLORE VICE CITY AND BEYOND</h2>
+        <p class="rm-banner-sub">Download and share official Rockstar Games trailers, video clips, in-game screenshots, and 4K wallpapers.</p>
+      </div>
+
+      <!-- Quick Section Anchor Links -->
+      <nav class="rm-quick-nav" aria-label="Media categories">
+        <a class="rm-nav-pill" href="#section-videos">Videos</a>
+        <a class="rm-nav-pill" href="#section-clips">Clips</a>
+        <a class="rm-nav-pill" href="#section-screenshots">Screenshots</a>
+        <a class="rm-nav-pill" href="#section-ultimate">Ultimate Edition</a>
+        <a class="rm-nav-pill" href="#section-vintage">Vintage Pack</a>
+        <a class="rm-nav-pill" href="#section-wallpapers">Wallpapers</a>
+      </nav>
+    </div>
+
+    <!-- 1. VIDEOS SECTION (Image 3 Style) -->
+    <section class="rm-gallery-section" id="section-videos" data-reveal>
+      <div class="rm-sec-header">
+        <div class="rm-sec-title-wrap">
+          <h3 class="rm-sec-title">Videos</h3>
+          <span class="rm-sec-count">{videos.length}</span>
+        </div>
+        <a class="rm-sec-link" href={sources.trailers.url} target="_blank" rel="noopener noreferrer">Watch on Rockstar ↗</a>
+      </div>
+
+      <div class="rm-cards-grid">
+        {videos.map((vid) => (
+          <a class="rm-card rm-card--video" href={vid.url} target="_blank" rel="noopener noreferrer">
+            <div class="rm-thumb-wrap">
+              <img src={vid.img} alt={vid.title} loading="lazy" decoding="async" />
+              <div class="rm-play-btn" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="rm-duration">{vid.runtime}</span>
+            </div>
+            <div class="rm-card-body">
+              <h4 class="rm-card-title">{vid.title}</h4>
+              <p class="rm-card-meta">{vid.date}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- 2. CLIPS SECTION (Image 3 Style) -->
+    <section class="rm-gallery-section" id="section-clips" data-reveal>
+      <div class="rm-sec-header">
+        <div class="rm-sec-title-wrap">
+          <h3 class="rm-sec-title">Clips</h3>
+          <span class="rm-sec-count">{clips.length}</span>
+        </div>
+        <a class="rm-sec-link" href={sources.trailers.url} target="_blank" rel="noopener noreferrer">Download All ↓</a>
+      </div>
+
+      <div class="rm-cards-grid">
+        {clips.map((clip) => (
+          <div class="rm-card rm-card--clip">
+            <div class="rm-thumb-wrap">
+              <img src={clip.img} alt={clip.title} loading="lazy" decoding="async" />
+              <div class="rm-play-btn" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="rm-duration">{clip.runtime}</span>
+            </div>
+            <div class="rm-card-body">
+              <h4 class="rm-card-title">{clip.title}</h4>
+              <p class="rm-card-meta">Official Game Clip</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 3. SCREENSHOTS SECTION (Image 3 Style) -->
+    <section class="rm-gallery-section" id="section-screenshots" data-reveal>
+      <div class="rm-sec-header">
+        <div class="rm-sec-title-wrap">
+          <h3 class="rm-sec-title">Screenshots</h3>
+          <span class="rm-sec-count">{screenshots.length}</span>
+        </div>
+        <a class="rm-sec-link" href="/images/gta6-hero.jpg" download>Download 4K Pack ↓</a>
+      </div>
+
+      <div class="rm-cards-grid">
+        {screenshots.map((shot) => (
+          <div class="rm-card rm-card--shot">
+            <div class="rm-thumb-wrap">
+              <img src={shot.img} alt={shot.title} loading="lazy" decoding="async" />
+              <div class="rm-badge-wm">GTA VI</div>
+            </div>
+            <div class="rm-card-body">
+              <h4 class="rm-card-title">{shot.title}</h4>
+              <p class="rm-card-meta">{shot.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <AdSlot />
+
+    <!-- 4. ULTIMATE EDITION BENEFITS (Image 3 Style) -->
+    <section class="rm-gallery-section" id="section-ultimate" data-reveal>
+      <div class="rm-sec-header">
+        <div class="rm-sec-title-wrap">
+          <h3 class="rm-sec-title">Ultimate Edition Benefits</h3>
+          <span class="rm-sec-count">{ultimateBenefits.length}</span>
+        </div>
+        <a class="rm-sec-link" href="/price">Pre-Order Details ↗</a>
+      </div>
+
+      <div class="rm-cards-grid">
+        {ultimateBenefits.map((item) => (
+          <div class="rm-card">
+            <div class="rm-thumb-wrap">
+              <img src={item.img} alt={item.title} loading="lazy" decoding="async" />
+            </div>
+            <div class="rm-card-body">
+              <h4 class="rm-card-title">{item.title}</h4>
+              <p class="rm-card-meta">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 5. VINTAGE VICE CITY PACK (Image 3 Style) -->
+    <section class="rm-gallery-section" id="section-vintage" data-reveal>
+      <div class="rm-sec-header">
+        <div class="rm-sec-title-wrap">
+          <h3 class="rm-sec-title">Vintage Vice City Pack</h3>
+          <span class="rm-sec-count">{vintagePacks.length}</span>
+        </div>
+        <a class="rm-sec-link" href="/price">See Packs ↗</a>
+      </div>
+
+      <div class="rm-cards-grid">
+        {vintagePacks.map((pack) => (
+          <div class="rm-card">
+            <div class="rm-thumb-wrap">
+              <img src={pack.img} alt={pack.title} loading="lazy" decoding="async" />
+            </div>
+            <div class="rm-card-body">
+              <h4 class="rm-card-title">{pack.title}</h4>
+              <p class="rm-card-meta">{pack.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 6. ARTWORK & WALLPAPERS (Image 3 Style) -->
+    <section class="rm-gallery-section" id="section-wallpapers" data-reveal>
+      <div class="rm-sec-header">
+        <div class="rm-sec-title-wrap">
+          <h3 class="rm-sec-title">Artwork &amp; Wallpapers</h3>
+          <span class="rm-sec-count">{wallpapers.length}</span>
+        </div>
+        <a class="rm-sec-link" href="/images/gta6-rooftop.jpg" download>Download 4K Set ↓</a>
+      </div>
+
+      <div class="rm-cards-grid">
+        {wallpapers.map((art) => (
+          <div class="rm-card">
+            <div class="rm-thumb-wrap">
+              <img src={art.img} alt={art.title} loading="lazy" decoding="async" />
+            </div>
+            <div class="rm-card-body">
+              <h4 class="rm-card-title">{art.title}</h4>
+              <p class="rm-card-meta">{art.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ROCKSTAR PROPAGANDA & ESRB BANNER (Directly from Image 3 Footer) -->
+    <section class="rm-propaganda-box" data-reveal>
+      <div class="rm-prop-top">
+        <div class="rm-prop-logo">
+          <span class="rm-prop-vi">VI</span>
+          <span class="rm-prop-gta">grand<br/>theft<br/>auto</span>
+        </div>
+        <div class="rm-prop-text">
+          <h4 class="rm-prop-title">GET ROCKSTAR PROPAGANDA</h4>
+          <p class="rm-prop-sub">Get the latest game announcements, trailers, updates on special events, and official releases from Rockstar Games.</p>
+        </div>
+        <a class="rm-prop-btn" href="https://www.rockstargames.com/VI" target="_blank" rel="noopener noreferrer">
+          Rockstar Official ↗
+        </a>
+      </div>
+
+      <div class="rm-prop-esrb">
+        <div class="rm-esrb-badge">
+          <span class="rm-esrb-m">M</span>
+          <div class="rm-esrb-info">
+            <strong>MATURE 17+</strong>
+            <small>ESRB CONTENT RATING</small>
+          </div>
+        </div>
+        <p class="rm-esrb-descriptors">
+          Blood and Gore, Intense Violence, Mature Humor, Nudity, Strong Language, Strong Sexual Content, Use of Drugs and Alcohol.
+        </p>
+      </div>
+    </section>
+
+    <Keywords />
+    <FaqList items={faqs} />
+    <Sources items={[sources.trailers, sources.preload, sources.rockstar]} />
+  </InnerPageLayout>
+</Base>
+
+<style>
+/* ── EXPLORE VICE CITY SUB-BANNER (Image 3 Style) ────────────── */
+.rm-banner {
+  background: linear-gradient(145deg, #110d20 0%, #08060f 100%);
+  border: 1px solid rgba(255, 91, 168, 0.25);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 91, 168, 0.08);
+}
+
+.rm-banner-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 1.75rem;
+}
+
+.rm-eyebrow {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #ff5ba8;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+.rm-banner-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+}
+
+.rm-banner-sub {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.rm-quick-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rm-nav-pill {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.45rem 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.rm-nav-pill:hover {
+  background: #ff5ba8;
+  color: #05040a;
+  border-color: #ff5ba8;
+  transform: translateY(-2px);
+}
+
+/* ── GALLERY SECTIONS & GRID (Image 3 Style) ─────────────────── */
+.rm-gallery-section {
+  margin-bottom: 3.5rem;
+}
+
+.rm-sec-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rm-sec-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.rm-sec-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.rm-sec-count {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #ff5ba8;
+  background: rgba(255, 91, 168, 0.12);
+  padding: 0.2rem 0.55rem;
+  border-radius: 50px;
+}
+
+.rm-sec-link {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.rm-sec-link:hover {
+  color: #f7c948;
+}
+
+/* 3-Column Responsive Grid matching Image 3 */
+.rm-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.rm-card {
+  background: #0d0a18;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.rm-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 91, 168, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 91, 168, 0.12);
+}
+
+.rm-thumb-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #05040a;
+}
+
+.rm-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.rm-card:hover .rm-thumb-wrap img {
+  transform: scale(1.05);
+}
+
+.rm-play-btn {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(5, 4, 10, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.25s ease;
+}
+
+.rm-card:hover .rm-play-btn {
+  background: #ff5ba8;
+  color: #05040a;
+  border-color: #ff5ba8;
+  transform: scale(1.12);
+  box-shadow: 0 0 24px rgba(255, 91, 168, 0.6);
+}
+
+.rm-duration {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  background: rgba(5, 4, 10, 0.85);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.rm-badge-wm {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: rgba(5, 4, 10, 0.75);
+  backdrop-filter: blur(6px);
+  color: #ff5ba8;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 91, 168, 0.3);
+}
+
+.rm-card-body {
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.rm-card-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.35rem;
+  line-height: 1.35;
+}
+
+.rm-card-meta {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  margin-top: auto;
+}
+
+/* ── ROCKSTAR PROPAGANDA & ESRB BANNER (Image 3 Reference) ──── */
+.rm-propaganda-box {
+  background: #08060f;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  margin: 4rem 0 3rem;
+}
+
+.rm-prop-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.rm-prop-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.rm-prop-vi {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #ff5ba8;
+  text-shadow: 0 0 16px rgba(255, 91, 168, 0.5);
+  letter-spacing: -0.05em;
+}
+
+.rm-prop-gta {
+  font-family: 'Pricedown', 'Impact', sans-serif;
+  font-size: 0.72rem;
+  line-height: 0.95;
+  color: #ffffff;
+  text-transform: lowercase;
+  font-weight: 900;
+}
+
+.rm-prop-text {
+  flex: 1;
+  max-width: 580px;
+}
+
+.rm-prop-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.04em;
+}
+
+.rm-prop-sub {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.rm-prop-btn {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #05040a;
+  background: #f7c948;
+  padding: 0.75rem 1.6rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.rm-prop-btn:hover {
+  background: #ffd84a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(247, 201, 72, 0.35);
+}
+
+.rm-prop-esrb {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.rm-esrb-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+}
+
+.rm-esrb-m {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.rm-esrb-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.rm-esrb-info strong {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.rm-esrb-info small {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.rm-esrb-descriptors {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 650px;
+}
+
+@media (max-width: 768px) {
+  .rm-prop-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>

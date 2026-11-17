@@ -1,0 +1,99 @@
+---
+/**
+ * CharCarousel — Apple-style horizontal card carousel.
+ * Drag / scroll-snap to browse GTA VI scenes.
+ * Inspired by Aceternity "apple-cards-carousel-demo".
+ */
+
+const cards = [
+  {
+    id: 'vice-city',
+    label: 'Location',
+    title: 'Vice City',
+    sub: 'Leonida, USA',
+    body: 'A coastal metropolis built on excess. Palm-lined boulevards, neon clubs, and a criminal underworld that never sleeps.',
+    img: '/images/gta6-car.jpg',
+    href: '/map',
+    color: '#39d0ff',
+  },
+  {
+    id: 'lucia',
+    label: 'Character',
+    title: 'Lucia',
+    sub: 'Protagonist',
+    body: "The first playable woman in GTA history. Smart, relentless, and carrying a past Leonida won't let her escape.",
+    img: '/images/gta6-hero.jpg',
+    href: '/characters/lucia',
+    color: '#ff6b3d',
+  },
+  {
+    id: 'jason',
+    label: 'Character',
+    title: 'Jason',
+    sub: 'Co-protagonist',
+    body: "Lucia's partner and the only person in Leonida she actually trusts. Loyal to a fault — and probably to his detriment.",
+    img: '/images/gta6-lockload.jpg',
+    href: '/characters/lucia',
+    color: '#f5b400',
+  },
+  {
+    id: 'release',
+    label: 'Date',
+    title: 'Nov 19 · 2026',
+    sub: 'PS5 & Xbox Series X|S',
+    body: 'The most anticipated release in gaming history. Pre-load opened November 10. Countdown is live.',
+    img: '/images/gta6-rooftop.jpg',
+    href: '/release-date',
+    color: '#ff2f86',
+  },
+  {
+    id: 'price',
+    label: 'Price',
+    title: '$79.99',
+    sub: 'Standard Edition',
+    body: 'Standard at $79.99, Ultimate at $99.99. Buy before Nov 20 for the Vintage Vice City Pack bonus.',
+    img: '/images/gta6-official-cover.jpg',
+    href: '/price',
+    color: '#ffe56a',
+  },
+];
+---
+
+<section class="cc-section" aria-label="GTA VI cards carousel">
+  <div class="shell cc-head-row">
+    <h2 class="cc-title">Explore GTA VI</h2>
+    <p class="cc-sub">Drag to browse — Vice City, characters, price, and more.</p>
+  </div>
+
+  <div class="cc-track-wrap" id="cc-wrap">
+    <div class="cc-track" id="cc-track" role="list">
+      {cards.map((card) => (
+        <div class="cc-card" data-card-id={card.id} role="listitem" style={`--card-color: ${card.color}`}>
+          <div class="cc-card-img">
+            <img src={card.img} alt={card.title} loading="lazy" />
+            <div class="cc-card-veil"></div>
+          </div>
+          <div class="cc-card-body">
+            <span class="cc-card-label">{card.label}</span>
+            <h3 class="cc-card-title">{card.title}</h3>
+            <p class="cc-card-sub">{card.sub}</p>
+            <p class="cc-card-text">{card.body}</p>
+            <a class="cc-card-link" href={card.href}>
+              Learn more
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Dots indicator -->
+  <div class="cc-dots" id="cc-dots" aria-hidden="true">
+    {cards.map((_, i) => (
+      <button class={`cc-dot ${i === 0 ? 'is-active' : ''}`} data-dot={i} aria-label={`Card ${i + 1}`}></button>
+    ))}
+  </div>
+</section>

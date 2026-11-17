@@ -1,0 +1,967 @@
+---
+import Base from '../layouts/Base.astro';
+import Byline from '../components/Byline.astro';
+import Countdown from '../components/Countdown.astro';
+import FaqList from '../components/FaqList.astro';
+import Sources from '../components/Sources.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Keywords from '../components/Keywords.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
+import CtaDashedGrid from '../components/CtaDashedGrid.astro';
+import DraggableCards from '../components/DraggableCards.astro';
+import GlowingCard from '../components/GlowingCard.astro';
+import Marquee3D from '../components/Marquee3D.astro';
+import { sources } from '../data/site';
+import { articleSchema, breadcrumbSchema, faqSchema } from '../lib/seo';
+import { isReleased } from '../lib/time';
+
+const title = 'GTA 6 Release Date: November 19, 2026 | Vareno Play';
+const description =
+  'GTA 6 comes out November 19, 2026 on PS5 and Xbox Series X|S. See the delay history, pre-load status, and a live countdown to the 5:00 a.m. UTC unlock.';
+const path = '/release-date';
+const out = isReleased();
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Release date', path },
+];
+
+const faqs = [
+  {
+    q: 'When does GTA 6 come out?',
+    a: 'GTA 6 comes out on November 19, 2026 for PlayStation 5 and Xbox Series X|S. Rockstar\'s site lists that date. The US PlayStation listing shows 5:00 a.m. UTC, and other storefronts can unlock on a different local clock.',
+  },
+  {
+    q: 'When is GTA 6 coming out?',
+    a: 'Thursday, November 19, 2026. That is the date on Rockstar\'s GTA VI page and in Take-Two\'s June 24, 2026 pre-order announcement. Both name PlayStation 5 and Xbox Series X|S as the launch platforms.',
+  },
+  {
+    q: 'Is GTA 6 out?',
+    a: out
+      ? 'Yes. GTA 6 launched on November 19, 2026 for PlayStation 5 and Xbox Series X|S. If a store still shows a lock, the unlock time can differ by region even after that date.'
+      : 'Not yet. As of November 16, 2026, GTA 6 is still ahead of its November 19, 2026 launch on PlayStation 5 and Xbox Series X|S. The countdown on this page runs to 5:00 a.m. UTC that day.',
+  },
+  {
+    q: 'How many days until GTA 6?',
+    a: 'Count to 5:00 a.m. UTC on November 19, 2026, which is the time on the US PlayStation listing. The clock above uses that instant. A store in another country may open the game on a different local midnight.',
+  },
+  {
+    q: 'Did GTA 6 get delayed again?',
+    a: 'The launch moved from a 2025 window to May 26, 2026, and then to November 19, 2026. As of November 16, 2026, Rockstar\'s site still shows November 19. A newer delay is not on that page.',
+  },
+  {
+    q: 'When does GTA 6 release?',
+    a: 'November 19, 2026, on PlayStation 5 and Xbox Series X|S. Pre-load is already open for pre-orders, according to Rockstar\'s November 10 page. Edition prices are on the price guide.',
+  },
+];
+
+const launchHighlights = [
+  {
+    icon: 'sync',
+    badge: 'Synchronized',
+    title: '5:00 AM UTC Global Launch',
+    desc: 'Take-Two confirmed simultaneous global digital unlock on PlayStation Store and Xbox Marketplace.',
+    stat: '5:00 AM',
+    statLabel: 'UTC Clock',
+    glowColor: '#f7c948',
+  },
+  {
+    icon: 'gamepad',
+    badge: 'Hardware',
+    title: 'PS5 & Xbox Series X|S Only',
+    desc: 'Built purely for current generation silicon with PS5 Pro Enhanced modes and DualSense haptics.',
+    stat: 'Zero PC',
+    statLabel: 'At Launch',
+    glowColor: '#ff5c8a',
+  },
+  {
+    icon: 'gift',
+    badge: 'Pre-Order Bonus',
+    title: 'Vintage Vice City Pack',
+    desc: 'Included automatically for any standard or ultimate edition ordered before November 20, 2026.',
+    stat: 'Nov 20',
+    statLabel: 'Bonus Cutoff',
+    glowColor: '#39d0ff',
+  },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  schemas={[
+    articleSchema({ headline: 'GTA 6 release date', description, path }),
+    breadcrumbSchema(crumbs),
+    faqSchema(faqs),
+  ]}
+>
+  <InnerPageLayout pageTitle="GTA 6 Release Date" crumbs={crumbs} heroImg="/images/gta6-beach-logo.jpg" accentColor="#f7c948">
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 1: TWO-COLUMN COUNTDOWN & METADATA HERO HUB
+         ══════════════════════════════════════════════════════════ -->
+    <section class="two-col-countdown" data-reveal>
+      <!-- LEFT COLUMN: Status, Byline, & Verification Signals -->
+      <div class="col-meta-box">
+        <div class="status-live-beacon">
+          <span class="beacon-pulse"></span>
+          <span class="beacon-text">Official Rockstar Launch Lock</span>
+        </div>
+
+        <h2 class="col-heading">Thursday, November 19, 2026</h2>
+        <p class="col-lead">{faqs[0].a}</p>
+
+        <div class="byline-card">
+          <Byline />
+        </div>
+
+        <ul class="col-quick-facts">
+          <li>
+            <span class="fact-icon">🔒</span>
+            <span>Take-Two SEC 10-Q report confirms target window unchanged.</span>
+          </li>
+          <li>
+            <span class="fact-icon">⏱</span>
+            <span>Pre-load active on PlayStation Network and Xbox Marketplace.</span>
+          </li>
+          <li>
+            <span class="fact-icon">🎯</span>
+            <span>Unlock clock sets for <strong>5:00 a.m. UTC</strong> worldwide.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- RIGHT COLUMN: Premium Glowing Countdown Board -->
+      <div class="col-countdown-board">
+        <div class="board-badge-wrap">
+          <span class="board-badge">LIVE REVERSE CLOCK</span>
+          <span class="board-time-zone">5:00 AM UTC</span>
+        </div>
+        <div class="board-clock-inner">
+          <Countdown />
+        </div>
+        <div class="board-footer">
+          <div class="board-platform-tags">
+            <span class="plat-tag plat-ps5">PlayStation 5</span>
+            <span class="plat-tag plat-xbox">Xbox Series X|S</span>
+          </div>
+          <a class="board-cta" href="https://store.playstation.com/en-us/product/EP1004-PPSA01547_00-GTAVISTANDARD001/" target="_blank" rel="sponsored noopener noreferrer">
+            Pre-order PS Store ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <AdSlot />
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 2: TWO-COLUMN "DATE ROCKSTAR IS USING" WITH DASHED CTA
+         ══════════════════════════════════════════════════════════ -->
+    <section class="two-col-date-split" data-reveal>
+      <div class="split-left">
+        <CtaDashedGrid
+          badge="Verified Announcement"
+          title="The Date Rockstar is"
+          highlight="Officially Using"
+          leadText="November 19, 2026 is published directly across Rockstar's grand portal and Take-Two's earnings conference."
+          ctaText="Review Official Source"
+          ctaHref={sources.rockstar.url}
+          secondaryCtaText="Compare Editions"
+          secondaryCtaHref="/price"
+        >
+          <p>
+            <a href={sources.rockstar.url} rel="noopener noreferrer">Rockstar's GTA VI portal</a> states the game is
+            arriving worldwide on November 19, 2026. The documentation emphasizes performance optimization tailored for
+            PlayStation 5 and Xbox Series X|S hardware architecture.
+          </p>
+          <p>
+            Take-Two's executive statements reiterated the same milestone date. The
+            <a href={sources.playstation.url} rel="noopener noreferrer">US PlayStation Store listing</a> sets the
+            system unlock trigger precisely at 5:00 a.m. UTC.
+          </p>
+        </CtaDashedGrid>
+      </div>
+
+      <!-- RIGHT VISUAL CARD: Official Visual Proof Card -->
+      <div class="split-right">
+        <div class="proof-card">
+          <div class="proof-img-wrap">
+            <img src="/images/gta6-hero.jpg" alt="Official GTA 6 Key Art" loading="lazy" />
+            <div class="proof-overlay">
+              <span class="proof-tag">Rockstar Games</span>
+              <span class="proof-title">Grand Theft Auto VI</span>
+            </div>
+          </div>
+          <div class="proof-details">
+            <div class="proof-row">
+              <span class="p-label">Announcement Date:</span>
+              <span class="p-val">June 24, 2026</span>
+            </div>
+            <div class="proof-row">
+              <span class="p-label">Confirmed Launch:</span>
+              <span class="p-val p-gold">Nov 19, 2026</span>
+            </div>
+            <div class="proof-row">
+              <span class="p-label">Platforms:</span>
+              <span class="p-val">PS5, Xbox Series X|S</span>
+            </div>
+            <div class="proof-row">
+              <span class="p-label">Target Clock:</span>
+              <span class="p-val">05:00 UTC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 3: TWO-COLUMN "PRE-LOAD STATUS & READINESS"
+         ══════════════════════════════════════════════════════════ -->
+    <section class="two-col-preload" data-reveal>
+      <div class="preload-visual-col">
+        <div class="preload-card">
+          <div class="preload-card-top">
+            <span class="preload-pill">STORAGE &amp; PRE-LOAD</span>
+            <span class="preload-icon">⚡</span>
+          </div>
+          <h3 class="preload-card-title">Pre-Load Status: Live</h3>
+          <p class="preload-card-sub">Digital pre-orders can download all assets right now before servers unlock.</p>
+
+          <div class="preload-meter">
+            <div class="meter-bar">
+              <div class="meter-fill" style="width: 100%;"></div>
+            </div>
+            <div class="meter-labels">
+              <span>Ready for download</span>
+              <span class="meter-pct">100% Locked</span>
+            </div>
+          </div>
+
+          <div class="preload-checklist">
+            <div class="check-item">
+              <span class="check-box">✓</span>
+              <span>Available on PlayStation 5 SSD storage</span>
+            </div>
+            <div class="check-item">
+              <span class="check-box">✓</span>
+              <span>Available on Xbox Series X|S SSD storage</span>
+            </div>
+            <div class="check-item">
+              <span class="check-box">✓</span>
+              <span>Day-one patch pre-installed with digital orders</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preload-text-col">
+        <span class="section-eyebrow">Pre-Load Protocol</span>
+        <h2 class="section-heading">How Digital Pre-Load Works</h2>
+        <p class="section-lead">
+          Take-Two originally targeted November 12, 2026 for pre-load, while physical game cases holding redemption codes
+          began shipping to retailers.
+        </p>
+        <p class="section-body">
+          Rockstar's official <a href={sources.preload.url} rel="noopener noreferrer">November 10 pre-load update</a> confirmed
+          that installation queues opened early for players who completed pre-orders. If you have reserved either Standard or
+          Ultimate, check your console download library now so you are ready the second the game unlocks.
+        </p>
+        <div class="preload-tip-box">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>Launch Morning Tip:</strong>
+            <span>Keep your console in Rest Mode with automatic updates enabled on the evening of November 18 to ensure zero delay at 5:00 a.m. UTC.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 4: TWO-COLUMN DELAY TIMELINE + DRAGGABLE CARDS
+         ══════════════════════════════════════════════════════════ -->
+    <section class="two-col-timeline-split" data-reveal>
+      <!-- LEFT: The Delay Timeline with custom graphics -->
+      <div class="timeline-left">
+        <span class="section-eyebrow">Production History</span>
+        <h2 class="section-heading">How The Date Moved</h2>
+        <p class="section-lead">
+          Trace the exact timeline from the initial 2025 window announcement through the final November 19, 2026 date lock.
+        </p>
+
+        <ol class="delays-timeline">
+          <li class="timeline-entry">
+            <div class="entry-node"></div>
+            <div class="entry-content">
+              <time class="entry-date" datetime="2023-12-04">December 4, 2023</time>
+              <h4 class="entry-title">Trailer 1 Worldwide Premiere</h4>
+              <p class="entry-desc">Rockstar revealed Vice City and Lucia, setting the initial public window for calendar year 2025.</p>
+            </div>
+          </li>
+          <li class="timeline-entry">
+            <div class="entry-node"></div>
+            <div class="entry-content">
+              <time class="entry-date" datetime="2025-05-06">May 6, 2025</time>
+              <h4 class="entry-title">Trailer 2 &amp; Initial Target</h4>
+              <p class="entry-desc">Rockstar targeted May 26, 2026, pairing the announcement with deeper look at Leonida's conspiracy.</p>
+            </div>
+          </li>
+          <li class="timeline-entry">
+            <div class="entry-node"></div>
+            <div class="entry-content">
+              <time class="entry-date" datetime="2025-11-06">November 2025</time>
+              <h4 class="entry-title">Fall Window Calibration</h4>
+              <p class="entry-desc">Release moved to November 19, 2026 to ensure uncompromising polish across mission variety and world density.</p>
+            </div>
+          </li>
+          <li class="timeline-entry">
+            <div class="entry-node"></div>
+            <div class="entry-content">
+              <time class="entry-date" datetime="2026-06-24">June 24, 2026</time>
+              <h4 class="entry-title">Take-Two Pre-Orders Open</h4>
+              <p class="entry-desc">SEC filing and global storefronts launched pre-orders, locking November 19 as the firm release date.</p>
+            </div>
+          </li>
+          <li class="timeline-entry timeline-entry--locked">
+            <div class="entry-node entry-node--gold"></div>
+            <div class="entry-content">
+              <time class="entry-date entry-date--gold" datetime="2026-11-19">November 19, 2026</time>
+              <h4 class="entry-title entry-title--gold">Official Global Launch Day 🎮</h4>
+              <p class="entry-desc">PlayStation 5 and Xbox Series X|S digital unlock at 5:00 a.m. UTC.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- RIGHT: Interactive Draggable Cards Stack -->
+      <div class="timeline-right">
+        <DraggableCards />
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 5: GLOWING EFFECT CARDS (Aceternity Glowing Effect)
+         ══════════════════════════════════════════════════════════ -->
+    <GlowingCard
+      title="Launch Day Specifications"
+      subtitle="Hover or drag your cursor across cards to reveal interactive radial reactive lighting."
+      items={launchHighlights}
+    />
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 6: 3D ISOMETRIC MARQUEE (Aceternity 3D Marquee)
+         ══════════════════════════════════════════════════════════ -->
+    <Marquee3D />
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 7: ACETERNITY SIMPLE FAQS WITH BACKGROUND
+         ══════════════════════════════════════════════════════════ -->
+    <FaqList
+      title="GTA 6 Release Date FAQ"
+      subtitle="Every common question about launch timing, platforms, delays, and pre-loading answered directly from official sources."
+      badge="Verified Answers"
+      items={faqs}
+    />
+
+    <Keywords />
+
+    <Sources items={[sources.rockstar, sources.taketwo, sources.playstation, sources.preload, sources.trailers]} />
+  </InnerPageLayout>
+</Base>
+
+<style>
+/* ── SECTION 1: TWO-COLUMN COUNTDOWN & METADATA HERO HUB ─────── */
+.two-col-countdown {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: stretch;
+  margin-bottom: 3.5rem;
+}
+
+.col-meta-box {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+}
+
+.status-live-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  width: fit-content;
+  margin-bottom: 1.25rem;
+}
+
+.beacon-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 10px #4ade80;
+  animation: pulseBeacon 2s infinite;
+}
+
+@keyframes pulseBeacon {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+.beacon-text {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4ade80;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.col-heading {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.8rem;
+  line-height: 1.2;
+}
+
+.col-lead {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+}
+
+.byline-card {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.75rem;
+}
+
+.col-quick-facts {
+  list-style: none;
+  padding: 0;
+  margin: auto 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.25rem;
+}
+
+.col-quick-facts li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  line-height: 1.5;
+}
+
+.fact-icon {
+  flex-shrink: 0;
+}
+
+/* RIGHT COLUMN: Premium Glowing Countdown Board */
+.col-countdown-board {
+  background: linear-gradient(135deg, rgba(247, 201, 72, 0.08) 0%, rgba(14, 10, 24, 0.7) 100%);
+  border: 1px solid rgba(247, 201, 72, 0.25);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(247, 201, 72, 0.2);
+}
+
+.board-badge-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.board-badge {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #f7c948;
+  letter-spacing: 0.1em;
+  background: rgba(247, 201, 72, 0.12);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+}
+
+.board-time-zone {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.board-clock-inner {
+  margin: auto 0;
+  padding: 1rem 0;
+}
+
+.board-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(247, 201, 72, 0.15);
+}
+
+.board-platform-tags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.plat-tag {
+  font-size: 0.72rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.plat-ps5 { background: rgba(0, 112, 243, 0.15); color: #4a9eff; }
+.plat-xbox { background: rgba(16, 124, 16, 0.15); color: #4ade80; }
+
+.board-cta {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #05040a;
+  background: #f7c948;
+  padding: 0.65rem 1.25rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+.board-cta:hover {
+  background: #ffd84a;
+  transform: translateY(-2px);
+}
+
+/* ── SECTION 2: TWO-COLUMN DATE SPLIT ────────────────────────── */
+.two-col-date-split {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+.proof-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.proof-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(247, 201, 72, 0.4);
+}
+
+.proof-img-wrap {
+  position: relative;
+  height: 220px;
+  background: #000;
+}
+.proof-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.proof-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+}
+
+.proof-tag {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.65rem;
+  color: #f7c948;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.proof-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.proof-details {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.proof-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 0.5rem;
+}
+.proof-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.p-label { color: rgba(255, 255, 255, 0.55); }
+.p-val { color: #fff; font-weight: 600; font-family: monospace; }
+.p-gold { color: #f7c948; font-weight: 700; font-family: var(--display, 'Unbounded', sans-serif); font-size: 0.82rem; }
+
+/* ── SECTION 3: TWO-COLUMN PRE-LOAD ──────────────────────────── */
+.two-col-preload {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.75rem;
+}
+
+.preload-card {
+  background: #110e1e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.preload-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.preload-pill {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.68rem;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  font-weight: 700;
+}
+
+.preload-icon {
+  font-size: 1.25rem;
+}
+
+.preload-card-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.preload-card-sub {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+}
+
+.preload-meter {
+  margin-bottom: 1.5rem;
+}
+
+.meter-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f7c948 0%, #4ade80 100%);
+  border-radius: 4px;
+}
+
+.meter-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.meter-pct {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.preload-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.check-box {
+  color: #4ade80;
+  font-weight: bold;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #f7c948;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.section-heading {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+  line-height: 1.25;
+}
+
+.section-lead {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.section-body {
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+.section-body a {
+  color: #f7c948;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.preload-tip-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: rgba(247, 201, 72, 0.08);
+  border: 1px solid rgba(247, 201, 72, 0.25);
+  border-radius: 0.85rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.55;
+}
+
+.tip-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* ── SECTION 4: TWO-COLUMN TIMELINE + DRAGGABLE CARDS ────────── */
+.two-col-timeline-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-bottom: 4rem;
+}
+
+.delays-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  position: relative;
+}
+
+.delays-timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 10px;
+  bottom: 20px;
+  width: 2px;
+  background: linear-gradient(to bottom, #f7c948, rgba(247, 201, 72, 0.15));
+}
+
+.timeline-entry {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.entry-node {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0e0b16;
+  border: 2px solid #f7c948;
+  margin-top: 3px;
+  position: relative;
+  z-index: 2;
+}
+
+.entry-node--gold {
+  background: #f7c948;
+  border-color: #f7c948;
+  box-shadow: 0 0 14px rgba(247, 201, 72, 0.8);
+}
+
+.entry-content {
+  flex: 1;
+}
+
+.entry-date {
+  display: inline-block;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  color: #f7c948;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.entry-date--gold {
+  color: #ffd84a;
+  font-weight: 700;
+}
+
+.entry-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.4rem;
+}
+
+.entry-title--gold {
+  color: #f7c948;
+  font-size: 1.15rem;
+}
+
+.entry-desc {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .two-col-countdown,
+  .two-col-date-split,
+  .two-col-preload,
+  .two-col-timeline-split {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    width: 100%;
+  }
+  .col-meta-box,
+  .col-countdown-board {
+    padding: 1.75rem 1.25rem;
+    border-radius: 1.25rem;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .two-col-preload {
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .col-meta-box,
+  .col-countdown-board {
+    padding: 1.25rem 0.85rem;
+    border-radius: 1rem;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .board-badge-wrap {
+    margin-bottom: 0.85rem;
+  }
+  .board-clock-inner {
+    padding: 0.5rem 0;
+    min-width: 0;
+    width: 100%;
+  }
+  .board-clock-inner .clock-board {
+    gap: 0.35rem;
+    width: 100%;
+    min-width: 0;
+  }
+  .board-clock-inner .clock-cell {
+    padding: 0.55rem 0.2rem 0.45rem;
+    min-width: 0;
+  }
+  .board-clock-inner .clock-cell strong {
+    font-size: clamp(1.1rem, 5vw, 1.45rem);
+  }
+  .board-clock-inner .clock-cell span {
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+  }
+  .board-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding-top: 1rem;
+  }
+  .board-platform-tags {
+    justify-content: center;
+  }
+  .board-cta {
+    text-align: center;
+    width: 100%;
+  }
+}
+</style>

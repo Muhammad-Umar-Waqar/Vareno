@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { breadcrumbSchema } from '../lib/seo';
+
+const title = 'Terms of Use | Vareno Play GTA 6 Guide';
+const description =
+  'Vareno Play’s GTA 6 pages are an unofficial fan guide. Portrait results are fan art, and you need the rights to any photo you upload.';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Terms', path: '/terms' },
+];
+---
+
+<Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
+  <article class="shell prose">
+    <Crumbs items={crumbs} />
+    <h1>Terms</h1>
+    <p class="lead">
+      This site is an unofficial guide and a portrait tool from Vareno Play. It is not a Rockstar Games or Take-Two
+      product, and nothing here is a promise about the game.
+    </p>
+    <ul>
+      <li>Grand Theft Auto, Rockstar, and related names belong to their owners. We use them to identify the game the guides discuss.</li>
+      <li>Prices and dates can change. Check the linked Rockstar or store page before you pay.</li>
+      <li>Upload only a photo you have the right to use. Do not upload someone else’s private picture.</li>
+      <li>Portraits are new images, not files from the game. You are responsible for how you share them.</li>
+      <li>The portrait service can be unavailable, rate-limited, or turned off when no API token is configured.</li>
+    </ul>
+    <p>These terms were last updated on November 16, 2026.</p>
+  </article>
+</Base>

@@ -1,0 +1,85 @@
+---
+/**
+ * LogoCloud — multi-row scrolling logo/icon strip.
+ * Inspired by Aceternity "logo-cloud-multiple-rows".
+ * Shows platforms, features, and notable GTA VI elements.
+ */
+
+const row1 = [
+  { label: 'PlayStation 5',    icon: '🎮' },
+  { label: 'Xbox Series X|S',  icon: '🕹️' },
+  { label: 'Vice City',        icon: '🌴' },
+  { label: 'Lucia',            icon: '👤' },
+  { label: 'Jason',            icon: '🧑' },
+  { label: 'Leonida State',    icon: '🗺️' },
+  { label: 'Nov 19 · 2026',   icon: '📅' },
+  { label: 'Rockstar Games',   icon: '⭐' },
+];
+
+const row2 = [
+  { label: 'Open World',       icon: '🌍' },
+  { label: 'Single Player',    icon: '🎯' },
+  { label: 'GTA Online',       icon: '🌐' },
+  { label: 'Vice City Pack',   icon: '🎁' },
+  { label: 'Standard $79.99', icon: '💰' },
+  { label: 'Ultimate $99.99', icon: '👑' },
+  { label: 'Pre-order Open',   icon: '🛒' },
+  { label: 'Take-Two',         icon: '🏢' },
+];
+
+const row3 = [
+  { label: 'Trailer 1',        icon: '🎬' },
+  { label: 'Trailer 2',        icon: '📽️' },
+  { label: 'Extended Look',    icon: '🎥' },
+  { label: 'Launch Trailer',   icon: '🚀' },
+  { label: 'Aug 2025',         icon: '📣' },
+  { label: 'Delay Ended',      icon: '✅' },
+  { label: 'Leonida Map',      icon: '🏖️' },
+  { label: 'Crime Drama',      icon: '🔫' },
+];
+---
+
+<section class="lc-section" data-reveal aria-label="GTA VI feature highlights">
+  <div class="shell lc-head">
+    <h2>Everything in one place</h2>
+    <p>Platforms, features, and facts about Grand Theft Auto VI.</p>
+  </div>
+
+  <div class="lc-rows">
+    <!-- Row 1 → scrolls left -->
+    <div class="lc-row lc-row--fwd">
+      <div class="lc-track">
+        {[...row1, ...row1].map((item) => (
+          <div class="lc-chip">
+            <span class="lc-icon" aria-hidden="true">{item.icon}</span>
+            <span class="lc-label">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Row 2 → scrolls right -->
+    <div class="lc-row lc-row--rev">
+      <div class="lc-track">
+        {[...row2, ...row2].map((item) => (
+          <div class="lc-chip">
+            <span class="lc-icon" aria-hidden="true">{item.icon}</span>
+            <span class="lc-label">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Row 3 → scrolls left -->
+    <div class="lc-row lc-row--fwd">
+      <div class="lc-track">
+        {[...row3, ...row3].map((item) => (
+          <div class="lc-chip">
+            <span class="lc-icon" aria-hidden="true">{item.icon}</span>
+            <span class="lc-label">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

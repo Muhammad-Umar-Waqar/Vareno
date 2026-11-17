@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { breadcrumbSchema } from '../lib/seo';
+
+const title = 'Editorial Policy for the GTA 6 Guide | Vareno Play';
+const description =
+  'Vareno Play cites Rockstar and Take-Two for GTA 6 dates and prices, labels updates, and skips leaks, ripped maps, and unsourced cast lists.';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Editorial policy', path: '/editorial-policy' },
+];
+---
+
+<Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
+  <article class="shell prose">
+    <Crumbs items={crumbs} />
+    <h1>Editorial policy</h1>
+    <p class="lead">
+      Dates, prices, and story lines on this site come from Rockstar Games or Take-Two pages, linked at the bottom of
+      the guide. If those pages change, the guide should change, and the updated line should move with it.
+    </p>
+    <h2>What we publish</h2>
+    <ul>
+      <li>The current launch date and the older dates it replaced, with the source named.</li>
+      <li>US prices from Take-Two’s pre-order announcement, plus a note that other countries differ.</li>
+      <li>Rockstar’s synopsis for Lucia and Jason, as a quotation, not a rewritten biography.</li>
+      <li>The trailer list as Rockstar’s page dates it, including the fact that no film is titled Trailer 3.</li>
+    </ul>
+    <h2>What we leave out</h2>
+    <ul>
+      <li>Leaked files, ripped screenshots, and unofficial maps drawn as if they were Rockstar’s.</li>
+      <li>Voice actors, ages, and region lists the studio has not printed.</li>
+      <li>A PC date, a cross-play plan, or a collector’s edition, unless an official page announces one.</li>
+    </ul>
+    <p>
+      The portrait tool is labeled fan art on the page where it runs. Corrections can be sent through the accounts on
+      the <a href="/contact">contact page</a>.
+    </p>
+    <p>This policy was last updated on November 16, 2026.</p>
+  </article>
+</Base>

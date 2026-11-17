@@ -1,0 +1,618 @@
+---
+import Base from '../layouts/Base.astro';
+import Countdown from '../components/Countdown.astro';
+import Byline from '../components/Byline.astro';
+import Retailers from '../components/Retailers.astro';
+import AdSlot from '../components/AdSlot.astro';
+import GuideIcon from '../components/icons/GuideIcon.astro';
+import Keywords from '../components/Keywords.astro';
+import MarqueeStrip from '../components/MarqueeStrip.astro';
+import StickyFeatures from '../components/StickyFeatures.astro';
+import CharCarousel from '../components/CharCarousel.astro';
+import CharTooltips from '../components/CharTooltips.astro';
+import CtaDashedGrid from '../components/CtaDashedGrid.astro';
+import MyBoostHero from '../components/MyBoostHero.astro';
+import { articleSchema } from '../lib/seo';
+import { isReleased } from '../lib/time';
+
+const title = 'GTA 6: Release Date, Price, and Map | Vareno Play';
+const description =
+  'GTA 6 launches November 19, 2026 on PS5 and Xbox Series X|S. Price, Leonida map, Lucia and Jason, trailers, and PC status, cited from Rockstar and Take-Two.';
+const path = '/';
+const out = isReleased();
+
+const guides = [
+  { href: '/release-date', title: 'GTA 6 Release Date',    text: 'November 19, 2026 lock, pre-load status, and live countdown.', badge: 'Launch Timing',  icon: 'calendar' as const },
+  { href: '/price',        title: 'How Much Is GTA 6',     text: 'Standard ($79.99), Ultimate ($99.99), and pre-order bonuses.', badge: 'Pricing & Packs', icon: 'price'    as const },
+  { href: '/map',          title: 'GTA 6 Map & Leonida',   text: 'Vice City, Mount Kalaga, and confirmed state biomes.',       badge: 'Geography',      icon: 'map'      as const },
+  { href: '/characters/lucia', title: 'Lucia & Jason',     text: 'Rockstar’s official character synopsis and storyline.',      badge: 'Protagonists',   icon: 'people'   as const },
+  { href: '/platforms',    title: 'Will GTA 6 Be on PC?',  text: 'PS5 & Xbox Series X|S launch platforms and PC release info.', badge: 'Hardware',      icon: 'monitor'  as const },
+  { href: '/trailers',     title: 'GTA 6 Official Trailers', text: 'Trailer 1, Trailer 2, An Extended Look, and launch reels.', badge: 'Media Archive',  icon: 'play'     as const },
+  { href: '/tools/portrait', title: 'AI Character Portrait', text: 'Upload your photo and generate a Vice City fan-art portrait.', badge: 'AI Generator',  icon: 'camera'   as const },
+  { href: '/blog',         title: 'News & Investigations', text: 'Development length, delay story, and launch-week guide.',   badge: 'Reports',        icon: 'news'     as const },
+];
+
+const stats = [
+  { value: 'Nov 19', label: '2026' },
+  { value: 'PS5',    label: '+ Xbox Series X|S' },
+  { value: '$79.99', label: 'Starting price' },
+  { value: 'Vice City', label: 'Leonida, USA' },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  schemas={[articleSchema({ headline: 'GTA 6: release date, price, and map', description, path })]}
+>
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. HERO — MyBoost Multi-Pane Sliced Panorama (Image 1 Reference)
+       ══════════════════════════════════════════════════════════ -->
+  <section class="vh-hero" id="vh-hero" aria-label="GTA VI hero">
+    <div class="vh-bg" id="vh-bg" aria-hidden="true">
+      <img
+        class="vh-bg-img" id="vh-bg-img"
+        src="/images/gta6-hero.jpg"
+        width="2000" height="900"
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="vh-bg-veil"></div>
+    </div>
+
+    <div class="vh-layout shell">
+      <div class="vh-left" id="vh-left">
+        <p class="vh-eyebrow">Rockstar Games · November 19 · 2026</p>
+        <h1 class="vh-title" id="vh-title">
+          <span class="vh-title-line">Grand</span>
+          <span class="vh-title-line">Theft</span>
+          <span class="vh-title-line vh-title-line--gold">Auto VI</span>
+        </h1>
+        <p class="vh-sub">{out ? 'Available now on PS5 and Xbox Series X|S.' : 'Launches November 19, 2026 on PS5 and Xbox Series X|S. The biggest open-world story Rockstar has ever told.'}</p>
+        <div class="vh-cta-row">
+          <a class="vh-btn vh-btn--primary" href="https://store.playstation.com/en-us/product/EP1004-PPSA01547_00-GTAVISTANDARD001/" rel="sponsored noopener noreferrer">Pre-order Now</a>
+          <a class="vh-btn vh-btn--ghost" href="/release-date">Release info</a>
+        </div>
+        <p class="vh-scroll-hint" id="vh-scroll">
+          <svg width="14" height="22" viewBox="0 0 14 22" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="12" height="20" rx="6" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="7" cy="6" r="2" fill="currentColor" class="vh-wheel"/>
+          </svg>
+          Scroll to explore
+        </p>
+      </div>
+
+      <!-- Right side floating panels (Commented out per user request) -->
+      <!--
+      <div class="vh-panels" id="vh-panels" aria-hidden="true">
+        <div class="vh-panel vh-panel--main" id="vh-panel-main">
+          <img src="/images/gta6-rooftop.jpg" alt="Jason and Lucia – Rooftop GTA VI" loading="eager" />
+        </div>
+        <div class="vh-panel-stack">
+          <div class="vh-panel vh-panel--sm" id="vh-panel-sm1">
+            <img src="/images/gta6-lockload.jpg" alt="Jason and Lucia – Lock and Load" loading="lazy" />
+          </div>
+          <div class="vh-panel vh-panel--sm" id="vh-panel-sm2">
+            <img src="/images/gta6-car.jpg" alt="Jason and Lucia on Car" loading="lazy" />
+            <div class="vh-panel-badge"><span>Nov 19</span><small>2026</small></div>
+          </div>
+        </div>
+      </div>
+      -->
+    </div>
+
+    <div class="vh-statbar" id="vh-statbar">
+      <div class="shell">
+        <ul class="vh-stats">
+          {stats.map((s) => (
+            <li class="vh-stat"><strong>{s.value}</strong><span>{s.label}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO — Option B: MyBoost Multi-Pane Sliced Panorama (COMMENTED OUT)
+       Uncomment below and comment the section above to switch!
+       ══════════════════════════════════════════════════════════ -->
+  {/* <MyBoostHero out={out} /> */}
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. 3D MARQUEE — infinite scrolling image strip
+       ══════════════════════════════════════════════════════════ -->
+  <MarqueeStrip speed={115} />
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. TWO-COLUMN HERO INTRO HUB: "WHAT GTA 6 IS" + COUNTDOWN
+       (In ONE row side-by-side on desktop — no stretched cards!)
+       ══════════════════════════════════════════════════════════ -->
+  <div class="sheet" id="main-sheet">
+    <div class="shell">
+
+      <section class="home-intro-split" data-reveal>
+        <!-- LEFT: What GTA 6 Is (Aceternity Dashed Grid CTA) -->
+        <div class="his-left">
+          <CtaDashedGrid
+            badge="Official Rockstar Synopsis"
+            title="Grand Theft Auto VI:"
+            highlight="Vice City, USA"
+            leadText="When an easy score goes wrong, Jason and Lucia find themselves on the darkest side of the sunniest place in America — pulled into a conspiracy across Leonida."
+            ctaText="Explore Map"
+            ctaHref="/map"
+            secondaryCtaText="Lucia & Jason"
+            secondaryCtaHref="/characters/lucia"
+          >
+            <div class="his-chips">
+              <span class="his-chip"><GuideIcon name="city" size={14} /> Vice City &amp; Leonida</span>
+              <span class="his-chip"><GuideIcon name="people" size={14} /> Jason &amp; Lucia (Dual Leads)</span>
+              <span class="his-chip"><GuideIcon name="gamepad" size={14} /> PS5 &amp; Xbox Series X|S</span>
+            </div>
+          </CtaDashedGrid>
+        </div>
+
+        <!-- RIGHT: Live Cyber Countdown & Byline Hub -->
+        <div class="his-right">
+          <div class="home-clock-card">
+            <div class="hcc-top">
+              <div class="hcc-beacon">
+                <span class="hcc-beacon-dot"></span>
+                <span class="hcc-beacon-text">Launch Target Locked</span>
+              </div>
+              <span class="hcc-utc">5:00 AM UTC</span>
+            </div>
+
+            <div class="hcc-body">
+              <h3 class="hcc-title">November 19, 2026</h3>
+              <p class="hcc-sub">Count down to the worldwide digital unlock across PlayStation 5 and Xbox Series X|S.</p>
+              
+              <div class="hcc-timer">
+                <Countdown />
+              </div>
+            </div>
+
+            <div class="hcc-footer">
+              <Byline />
+              <a class="hcc-btn" href="/release-date">Release Details &amp; FAQs ↗</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <AdSlot />
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. STICKY FEATURES — scroll through story, map, characters
+       (full-bleed, outside of shell)
+       ══════════════════════════════════════════════════════════ -->
+  <StickyFeatures />
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. APPLE-STYLE CAROUSEL — drag to browse scenes/chars
+       ══════════════════════════════════════════════════════════ -->
+  <div class="sheet-segment bg-skew">
+    <div class="shell page-stack" style="gap: 0.5rem">
+      <CharCarousel />
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       6. CHARACTER TOOLTIPS — avatar stack
+       ══════════════════════════════════════════════════════════ -->
+  <div class="shell" style="padding: 2rem 0">
+    <CharTooltips />
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       7. KEYWORDS + BALANCED GUIDES SHOWCASE + RETAILERS
+       ══════════════════════════════════════════════════════════ -->
+  <div class="sheet">
+    <div class="shell page-stack">
+      <Keywords />
+
+      <!-- ACETERNITY-INSPIRED GUIDES SHOWCASE (Balanced 4-col grid, no stretching) -->
+      <section class="guides-showcase-section" data-reveal aria-labelledby="guides-heading">
+        <div class="guides-header">
+          <span class="guides-badge">Verified Knowledge Base</span>
+          <h2 id="guides-heading" class="guides-title">Official GTA 6 Guides</h2>
+          <p class="guides-subtitle">
+            One comprehensive guide per question players and search engines are asking this week. Jump straight to the answer.
+          </p>
+        </div>
+
+        <div class="guides-card-grid">
+          {guides.map((guide) => (
+            <a class="guide-card" href={guide.href}>
+              <div class="gc-border-glow" aria-hidden="true"></div>
+              <div class="gc-inner">
+                <div class="gc-top">
+                  <span class="gc-icon-wrap">
+                    <GuideIcon name={guide.icon} />
+                  </span>
+                  <span class="gc-badge">{guide.badge}</span>
+                </div>
+                <h3 class="gc-title">{guide.title}</h3>
+                <p class="gc-text">{guide.text}</p>
+                <div class="gc-action">
+                  <span>Read Guide</span>
+                  <span class="gc-arrow">→</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- ACETERNITY-INSPIRED WHERE TO BUY -->
+      <Retailers />
+    </div>
+  </div>
+
+</Base>
+
+<style>
+/* ── SECTION 3: HOME INTRO TWO-COLUMN SPLIT ──────────────────── */
+.home-intro-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: stretch;
+  margin: 3.5rem 0 2rem;
+}
+
+.his-left {
+  display: flex;
+}
+
+.his-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.his-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.8rem;
+  border-radius: 50px;
+}
+
+/* RIGHT COLUMN: Cyber Countdown & Byline Hub */
+.his-right {
+  display: flex;
+}
+
+.home-clock-card {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(247, 201, 72, 0.08) 0%, rgba(14, 10, 24, 0.75) 100%);
+  border: 1px solid rgba(247, 201, 72, 0.25);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(247, 201, 72, 0.2);
+}
+
+.hcc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.hcc-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+}
+
+.hcc-beacon-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+}
+
+.hcc-beacon-text {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #4ade80;
+  text-transform: uppercase;
+}
+
+.hcc-utc {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hcc-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.4rem;
+}
+
+.hcc-sub {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+}
+
+.hcc-timer {
+  margin: 1rem 0 1.5rem;
+}
+
+.hcc-footer {
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hcc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7c948;
+  color: #05040a;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.75rem 1.4rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+.hcc-btn:hover {
+  background: #ffd84a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(247, 201, 72, 0.35);
+}
+
+/* ── GUIDES SHOWCASE SECTION ─────────────────────────────────── */
+.guides-showcase-section {
+  margin: 3.5rem 0;
+}
+
+.guides-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+}
+
+.guides-badge {
+  display: inline-block;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #f7c948;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(247, 201, 72, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 0.85rem;
+}
+
+.guides-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+}
+
+.guides-subtitle {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Balanced 4-column card grid with max-width containment */
+.guides-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.5rem;
+  max-width: 1250px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.guide-card {
+  position: relative;
+  background: #0f0c1c;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.guide-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(247, 201, 72, 0.4);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(247, 201, 72, 0.1);
+}
+
+.gc-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.gc-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f7c948;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gc-badge {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+}
+
+.gc-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.gc-text {
+  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+  flex: 1;
+}
+
+.gc-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #f7c948;
+}
+
+.gc-arrow {
+  transition: transform 0.2s;
+}
+.guide-card:hover .gc-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .home-intro-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-intro-card,
+  .home-clock-card {
+    padding: 1.35rem 1rem;
+    border-radius: 1.1rem;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .hcc-clock-wrap {
+    min-width: 0;
+    width: 100%;
+  }
+  .home-clock-card .clock-board {
+    gap: 0.35rem;
+    width: 100%;
+    min-width: 0;
+  }
+  .home-clock-card .clock-cell {
+    padding: 0.55rem 0.2rem 0.45rem;
+    min-width: 0;
+  }
+  .home-clock-card .clock-cell strong {
+    font-size: clamp(1.1rem, 5vw, 1.45rem);
+  }
+  .home-clock-card .clock-cell span {
+    font-size: 0.62rem;
+  }
+  .guides-showcase-section {
+    margin: 2.5rem 0;
+  }
+  .guides-header {
+    margin-bottom: 2rem;
+  }
+  .guides-title {
+    font-size: 1.6rem;
+  }
+  .guides-subtitle {
+    font-size: 0.88rem;
+  }
+  .guides-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+  .guide-card {
+    padding: 1.35rem 1.15rem;
+    border-radius: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .gc-title {
+    font-size: 1rem;
+  }
+  .gc-text {
+    font-size: 0.84rem;
+    margin-bottom: 1.15rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .guides-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>

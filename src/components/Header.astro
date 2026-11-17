@@ -1,0 +1,536 @@
+---
+import { logo } from '../data/images';
+import { nav, stores } from '../data/site';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const buyHref = stores[0]?.href ?? '/price';
+
+// Nav icon SVG paths (simple, clean, 20x20 viewBox)
+const navIcons: Record<string, string> = {
+  '/release-date':     'M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM4 9h16M8 4V2M16 4V2M8 14h2M12 14h2',
+  '/price':            'M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 5v1.5m0 7V17m-2.5-9C10 7.6 10.9 7 12 7c1.4 0 2.5.9 2.5 2S13.4 11 12 11s-2.5.9-2.5 2 1.1 2 2.5 2c1.1 0 2-.6 2.5-1.5',
+  '/map':              'M9 4L3 7v13l6-3 6 3 6-3V4l-6 3-6-3zM9 4v13M15 7v13',
+  '/characters/lucia': 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 8c0-3.9 3.1-7 7-7s7 3.1 7 7',
+  '/platforms':        'M2 6h20v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm7 15h6M12 18v3',
+  '/trailers':         'M5 3l14 9-14 9V3z',
+  '/blog':             'M4 6h16M4 10h16M4 14h10',
+  '/tools/portrait':   'M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z',
+};
+---
+
+<!-- ════════════════════════════════════════════════
+     HEADER — Aceternity-inspired floating pill nav
+     ════════════════════════════════════════════════ -->
+<header class="site-header" id="site-header">
+  <div class="hdr-inner shell">
+
+    <!-- Brand -->
+    <a class="hdr-brand" href="/">
+      <img src={logo.src} width={36} height={36} alt="Vareno Play" class="hdr-brand-logo" />
+      <span class="hdr-brand-text">Vareno Play</span>
+    </a>
+
+    <!-- Desktop floating pill nav -->
+    <nav class="hdr-pill-nav" id="hdr-desktop-nav" aria-label="Main navigation">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={['hdr-pill-link', { 'is-active': path === item.href }]}
+          aria-current={path === item.href ? 'page' : undefined}
+        >
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hdr-link-icon">
+            {navIcons[item.href] && navIcons[item.href].split('M').filter(Boolean).map((d) => (
+              <path d={'M' + d} />
+            ))}
+          </svg>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right side: Pre-order CTA + mobile menu button -->
+    <div class="hdr-right">
+      <a class="hdr-cta" href={buyHref} rel="sponsored noopener noreferrer">
+        <span class="hdr-cta-dot" aria-hidden="true"></span>
+        Pre-order
+      </a>
+      <button
+        class="hdr-menu-btn"
+        id="hdr-menu-btn"
+        type="button"
+        aria-expanded="false"
+        aria-controls="hdr-drawer"
+        aria-label="Open navigation menu"
+      >
+        <span class="hdr-menu-bar" id="bar1"></span>
+        <span class="hdr-menu-bar" id="bar2"></span>
+        <span class="hdr-menu-bar" id="bar3"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     MOBILE DRAWER — glassmorphic slide-over panel
+     ════════════════════════════════════════════════ -->
+<div class="hdr-backdrop" id="hdr-backdrop" aria-hidden="true"></div>
+<aside class="hdr-drawer" id="hdr-drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="hdr-drawer-top">
+    <a class="hdr-drawer-brand" href="/">
+      <img src={logo.src} width={32} height={32} alt="" />
+      <span>Vareno Play</span>
+    </a>
+    <button class="hdr-drawer-close" id="hdr-drawer-close" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="hdr-drawer-nav" aria-label="Mobile navigation links">
+    {nav.map((item) => (
+      <a
+        href={item.href}
+        class:list={['hdr-drawer-link', { 'is-active': path === item.href }]}
+        aria-current={path === item.href ? 'page' : undefined}
+      >
+        <span class="hdr-drawer-link-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            {navIcons[item.href] && navIcons[item.href].split('M').filter(Boolean).map((d) => (
+              <path d={'M' + d} />
+            ))}
+          </svg>
+        </span>
+        {item.label}
+        <svg class="hdr-drawer-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </a>
+    ))}
+  </nav>
+
+  <div class="hdr-drawer-footer">
+    <a class="hdr-drawer-cta" href={buyHref} rel="sponsored noopener noreferrer">
+      <span class="hdr-cta-dot" aria-hidden="true"></span>
+      Pre-order GTA VI
+    </a>
+    <p class="hdr-drawer-note">Nov 19, 2026 · PS5 &amp; Xbox Series X|S</p>
+  </div>
+</aside>
+
+<script>
+  const btn      = document.getElementById('hdr-menu-btn')!;
+  const drawer   = document.getElementById('hdr-drawer')!;
+  const backdrop = document.getElementById('hdr-backdrop')!;
+  const closeBtn = document.getElementById('hdr-drawer-close')!;
+  const header   = document.getElementById('site-header')!;
+
+  function openDrawer() {
+    drawer.classList.add('is-open');
+    backdrop.classList.add('is-visible');
+    btn.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+    btn.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('is-open');
+    backdrop.classList.remove('is-visible');
+    btn.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+    btn.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', () =>
+    drawer.classList.contains('is-open') ? closeDrawer() : openDrawer()
+  );
+  closeBtn.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
+
+  // Scroll-based header elevation
+  const onScroll = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 60);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
+<style>
+/* ══════════════════════════════════════════════════
+   SITE HEADER — Aceternity floating pill style
+   ══════════════════════════════════════════════════ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 6, 10, 0);
+  border-bottom: 1px solid rgba(245, 180, 0, 0);
+  transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(5, 6, 10, 0.88);
+  border-bottom-color: rgba(245, 180, 0, 0.18);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: 0 1px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hdr-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+  padding: 0.5rem 0;
+}
+
+/* Brand */
+.hdr-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.hdr-brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+.hdr-brand-text {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--gold, #f5b400);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* ── Desktop floating pill nav ── */
+.hdr-pill-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  background: rgba(16, 19, 26, 0.72);
+  border: 1px solid rgba(245, 180, 0, 0.14);
+  border-radius: 999px;
+  padding: 0.3rem 0.4rem;
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.hdr-pill-link {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 999px;
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+.hdr-pill-link:hover {
+  color: #fff;
+  background: rgba(245, 180, 0, 0.1);
+}
+.hdr-pill-link.is-active {
+  color: var(--gold, #f5b400);
+  background: rgba(245, 180, 0, 0.12);
+}
+.hdr-link-icon {
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.hdr-pill-link:hover .hdr-link-icon,
+.hdr-pill-link.is-active .hdr-link-icon {
+  opacity: 1;
+}
+
+/* Right cluster */
+.hdr-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+/* Pre-order CTA */
+.hdr-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 1.1rem;
+  background: linear-gradient(135deg, #f5b400 0%, #ff8c00 100%);
+  color: #0a0a0a;
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+.hdr-cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.hdr-cta-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  animation: hdr-pulse 2s ease-in-out infinite;
+}
+@keyframes hdr-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* Hamburger button — hidden on desktop */
+.hdr-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  background: rgba(16, 19, 26, 0.7);
+  border: 1px solid rgba(245, 180, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+.hdr-menu-btn:hover {
+  border-color: rgba(245, 180, 0, 0.5);
+  background: rgba(245, 180, 0, 0.08);
+}
+.hdr-menu-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+/* X state */
+.hdr-menu-btn.is-open #bar1 { transform: translateY(7px) rotate(45deg); }
+.hdr-menu-btn.is-open #bar2 { opacity: 0; width: 0; }
+.hdr-menu-btn.is-open #bar3 { transform: translateY(-7px) rotate(-45deg); }
+
+/* ══════════════════════════════════════════════════
+   BACKDROP
+   ══════════════════════════════════════════════════ */
+.hdr-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.hdr-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE DRAWER
+   ══════════════════════════════════════════════════ */
+.hdr-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 120;
+  width: min(320px, 90vw);
+  height: 100dvh;
+  background: rgba(10, 12, 18, 0.97);
+  border-left: 1px solid rgba(245, 180, 0, 0.18);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.6);
+}
+.hdr-drawer.is-open {
+  transform: translateX(0);
+}
+
+/* Drawer header row */
+.hdr-drawer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid rgba(245, 180, 0, 0.1);
+}
+.hdr-drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gold, #f5b400);
+}
+.hdr-drawer-brand img {
+  border-radius: 7px;
+}
+.hdr-drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: background 0.2s, color 0.2s;
+}
+.hdr-drawer-close:hover {
+  background: rgba(245, 180, 0, 0.12);
+  color: var(--gold, #f5b400);
+  border-color: rgba(245, 180, 0, 0.3);
+}
+
+/* Drawer nav links */
+.hdr-drawer-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1rem 0.75rem;
+  overflow-y: auto;
+}
+.hdr-drawer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.78rem 0.9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  transition: background 0.2s ease, color 0.2s ease;
+  border: 1px solid transparent;
+}
+.hdr-drawer-link:hover {
+  background: rgba(245, 180, 0, 0.07);
+  color: #fff;
+  border-color: rgba(245, 180, 0, 0.1);
+}
+.hdr-drawer-link.is-active {
+  background: rgba(245, 180, 0, 0.12);
+  color: var(--gold, #f5b400);
+  border-color: rgba(245, 180, 0, 0.2);
+}
+.hdr-drawer-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 7px;
+  flex-shrink: 0;
+}
+.hdr-drawer-link.is-active .hdr-drawer-link-icon {
+  background: rgba(245, 180, 0, 0.15);
+  color: var(--gold, #f5b400);
+}
+.hdr-drawer-arrow {
+  margin-left: auto;
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+.hdr-drawer-link:hover .hdr-drawer-arrow,
+.hdr-drawer-link.is-active .hdr-drawer-arrow {
+  opacity: 0.7;
+}
+
+/* Drawer footer */
+.hdr-drawer-footer {
+  padding: 1rem 1.25rem 1.5rem;
+  border-top: 1px solid rgba(245, 180, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+.hdr-drawer-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #f5b400 0%, #ff8c00 100%);
+  color: #0a0a0a;
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.hdr-drawer-cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.hdr-drawer-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════ */
+
+/* Tablet: compress pill nav labels */
+@media (max-width: 1024px) {
+  .hdr-pill-link {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.78rem;
+  }
+}
+
+/* Mobile: hide desktop nav, show hamburger, hide brand text */
+@media (max-width: 768px) {
+  .hdr-pill-nav {
+    display: none;
+  }
+  .hdr-menu-btn {
+    display: flex;
+  }
+  .hdr-brand-text {
+    display: none;
+  }
+}
+</style>

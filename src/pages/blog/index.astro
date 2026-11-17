@@ -1,0 +1,152 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import InnerPageLayout from '../../components/InnerPageLayout.astro';
+import Keywords from '../../components/Keywords.astro';
+import { breadcrumbSchema } from '../../lib/seo';
+
+const title = 'GTA 6 News, Delays, and Launch Guides | Vareno Play';
+const description =
+  'Vareno Play notes on GTA 6: how long it has been in public development, how the date moved, the PS5 controller, and a launch-week checklist.';
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Blog', path: '/blog' },
+];
+---
+
+<Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
+  <InnerPageLayout
+    pageTitle="GTA 6 News & Reports"
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.jpg"
+    accentColor="#f7c948"
+  >
+    <p class="blog-lead" data-reveal>
+      Latest official updates, detailed investigations, launch preparations, and technical analyses direct from Rockstar
+      Games and Take-Two Interactive.
+    </p>
+
+    <div class="blog-grid" data-reveal>
+      {
+        posts.map((post) => (
+          <article class="blog-card">
+            <div class="blog-card-meta">
+              <time class="blog-date" datetime={post.data.updatedDate.toISOString().slice(0, 10)}>
+                {post.data.updatedDate.toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                  timeZone: 'UTC',
+                })}
+              </time>
+              <span class="blog-tag">Official Report</span>
+            </div>
+            <h2 class="blog-title">
+              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+            </h2>
+            <p class="blog-desc">{post.data.description}</p>
+            <a class="blog-read-more" href={`/blog/${post.id}`}>
+              Read Analysis <span>→</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <Keywords />
+  </InnerPageLayout>
+</Base>
+
+<style>
+.blog-lead {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2.5rem;
+  max-width: 72ch;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.blog-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(247,201,72,0.35);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+
+.blog-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-date {
+  font-size: 0.8rem;
+  color: #f7c948;
+  font-family: var(--display, 'Unbounded', sans-serif);
+}
+
+.blog-tag {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.06);
+  padding: 0.2rem 0.5rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+.blog-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.15rem;
+  line-height: 1.4;
+  margin: 0;
+}
+.blog-title a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.blog-title a:hover {
+  color: #f7c948;
+}
+
+.blog-desc {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.blog-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f7c948;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: gap 0.2s;
+}
+.blog-read-more:hover {
+  gap: 0.7rem;
+}
+</style>

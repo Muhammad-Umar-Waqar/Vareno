@@ -1,0 +1,251 @@
+---
+/**
+ * Aceternity-inspired CTA with Dashed Grid Lines & Corner Crosshairs
+ * Features:
+ * - Dashed border grid with + intersection crosshairs
+ * - Radial spotlight gradient
+ * - Premium typography, badges, and CTA action
+ */
+
+interface Props {
+  badge?: string;
+  title: string;
+  highlight?: string;
+  leadText?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+}
+
+const {
+  badge = "Official Confirmation",
+  title,
+  highlight,
+  leadText,
+  ctaText,
+  ctaHref,
+  secondaryCtaText,
+  secondaryCtaHref,
+} = Astro.props;
+---
+
+<div class="cta-dashed-box" data-reveal>
+  <!-- Corner Plus Sign Crosshairs -->
+  <span class="corner-cross corner-tl" aria-hidden="true">+</span>
+  <span class="corner-cross corner-tr" aria-hidden="true">+</span>
+  <span class="corner-cross corner-bl" aria-hidden="true">+</span>
+  <span class="corner-cross corner-br" aria-hidden="true">+</span>
+
+  <!-- Inner ambient background spotlight -->
+  <div class="dashed-spotlight" aria-hidden="true"></div>
+
+  <div class="dashed-inner-grid">
+    <div class="dashed-content">
+      {badge && (
+        <span class="dashed-badge">
+          <span class="dashed-badge-dot"></span>
+          {badge}
+        </span>
+      )}
+
+      <h3 class="dashed-title">
+        {title} {highlight && <span class="dashed-highlight">{highlight}</span>}
+      </h3>
+
+      {leadText && <p class="dashed-lead">{leadText}</p>}
+
+      <!-- Slot for custom paragraphs or 2-column features -->
+      <div class="dashed-slot-area">
+        <slot />
+      </div>
+
+      {(ctaText || secondaryCtaText) && (
+        <div class="dashed-btn-row">
+          {ctaText && ctaHref && (
+            <a class="dashed-btn-primary" href={ctaHref}>
+              <span>{ctaText}</span>
+              <span class="dashed-btn-arrow">→</span>
+            </a>
+          )}
+          {secondaryCtaText && secondaryCtaHref && (
+            <a class="dashed-btn-ghost" href={secondaryCtaHref}>
+              {secondaryCtaText}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+.cta-dashed-box {
+  position: relative;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  background: rgba(14, 11, 24, 0.45);
+  backdrop-filter: blur(14px);
+  padding: 3rem 3rem;
+  margin: 3.5rem 0;
+  border-radius: 1.5rem;
+  overflow: visible;
+  isolation: isolate;
+  transition: border-color 0.3s ease;
+}
+
+.cta-dashed-box:hover {
+  border-color: rgba(247, 201, 72, 0.45);
+}
+
+/* Crosshair Markers at 4 corners */
+.corner-cross {
+  position: absolute;
+  font-family: monospace;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(247, 201, 72, 0.7);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 0.25s, color 0.25s;
+}
+.corner-tl { top: -11px; left: -9px; }
+.corner-tr { top: -11px; right: -9px; }
+.corner-bl { bottom: -11px; left: -9px; }
+.corner-br { bottom: -11px; right: -9px; }
+
+.cta-dashed-box:hover .corner-cross {
+  color: #f7c948;
+  transform: scale(1.25);
+}
+
+/* Ambient Spotlight */
+.dashed-spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(247, 201, 72, 0.08) 0%, rgba(255, 92, 138, 0.04) 50%, transparent 75%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dashed-inner-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.dashed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+}
+
+.dashed-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f7c948;
+}
+
+.dashed-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+  line-height: 1.25;
+}
+
+.dashed-highlight {
+  color: #f7c948;
+  background: linear-gradient(135deg, #f7c948 0%, #ff8c42 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashed-lead {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 75ch;
+  margin: 0 0 1.5rem;
+}
+
+.dashed-slot-area {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+}
+
+.dashed-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.dashed-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #f7c948;
+  color: #05040a;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.85rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.dashed-btn-primary:hover {
+  background: #ffd84a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(247, 201, 72, 0.35);
+}
+
+.dashed-btn-arrow {
+  transition: transform 0.2s;
+}
+.dashed-btn-primary:hover .dashed-btn-arrow {
+  transform: translateX(4px);
+}
+
+.dashed-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.dashed-btn-ghost:hover {
+  color: #f7c948;
+}
+
+@media (max-width: 700px) {
+  .cta-dashed-box {
+    padding: 2rem 1.5rem;
+  }
+}
+</style>

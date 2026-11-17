@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { breadcrumbSchema } from '../lib/seo';
+
+const title = 'Privacy Policy | Vareno Play GTA 6 Guide';
+const description =
+  'Vareno Play’s GTA 6 guide does not ask you to create an account. Portrait photos are sent to RunComfy to make the image and are not sold.';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Privacy', path: '/privacy' },
+];
+---
+
+<Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
+  <article class="shell prose">
+    <Crumbs items={crumbs} />
+    <h1>Privacy</h1>
+    <p class="lead">
+      Reading the guides does not require an account. The only personal file this site asks for is the photo you
+      choose to upload on the portrait tool.
+    </p>
+    <h2>The portrait photo</h2>
+    <p>
+      When you create a portrait, the server sends that photo to RunComfy so Google’s Nano Banana 2 Edit model can
+      make a new image. The photo is held in server memory only long enough to run that request, or for up to 15
+      minutes if the image service has to fetch it from a short-lived link on this site. We do not sell the photo and
+      we do not build a public gallery from it.
+    </p>
+    <p>
+      The tool allows 5 portraits an hour from the same network address. That counter stays in memory on the server.
+      Use a photo you have the right to upload.
+    </p>
+    <h2>Ads and store links</h2>
+    <p>
+      Store buttons go to PlayStation, Microsoft, or Rockstar and are marked as sponsored links. If an ad slot is
+      turned on later, the ad partner’s own policy will apply to that slot. Empty slots are not filled with placeholder
+      claims.
+    </p>
+    <p>This notice was last updated on November 16, 2026.</p>
+  </article>
+</Base>

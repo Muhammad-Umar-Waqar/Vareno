@@ -1,0 +1,116 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Byline from '../../components/Byline.astro';
+import InnerPageLayout from '../../components/InnerPageLayout.astro';
+import Keywords from '../../components/Keywords.astro';
+import { blogPostingSchema, breadcrumbSchema } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const path = `/blog/${post.id}`;
+const seoTitle = `${post.data.title} | Vareno Play`;
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Blog', path: '/blog' },
+  { name: post.data.title, path },
+];
+---
+
+<Base
+  title={seoTitle}
+  description={post.data.description}
+  ogType="article"
+  schemas={[
+    blogPostingSchema({
+      headline: post.data.title,
+      description: post.data.description,
+      path,
+      published: post.data.pubDate,
+      modified: post.data.updatedDate,
+    }),
+    breadcrumbSchema(crumbs),
+  ]}
+>
+  <InnerPageLayout
+    pageTitle={post.data.title}
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.jpg"
+    accentColor="#f7c948"
+  >
+    <Byline
+      updated={post.data.updatedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}
+      updatedISO={post.data.updatedDate.toISOString().slice(0, 10)}
+    />
+
+    <div class="article-content" data-reveal>
+      <Content />
+    </div>
+
+    <div class="article-nav" data-reveal>
+      <a class="article-back-link" href="/blog">← Back to All GTA 6 Reports</a>
+    </div>
+
+    <Keywords />
+  </InnerPageLayout>
+</Base>
+
+<style>
+.article-content {
+  max-width: 85ch;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.8);
+  font-size: 1.05rem;
+  margin-bottom: 3rem;
+}
+
+.article-content :global(h2) {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 2.5rem 0 1rem;
+}
+
+.article-content :global(p) {
+  margin-bottom: 1.25rem;
+}
+
+.article-content :global(a) {
+  color: #f7c948;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-content :global(ul),
+.article-content :global(ol) {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-content :global(li) {
+  margin-bottom: 0.5rem;
+}
+
+.article-nav {
+  margin-bottom: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.article-back-link {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.9rem;
+  color: #f7c948;
+  text-decoration: none;
+  font-weight: 600;
+}
+</style>

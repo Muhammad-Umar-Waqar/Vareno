@@ -1,0 +1,81 @@
+---
+/**
+ * StickyFeatures — sticky-scroll reveal section.
+ * Left panel stays pinned while right side scrolls through GTA6 features.
+ * Inspired by Aceternity "sticky-scroll-reveal-demo".
+ * Scrollbar on the inner scroll is hidden via CSS.
+ */
+
+const features = [
+  {
+    num: '01',
+    tag: 'The Story',
+    title: 'Two outlaws, one shot at survival',
+    body: 'Jason and Lucia. Former partners drawn back together by desperation, betrayal, and a score that spirals out of control across the state of Leonida. Rockstar calls this the most ambitious narrative they have ever put to screen.',
+    img: '/images/gta6-hero.jpg',
+    color: '#f5b400',
+  },
+  {
+    num: '02',
+    tag: 'Vice City',
+    title: 'The sunniest place in America — and the darkest',
+    body: 'Leonida stretches from Vice City\'s neon-drenched coastline to the Everglades and rural highways inland. Rockstar built the state at a scale no previous GTA map has matched.',
+    img: '/images/gta6-car.jpg',
+    color: '#39d0ff',
+  },
+  {
+    num: '03',
+    tag: 'Characters',
+    title: 'Lucia — the first playable woman in GTA history',
+    body: 'Series protagonist for the first time ever, Lucia is relentless, calculating, and impossible to ignore. Jason backs her up. Together they carry a story that Rockstar says will rival anything in cinematic gaming.',
+    img: '/images/gta6-rooftop.jpg',
+    color: '#ff6b3d',
+  },
+  {
+    num: '04',
+    tag: 'Nov 19 · 2026',
+    title: '$79.99 Standard · $99.99 Ultimate',
+    body: "Pre-orders opened June 25, 2026. Every copy bought before launch includes the Vintage Vice City Pack. Digital pre-orders add one free month of GTA+. No separate collector's edition has been announced.",
+    img: '/images/gta6-lockload.jpg',
+    color: '#ff2f86',
+  },
+];
+---
+
+<section class="sf-outer" id="sf-outer" data-sticky-features>
+  <div class="sf-inner" id="sf-inner">
+
+    <!-- LEFT: sticky heading panel -->
+    <div class="sf-left" id="sf-left">
+      <p class="sf-eyebrow">What we know</p>
+      <h2 class="sf-heading" id="sf-heading">Grand<br/>Theft<br/>Auto VI</h2>
+      <div class="sf-progress-bar">
+        <div class="sf-progress-fill" id="sf-progress"></div>
+      </div>
+      <div class="sf-active-num" id="sf-active-num">01</div>
+    </div>
+
+    <!-- RIGHT: scrolling feature cards -->
+    <div class="sf-right" id="sf-right">
+      {features.map((f, i) => (
+        <div
+          class="sf-item"
+          data-sf-item={i}
+          style={`--feature-color: ${f.color}`}
+        >
+          <div class="sf-item-img">
+            <img src={f.img} alt={f.title} loading="lazy" />
+            <div class="sf-item-img-veil"></div>
+            <span class="sf-item-tag">{f.tag}</span>
+          </div>
+          <div class="sf-item-body">
+            <span class="sf-item-num">{f.num}</span>
+            <h3 class="sf-item-title">{f.title}</h3>
+            <p class="sf-item-text">{f.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

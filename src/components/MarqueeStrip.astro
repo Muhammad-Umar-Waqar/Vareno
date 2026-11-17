@@ -1,0 +1,73 @@
+---
+/**
+ * MarqueeStrip — infinite 3-D perspective marquee of GTA 6 images
+ * Two rows: row 1 scrolls left, row 2 scrolls right.
+ * Slow, cinematic velocity with 18 unique official Rockstar GTA VI artworks.
+ */
+
+interface Props {
+  speed?: number; /* seconds for one full loop */
+}
+const { speed = 110 } = Astro.props;
+
+/* Row 1: 9 completely distinct official Rockstar key arts & screenshots */
+const row1Images = [
+  { src: '/images/gta6-hero.jpg',          alt: 'Jason and Lucia Robbery' },
+  { src: '/images/gta6-rooftop.jpg',       alt: 'Vice City Rooftop Skyline' },
+  { src: '/images/gta6-gas-station.jpg',   alt: 'Jason and Lucia Gas Station Heist' },
+  { src: '/images/gta6-car.jpg',           alt: 'Sunset Muscle Car Overlook' },
+  { src: '/images/gta6-lockload.jpg',      alt: 'Lock and Load Action Art' },
+  { src: '/images/gta6-beach-logo.jpg',    alt: 'Vice City Beachfront Key Art' },
+  { src: '/images/gta6-motel.jpg',         alt: 'Ocean View Motel Scene' },
+  { src: '/images/gta6-post-vicecity.jpg', alt: 'Vice City Official Postcard' },
+  { src: '/images/cover-picture.jpg',      alt: 'Grand Theft Auto VI Official Panorama' },
+];
+
+/* Row 2: 9 completely different distinct official Rockstar key arts & screenshots */
+const row2Images = [
+  { src: '/images/gta6-official-cover.jpg',     alt: 'Grand Theft Auto VI Official Cover' },
+  { src: '/images/gta6-album.jpg',              alt: 'The Album Cover Art' },
+  { src: '/images/gta6-post-keys.jpg',          alt: 'Leonida Keys Official Postcard' },
+  { src: '/images/gta6-shot-vc1.jpg',           alt: 'Vice City Downtown Neon Nights' },
+  { src: '/images/gta6-shot-vc2.jpg',           alt: 'Vice City Marina & Skyline' },
+  { src: '/images/gta6-post-grassrivers.jpg',   alt: 'Grassrivers Wetlands Postcard' },
+  { src: '/images/gta6-shot-duval.jpg',         alt: 'Jason Duval In Action' },
+  { src: '/images/gta6-post-kalaga.jpg',        alt: 'Mount Kalaga National Park Postcard' },
+  { src: '/images/gta6-shot-lucia.jpg',         alt: 'Lucia Caminos In Action' },
+];
+
+/* Duplicate once for seamless infinite loop */
+const row1 = [...row1Images, ...row1Images];
+const row2 = [...row2Images, ...row2Images];
+---
+
+<section class="mq-section" aria-label="GTA VI official image gallery">
+  <div class="mq-wrap" style={`--mq-speed: ${speed}s`}>
+
+    <!-- Row 1: scrolls LEFT -->
+    <div class="mq-row mq-row--fwd" aria-hidden="true">
+      <div class="mq-track">
+        {row1.map((img) => (
+          <div class="mq-card">
+            <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Row 2: scrolls RIGHT (reverse) -->
+    <div class="mq-row mq-row--rev" aria-hidden="true">
+      <div class="mq-track">
+        {row2.map((img) => (
+          <div class="mq-card">
+            <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Vignette fades edges -->
+  <div class="mq-vignette" aria-hidden="true"></div>
+</section>

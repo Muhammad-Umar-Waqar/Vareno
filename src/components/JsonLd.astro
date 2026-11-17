@@ -1,0 +1,9 @@
+---
+const { data } = Astro.props;
+import { jsonLd } from '../lib/seo';
+interface Props {
+  data: unknown;
+}
+---
+
+<script type="application/ld+json" set:html={jsonLd(data)} />

@@ -1,0 +1,388 @@
+---
+import Base from '../../layouts/Base.astro';
+import Byline from '../../components/Byline.astro';
+import InnerPageLayout from '../../components/InnerPageLayout.astro';
+import Keywords from '../../components/Keywords.astro';
+import { scenes } from '../../lib/scenes';
+import { articleSchema, breadcrumbSchema } from '../../lib/seo';
+
+const title = 'Coastal City Portrait from Your Photo | Vareno Play';
+const description =
+  'Upload a photo and place it on a beach, a downtown street, a highway, or a boardwalk. Vareno Play makes fan art from your picture.';
+const path = '/tools/portrait';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'AI Portrait Tool', path },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  schemas={[
+    articleSchema({ headline: 'Coastal city portrait from your photo', description, path }),
+    breadcrumbSchema(crumbs),
+  ]}
+>
+  <InnerPageLayout
+    pageTitle="AI Character Portrait"
+    crumbs={crumbs}
+    heroImg="/images/gta6-car.jpg"
+    accentColor="#ffaa00"
+  >
+    <Byline />
+    <p class="tool-lead" data-reveal>
+      Upload a picture of yourself, pick an iconic Vice City location, and our AI crafts a cinematic fan-art character
+      portrait. It keeps your facial features and blends you into the atmosphere of Leonida.
+    </p>
+
+    <!-- Interactive Portrait Generator Container -->
+    <div class="tool-container" data-reveal>
+      <form id="portrait-form" class="tool-form">
+
+        <!-- File Upload Section -->
+        <div class="tool-upload-box">
+          <div class="preview-frame" id="preview-frame">
+            <span id="preview-label">📷 Uploaded photo preview</span>
+          </div>
+          <div class="tool-upload-action">
+            <label class="tool-btn" for="photo">Choose Your Photo</label>
+            <input id="photo" class="visually-hidden" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required />
+            <span class="tool-tip">JPEG, PNG, or WebP. Max 2 MB.</span>
+          </div>
+        </div>
+
+        <!-- Location Selection -->
+        <fieldset class="tool-fieldset">
+          <legend class="tool-legend">Select a Vice City Setting</legend>
+          <div class="scene-grid">
+            {
+              scenes.map((scene, index) => (
+                <label class="scene-radio-card">
+                  <input type="radio" name="scene" value={scene.id} checked={index === 0} required />
+                  <span class="scene-radio-content">
+                    <strong class="scene-name">{scene.label}</strong>
+                    <span class="scene-desc">{scene.detail}</span>
+                  </span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <p class="tool-disclaimer">
+          Original character restyles the clothes and lighting. It does not copy Lucia, Jason, or any official Rockstar render.
+          Setting names match the <a href="/map">map guide</a>.
+        </p>
+
+        <button class="tool-submit-btn" type="submit">
+          <span>⚡ Generate Portrait</span>
+        </button>
+      </form>
+
+      <!-- Processing & Output State -->
+      <div class="tool-output-area">
+        <p class="status" id="portrait-status" role="status"></p>
+
+        <div class="result-card" id="portrait-result" hidden>
+          <h2 class="result-title">Your Leonida Fan Art</h2>
+          <div class="result-image-frame">
+            <img id="portrait-image" alt="Generated coastal-city portrait" width="768" height="1024" />
+          </div>
+          <a class="tool-btn tool-btn--gold" id="portrait-download" href="#portrait-result" download="gta6-character-portrait.png">
+            ⬇ Download Character Portrait
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <Keywords />
+  </InnerPageLayout>
+</Base>
+
+<style>
+.tool-lead {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2.5rem;
+  max-width: 72ch;
+}
+
+.tool-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  backdrop-filter: blur(12px);
+}
+
+.tool-upload-box {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.preview-frame {
+  width: 140px;
+  height: 140px;
+  border-radius: 1rem;
+  border: 2px dashed rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  padding: 0.5rem;
+}
+.preview-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tool-upload-action {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tool-btn {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+}
+.tool-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
+  transform: translateY(-2px);
+}
+.tool-btn--gold {
+  background: #f7c948;
+  color: #05040a;
+  border-color: #f7c948;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+.tool-btn--gold:hover {
+  background: #ffd84a;
+}
+
+.tool-tip {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.tool-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.tool-legend {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.scene-radio-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.scene-radio-card input {
+  position: absolute;
+  opacity: 0;
+}
+
+.scene-radio-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  transition: all 0.25s ease;
+  height: 100%;
+}
+
+.scene-radio-card input:checked + .scene-radio-content {
+  border-color: #f7c948;
+  background: rgba(247,201,72,0.1);
+  box-shadow: 0 0 20px rgba(247,201,72,0.15);
+}
+
+.scene-name {
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.scene-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+}
+
+.tool-disclaimer {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.tool-disclaimer a { color: #f7c948; }
+
+.tool-submit-btn {
+  background: linear-gradient(135deg, #ffaa00 0%, #ff5c8a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tool-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255,170,0,0.3);
+}
+
+.status {
+  font-size: 1rem;
+  color: #f7c948;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.result-card {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.03);
+  text-align: center;
+}
+
+.result-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.result-image-frame {
+  max-width: 450px;
+  margin: 0 auto 1.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+.result-image-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+</style>
+
+<script>
+  const form = document.querySelector('#portrait-form');
+  const status = document.querySelector('#portrait-status');
+  const fileInput = document.querySelector('#photo');
+  const frame = document.querySelector('#preview-frame');
+  const result = document.querySelector('#portrait-result');
+  const image = document.querySelector('#portrait-image');
+  const download = document.querySelector('#portrait-download');
+  const submit = form?.querySelector('button[type="submit"]');
+
+  if (
+    form instanceof HTMLFormElement &&
+    status instanceof HTMLElement &&
+    fileInput instanceof HTMLInputElement &&
+    frame instanceof HTMLElement &&
+    result instanceof HTMLElement &&
+    image instanceof HTMLImageElement &&
+    download instanceof HTMLAnchorElement &&
+    submit instanceof HTMLButtonElement
+  ) {
+    let previewUrl = '';
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrl = URL.createObjectURL(file);
+      frame.replaceChildren();
+      const preview = document.createElement('img');
+      preview.src = previewUrl;
+      preview.alt = 'The photo you selected';
+      frame.append(preview);
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      status.textContent = 'Creating portrait…';
+      result.hidden = true;
+      submit.disabled = true;
+
+      try {
+        const response = await fetch('/api/portrait', { method: 'POST', body: new FormData(form) });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error || 'The portrait could not be started.');
+
+        for (let attempt = 0; attempt < 40; attempt += 1) {
+          await new Promise((resolve) => window.setTimeout(resolve, 2000));
+          const check = await fetch(`/api/portrait?id=${encodeURIComponent(payload.id)}`);
+          const data = await check.json();
+          if (data.status === 'completed' && data.image) {
+            image.src = data.image;
+            download.href = data.image;
+            result.hidden = false;
+            status.textContent = 'Portrait ready. It is fan art, not a game screenshot.';
+            return;
+          }
+          if (!check.ok) throw new Error(data.error || 'The portrait did not finish.');
+          status.textContent = 'Still working on the portrait…';
+        }
+        throw new Error('The portrait is taking longer than expected. Try again.');
+      } catch (error) {
+        status.textContent = error instanceof Error ? error.message : 'The portrait could not be created.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
+</script>

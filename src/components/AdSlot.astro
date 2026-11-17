@@ -1,0 +1,13 @@
+---
+const raw = import.meta.env.PUBLIC_AD_HEIGHT;
+const height = Number(raw || 0);
+const show = Number.isFinite(height) && height >= 90;
+---
+
+{
+  show && (
+    <aside class="ad" style={`min-height:${height}px`} aria-label="Advertisement">
+      <p>Advertisement</p>
+    </aside>
+  )
+}

@@ -1,0 +1,23 @@
+---
+interface Source {
+  name: string;
+  url: string;
+}
+interface Props {
+  items: Source[];
+}
+const { items } = Astro.props;
+---
+
+<h2>Sources</h2>
+<ul class="source-list">
+  {
+    items.map((item) => (
+      <li>
+        <a href={item.url} rel="noopener noreferrer">
+          {item.name}
+        </a>
+      </li>
+    ))
+  }
+</ul>

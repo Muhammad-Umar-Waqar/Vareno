@@ -1,0 +1,497 @@
+---
+import Base from '../layouts/Base.astro';
+import Byline from '../components/Byline.astro';
+import FaqList from '../components/FaqList.astro';
+import Sources from '../components/Sources.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Keywords from '../components/Keywords.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
+import CtaDashedGrid from '../components/CtaDashedGrid.astro';
+import GlowingCard from '../components/GlowingCard.astro';
+import { sources } from '../data/site';
+import { articleSchema, breadcrumbSchema, faqSchema } from '../lib/seo';
+import GuideIcon from '../components/icons/GuideIcon.astro';
+
+const title = 'Will GTA 6 Be on PC? Platforms and Online | Vareno Play';
+const description =
+  'GTA 6 launches November 19, 2026 on PS5 and Xbox Series X|S. Rockstar has not posted a PC date, a cross-play plan, or a GTA 6 online mode. Sources linked.';
+const path = '/platforms';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Platforms', path },
+];
+const faqs = [
+  {
+    q: 'Will GTA 6 be on PC?',
+    a: "Rockstar's GTA VI page lists PlayStation 5 and Xbox Series X|S for November 19, 2026. It does not list a PC version or a PC date. Take-Two's June 24, 2026 pre-order announcement names the same two consoles and no PC date.",
+  },
+  {
+    q: 'When will GTA 6 be on PC?',
+    a: "No PC date is on Rockstar's site or in the Take-Two pre-order release, as of November 16, 2026. When a date exists, it should show up from Rockstar first. This page will follow that post rather than a rumor.",
+  },
+  {
+    q: 'Will GTA 6 have online?',
+    a: 'Take-Two called Grand Theft Auto VI a single-player experience. The PlayStation listing says 1 player and offline play enabled. The free month of GTA+ with a digital pre-order is described as access to the existing GTA Online library, including GTA V, not as a new GTA 6 online mode.',
+  },
+  {
+    q: 'Will GTA 6 be crossplay?',
+    a: "Cross-play between PlayStation 5 and Xbox Series X|S is not in Rockstar's launch pages or in Take-Two's pre-order announcement. Those pages do name both consoles for the November 19, 2026 release of the single-player game.",
+  },
+  {
+    q: 'Will GTA 6 be cross platform?',
+    a: 'At launch, the published platforms are PlayStation 5 and Xbox Series X|S. A shared cross-platform online service is not described in those announcements. PC is also unlisted. Buy the version for the console you will play on.',
+  },
+];
+
+const hardwareFeatures = [
+  {
+    icon: 'sync',
+    badge: 'Hardware Sync',
+    title: 'PS5 Pro Enhanced',
+    desc: 'Official PlayStation Store listing confirms PS5 Pro Enhanced tagging with advanced ray-traced reflections and higher fidelity modes.',
+    stat: 'PSSR',
+    statLabel: 'AI Upscaling',
+    glowColor: '#4a9eff',
+  },
+  {
+    icon: 'gamepad',
+    badge: 'Haptics',
+    title: 'DualSense Trigger Physics',
+    desc: 'Custom trigger tension profiles for every vehicle acceleration, tire skid, weapon recoil, and Vice City weather dynamic.',
+    stat: 'DualSense',
+    statLabel: 'Haptic Engine',
+    glowColor: '#f7c948',
+  },
+  {
+    icon: 'ssd',
+    badge: 'I/O Speed',
+    title: 'Custom High-Speed SSD',
+    desc: 'Engineered entirely for direct storage I/O, allowing seamless transitions from urban neon highways directly into interiors without loading screens.',
+    stat: 'Zero',
+    statLabel: 'Load Screens',
+    glowColor: '#4ade80',
+  },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  ogType="article"
+  schemas={[
+    articleSchema({ headline: 'Will GTA 6 be on PC?', description, path }),
+    breadcrumbSchema(crumbs),
+    faqSchema(faqs),
+  ]}
+>
+  <InnerPageLayout pageTitle="GTA 6 Platforms" crumbs={crumbs} heroImg="/images/gta6-rooftop.jpg" accentColor="#4a9eff">
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 1: TOP 2-COLUMN PLATFORM OVERVIEW
+         ══════════════════════════════════════════════════════════ -->
+    <section class="two-col-plat-hero" data-reveal>
+      <div class="plat-meta-col">
+        <span class="plat-badge">Console Launch Exclusivity</span>
+        <h2 class="plat-heading">Target Platforms &amp; PC Status</h2>
+        <p class="plat-lead">{faqs[0].a}</p>
+        <Byline />
+      </div>
+
+      <div class="plat-status-card">
+        <div class="psc-top">
+          <span class="psc-pill">OFFICIAL PLATFORM STATUS</span>
+          <span class="psc-verdict">Consoles Locked</span>
+        </div>
+        <div class="psc-list">
+          <div class="psc-row psc-row--active">
+            <span class="psc-icon"><GuideIcon name="gamepad" size={22} /></span>
+            <div class="psc-info">
+              <strong>PlayStation 5 &amp; PS5 Pro</strong>
+              <span>Target Launch: Nov 19, 2026</span>
+            </div>
+            <span class="psc-tag psc-tag--green">Confirmed</span>
+          </div>
+          <div class="psc-row psc-row--active">
+            <span class="psc-icon"><GuideIcon name="monitor" size={22} /></span>
+            <div class="psc-info">
+              <strong>Xbox Series X &amp; Series S</strong>
+              <span>Target Launch: Nov 19, 2026</span>
+            </div>
+            <span class="psc-tag psc-tag--green">Confirmed</span>
+          </div>
+          <div class="psc-row psc-row--pending">
+            <span class="psc-icon"><GuideIcon name="news" size={22} /></span>
+            <div class="psc-info">
+              <strong>PC (Windows)</strong>
+              <span>No announcement date yet</span>
+            </div>
+            <span class="psc-tag psc-tag--amber">Pending</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <AdSlot />
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 2: 3D PLATFORM HARDWARE CARDS
+         ══════════════════════════════════════════════════════════ -->
+    <section class="plat-cards-section" data-reveal>
+      <h2 class="plat-section-title">Launch Platform Details</h2>
+      <div class="plat-cards">
+
+        <div class="plat-card plat-card--ps5">
+          <div class="plat-card-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect width="40" height="40" rx="8" fill="rgba(0,112,243,0.15)"/>
+              <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="18" fill="#0070f3" font-weight="bold">PS5</text>
+            </svg>
+          </div>
+          <div class="plat-card-body">
+            <h3 class="plat-card-name">PlayStation 5 &amp; PS5 Pro</h3>
+            <span class="plat-card-status plat-card-status--yes">✅ Confirmed November 19, 2026</span>
+            <p class="plat-card-note">
+              Rockstar states GTA VI plays best on PlayStation 5. The PS Store listing adds DualSense vibration, adaptive trigger effects, and official PS5 Pro Enhanced tagging.
+            </p>
+          </div>
+        </div>
+
+        <div class="plat-card plat-card--xbox">
+          <div class="plat-card-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect width="40" height="40" rx="8" fill="rgba(16,124,16,0.15)"/>
+              <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="13" fill="#107c10" font-weight="bold">Xbox</text>
+            </svg>
+          </div>
+          <div class="plat-card-body">
+            <h3 class="plat-card-name">Xbox Series X|S</h3>
+            <span class="plat-card-status plat-card-status--yes">✅ Confirmed November 19, 2026</span>
+            <p class="plat-card-note">
+              Named alongside PS5 on Rockstar’s portal and in Take-Two’s earnings releases. Both Series X and the compact Series S are supported.
+            </p>
+          </div>
+        </div>
+
+        <div class="plat-card plat-card--pc">
+          <div class="plat-card-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect width="40" height="40" rx="8" fill="rgba(255,255,255,0.05)"/>
+              <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.4)" font-weight="bold">PC</text>
+            </svg>
+          </div>
+          <div class="plat-card-body">
+            <h3 class="plat-card-name">PC Version</h3>
+            <span class="plat-card-status plat-card-status--no">⏳ Unannounced</span>
+            <p class="plat-card-note">
+              No PC release date or system requirements have been announced by Rockstar Games or Take-Two Interactive. Follow official updates rather than speculative rumors.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SECTION 3: 2-COLUMN HARDWARE COMPARISON & TABLE
+         ══════════════════════════════════════════════════════════ -->
+    <section class="two-col-compare-split" data-reveal>
+      <div class="compare-dashed-col">
+        <CtaDashedGrid
+          badge="PC Strategy"
+          title="Why Isn't GTA 6"
+          highlight="On PC At Launch?"
+          leadText="Rockstar has historically released PC ports 12 to 18 months after console launches to dedicate engineering to PC-exclusive ultra settings."
+          ctaText="Review Official Filings"
+          ctaHref={sources.taketwo.url}
+          secondaryCtaText="See Pricing"
+          secondaryCtaHref="/price"
+        >
+          <p>
+            Grand Theft Auto IV, Grand Theft Auto V, and Red Dead Redemption 2 all launched initially on home consoles before receiving enhanced PC editions.
+            Rockstar prioritizes platform-specific hardware optimization before scaling to the infinite hardware combinations of PC gaming.
+          </p>
+        </CtaDashedGrid>
+      </div>
+
+      <div class="compare-table-col">
+        <h3 class="table-section-title">Launch Matrix</h3>
+        <div class="plat-table-wrap">
+          <table>
+            <caption class="visually-hidden">GTA 6 platforms announced for launch</caption>
+            <thead>
+              <tr>
+                <th scope="col">Platform</th>
+                <th scope="col">Status on Nov 19, 2026</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">PlayStation 5</th>
+                <td><span class="plat-yes">✅ Yes</span> — DualSense Haptics &amp; PS5 Pro Enhanced</td>
+              </tr>
+              <tr>
+                <th scope="row">Xbox Series X|S</th>
+                <td><span class="plat-yes">✅ Yes</span> — Full day-one support</td>
+              </tr>
+              <tr>
+                <th scope="row">PC (Windows)</th>
+                <td><span class="plat-no">⏳ Unannounced</span> — No official date</td>
+              </tr>
+              <tr>
+                <th scope="row">PlayStation 4 / Xbox One</th>
+                <td><span class="plat-no">❌ No</span> — Legacy consoles unsupported</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Glowing Hardware Features -->
+    <GlowingCard
+      title="Hardware Optimization &amp; Physics"
+      subtitle="Interact with each card to explore next-generation rendering and input capabilities."
+      items={hardwareFeatures}
+    />
+
+    <!-- Aceternity Simple FAQs with Background -->
+    <FaqList
+      title="GTA 6 Platforms &amp; PC FAQ"
+      subtitle="Verified answers on PC ports, cross-play, online modes, and console hardware performance."
+      badge="Hardware Verification"
+      items={faqs}
+    />
+
+    <Keywords />
+
+    <Sources items={[sources.rockstar, sources.taketwo, sources.playstation]} />
+  </InnerPageLayout>
+</Base>
+
+<style>
+/* ── TOP 2-COLUMN PLATFORM OVERVIEW ──────────────────────────── */
+.two-col-plat-hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+.plat-badge {
+  display: inline-block;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4a9eff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(74, 158, 255, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.plat-heading {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+
+.plat-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.plat-status-card {
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.08) 0%, rgba(14, 10, 24, 0.7) 100%);
+  border: 1px solid rgba(74, 158, 255, 0.25);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.psc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.psc-pill {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #4a9eff;
+  letter-spacing: 0.08em;
+}
+
+.psc-verdict {
+  font-size: 0.78rem;
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.psc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.psc-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.psc-icon {
+  font-size: 1.5rem;
+}
+
+.psc-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.psc-info strong {
+  color: #fff;
+  font-size: 0.92rem;
+}
+.psc-info span {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.psc-tag {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+}
+.psc-tag--green { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+.psc-tag--amber { background: rgba(247, 201, 72, 0.15); color: #f7c948; }
+
+/* ── 3D PLATFORM HARDWARE CARDS ──────────────────────────────── */
+.plat-cards-section {
+  margin-bottom: 4rem;
+}
+
+.plat-section-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.03em;
+}
+
+.plat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.plat-card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.5rem;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.plat-card:hover { transform: translateY(-4px); }
+.plat-card--ps5:hover { border-color: rgba(74, 158, 255, 0.4); box-shadow: 0 16px 40px rgba(0, 112, 243, 0.15); }
+.plat-card--xbox:hover { border-color: rgba(74, 222, 128, 0.4); box-shadow: 0 16px 40px rgba(16, 124, 16, 0.15); }
+.plat-card--pc { opacity: 0.8; }
+.plat-card--pc:hover { opacity: 1; border-color: rgba(255, 255, 255, 0.25); }
+
+.plat-card-icon { flex-shrink: 0; }
+.plat-card-body { flex: 1; }
+.plat-card-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+}
+.plat-card-status {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  margin-bottom: 0.85rem;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+.plat-card-status--yes { background: rgba(74,222,128,0.12); color: #4ade80; }
+.plat-card-status--no { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); }
+.plat-card-note { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.65; margin: 0; }
+
+/* ── 2-COLUMN HARDWARE COMPARISON ────────────────────────────── */
+.two-col-compare-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.table-section-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1.5rem;
+}
+
+.plat-table-wrap {
+  overflow-x: auto;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+.plat-table-wrap table { width: 100%; border-collapse: collapse; }
+.plat-table-wrap th,
+.plat-table-wrap td {
+  padding: 1.1rem 1.4rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.plat-table-wrap thead th {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+}
+.plat-table-wrap th[scope="row"] { color: rgba(255, 255, 255, 0.7); font-weight: 600; }
+.plat-yes { color: #4ade80; font-weight: 700; }
+.plat-no { color: rgba(255, 255, 255, 0.45); }
+
+@media (max-width: 900px) {
+  .two-col-plat-hero,
+  .two-col-compare-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+</style>

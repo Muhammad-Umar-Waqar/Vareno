@@ -1,0 +1,198 @@
+---
+import MarqueeStrip from './MarqueeStrip.astro';
+
+interface Crumb {
+  name: string;
+  path: string;
+}
+
+interface Props {
+  pageTitle: string;
+  crumbs?: Crumb[];
+  heroImg?: string;
+  heroAlt?: string;
+  accentColor?: string; // e.g. '#f7c948' for gold, '#e63a3a' for red
+}
+
+const {
+  pageTitle,
+  crumbs = [],
+  heroImg = '/images/gta6-hero.jpg',
+  heroAlt = '',
+  accentColor = '#f7c948',
+} = Astro.props;
+---
+
+<div class="ip-wrapper">
+
+  <!-- ── Cinematic page hero ─────────────────────────────────────── -->
+  <header class="ip-hero" style={`--hero-img: url('${heroImg}'); --accent: ${accentColor}`}>
+    <div class="ip-hero-img-wrap" aria-hidden="true">
+      <img class="ip-hero-img" src={heroImg} alt={heroAlt} loading="eager" decoding="async" />
+    </div>
+    <div class="ip-hero-veil" aria-hidden="true"></div>
+
+    <!-- decorative diagonal slice -->
+    <div class="ip-hero-slice" aria-hidden="true"></div>
+
+    <div class="shell ip-hero-content">
+      {crumbs.length > 0 && (
+        <nav class="ip-crumbs" aria-label="Breadcrumb">
+          {crumbs.map((c, i) => (
+            <>
+              {i > 0 && <span class="ip-crumbs-sep" aria-hidden="true">›</span>}
+              {i < crumbs.length - 1
+                ? <a class="ip-crumbs-link" href={c.path}>{c.name}</a>
+                : <span class="ip-crumbs-current" aria-current="page">{c.name}</span>
+              }
+            </>
+          ))}
+        </nav>
+      )}
+      <h1 class="ip-title" data-reveal>
+        {pageTitle}
+        <span class="ip-title-accent" aria-hidden="true"></span>
+      </h1>
+    </div>
+  </header>
+
+  <!-- ── Page content area ───────────────────────────────────────── -->
+  <div class="ip-content">
+    <slot />
+  </div>
+
+  <!-- ── Bottom marquee ────────────────────────────────────────── -->
+  <MarqueeStrip speed={115} />
+</div>
+
+<style>
+/* ── Wrapper ─────────────────────────────── */
+.ip-wrapper {
+  --accent: #f7c948;
+  min-height: 100vh;
+}
+
+/* ── Hero ────────────────────────────────── */
+.ip-hero {
+  position: relative;
+  height: clamp(320px, 42vw, 580px);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+}
+
+.ip-hero-img-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.ip-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transform: scale(1.08);
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* gradient veils */
+.ip-hero-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right,
+      rgba(5,4,10,0.90) 0%,
+      rgba(5,4,10,0.55) 50%,
+      rgba(5,4,10,0.15) 100%),
+    linear-gradient(to top,
+      rgba(5,4,10,0.98) 0%,
+      rgba(5,4,10,0.6) 35%,
+      transparent 65%);
+  z-index: 1;
+}
+
+/* angled bottom slice */
+.ip-hero-slice {
+  position: absolute;
+  bottom: -2px;
+  left: 0; right: 0;
+  height: 80px;
+  background: var(--bg, #05040a);
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  z-index: 2;
+}
+
+.ip-hero-content {
+  position: relative;
+  z-index: 3;
+  padding-bottom: 3.5rem;
+  padding-top: 2rem;
+  width: min(90rem, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+/* breadcrumbs */
+.ip-crumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+  font-family: var(--body, 'Outfit', sans-serif);
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.ip-crumbs-link {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.ip-crumbs-link:hover { color: var(--accent); }
+.ip-crumbs-current { color: var(--accent); }
+.ip-crumbs-sep { color: rgba(255,255,255,0.3); }
+
+/* page title */
+.ip-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  position: relative;
+  display: inline-block;
+}
+
+.ip-title-accent {
+  display: block;
+  height: 4px;
+  width: 3.5rem;
+  margin-top: 0.6rem;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ── Content area ─────────────────────────── */
+.ip-content {
+  width: min(90rem, calc(100% - 3rem));
+  margin-inline: auto;
+  padding-block: 3rem 4rem;
+}
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 600px) {
+  .ip-hero {
+    height: clamp(260px, 60vw, 380px);
+  }
+  .ip-hero-content {
+    padding-bottom: 3rem;
+  }
+}
+</style>

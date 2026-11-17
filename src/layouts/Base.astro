@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { organizationSchema, websiteSchema } from '../lib/seo';
+import { cover } from '../data/images';
+
+interface Props {
+  title: string;
+  description: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  schemas?: unknown[];
+}
+
+const { title, description, ogType = 'website', noindex = false, schemas = [] } = Astro.props;
+const pathname = Astro.url.pathname;
+const isHome = pathname === '/' || pathname === '';
+---
+
+<html lang="en" class="no-js">
+  <head>
+    <script is:inline>
+      document.documentElement.classList.remove('no-js');
+    </script>
+    <Seo title={title} description={description} pathname={pathname} ogType={ogType} noindex={noindex} />
+    <JsonLd data={organizationSchema()} />
+    <JsonLd data={websiteSchema()} />
+    {schemas.map((schema) => <JsonLd data={schema} />)}
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <Header />
+    <main id="content">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import '../scripts/motion.ts';
+    </script>
+  </body>
+</html>

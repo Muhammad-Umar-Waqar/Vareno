@@ -1,0 +1,492 @@
+---
+/**
+ * MyBoostHero — Multi-Pane Panoramic Hero Banner
+ * Directly inspired by the "MYBOOST" high-performance gaming reference (Image 1).
+ * Features:
+ *  - 3-column panoramic sliced glass panels framing Jason & Lucia on the classic muscle car
+ *  - Giant bold typography with pink & glass action pills
+ *  - Launch partner badges at bottom left
+ *  - 4 floating frosted-glass stat cards stacked on the right column
+ */
+
+interface Props {
+  out?: boolean;
+}
+const { out = false } = Astro.props;
+---
+
+<section class="mbh-section" id="mbh-hero" aria-label="GTA 6 Hero Banner">
+  <div class="shell">
+    <div class="mbh-frame">
+
+      <!-- 3-PANE SLICED PANORAMA (Directly matches Image 1) -->
+      <div class="mbh-panes-grid" aria-hidden="true">
+        <!-- Pane 1: Left (Car hood & palm trees) -->
+        <div class="mbh-pane mbh-pane--left">
+          <div class="mbh-pane-img" style="background-image: url('/images/gta6-car.jpg'); background-position: left center;"></div>
+          <div class="mbh-pane-veil mbh-pane-veil--left"></div>
+        </div>
+
+        <!-- Pane 2: Center (Jason & Lucia on car hood) -->
+        <div class="mbh-pane mbh-pane--mid">
+          <div class="mbh-pane-img" style="background-image: url('/images/gta6-car.jpg'); background-position: center center;"></div>
+          <div class="mbh-pane-veil mbh-pane-veil--mid"></div>
+        </div>
+
+        <!-- Pane 3: Right (Vice City skyline & hotels) -->
+        <div class="mbh-pane mbh-pane--right">
+          <div class="mbh-pane-img" style="background-image: url('/images/gta6-car.jpg'); background-position: right center;"></div>
+          <div class="mbh-pane-veil mbh-pane-veil--right"></div>
+        </div>
+      </div>
+
+      <!-- OVERLAY CONTENT (Text on left, Stats on right) -->
+      <div class="mbh-overlay">
+
+        <!-- LEFT SIDE: Headline, Subtitle, Buttons, Platforms -->
+        <div class="mbh-content-left">
+          <div class="mbh-pill-badge">
+            <span class="mbh-badge-dot"></span>
+            <span>Rockstar Games · Leonida State</span>
+          </div>
+
+          <h1 class="mbh-title">
+            <span class="mbh-title-top">LEVEL UP YOUR</span>
+            <span class="mbh-title-main">GTA VI INTEL</span>
+          </h1>
+
+          <p class="mbh-desc">
+            {out
+              ? 'Grand Theft Auto VI is available worldwide on PlayStation 5 and Xbox Series X|S. Jump into Vice City now.'
+              : 'Professional launch intelligence and countdown tracking trusted by thousands of GTA fans worldwide. Verified dates, pricing, map intelligence, and interactive guides.'}
+          </p>
+
+          <div class="mbh-btn-row">
+            <a
+              class="mbh-btn mbh-btn--pink"
+              href="https://store.playstation.com/en-us/product/EP1004-PPSA01547_00-GTAVISTANDARD001/"
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+            >
+              PRE-ORDER NOW
+            </a>
+            <a class="mbh-btn mbh-btn--glass" href="/release-date">
+              LEARN MORE
+            </a>
+          </div>
+
+          <!-- Bottom Retailers / Payment Methods (Image 1 Parody) -->
+          <div class="mbh-partners-row">
+            <span class="mbh-partners-label">Official Launch Stores</span>
+            <div class="mbh-partner-icons">
+              <!-- PlayStation -->
+              <span class="mbh-partner-badge" title="PlayStation 5">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.67 17.27c-.36-.45-1.02-.79-1.92-.99-.9-.2-2.07-.3-3.4-.3h-3.37v2.04h3.04c.83 0 1.47.07 1.93.2.45.14.73.33.83.58.11.25.04.53-.22.82-.26.3-.72.6-1.39.91l-4.19 1.9v2.13l5.06-2.31c1.23-.56 2.14-1.22 2.72-1.98.59-.76.7-1.57.34-2.42l.59-.57zm-14.72 1.4c-.9.2-2.07.3-3.4.3H2.18v2.04h3.04c.83 0 1.47.07 1.93.2.45.14.73.33.83.58.11.25.04.53-.22.82-.26.3-.72.6-1.39.91l-4.19 1.9v2.13l5.06-2.31c1.23-.56 2.14-1.22 2.72-1.98.59-.76.7-1.57.34-2.42-.36-.45-1.02-.79-1.92-.99l.57.12zm3.32-6.57v11.9h2.36V7.47c0-.77-.18-1.34-.55-1.72-.36-.37-.92-.56-1.68-.56-.63 0-1.24.16-1.84.47-.6.31-1.12.78-1.56 1.41l-2.02 2.87v4.16l2.36-3.35v1.35zm3.76-6.49l-1.97 2.82v1.36l1.97-2.82c.45-.63.97-1.1 1.56-1.41.6-.31 1.21-.47 1.84-.47.76 0 1.32.19 1.68.56.37.38.55.95.55 1.72v6.63h2.36V7.47c0-1.47-.48-2.61-1.44-3.41-.96-.8-2.29-1.2-3.99-1.2-1.05 0-2.03.22-2.95.66-.92.44-1.72 1.14-2.41 2.09z"/></svg>
+                <small>PS5</small>
+              </span>
+              <!-- Xbox -->
+              <span class="mbh-partner-badge" title="Xbox Series X|S">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.875 3.375c.983 0 1.936.19 2.812.536l-1.875 3.321c-.312.553-.312 1.218 0 1.771l1.875 3.321c-.876.346-1.829.536-2.812.536-4.004 0-7.25-3.246-7.25-7.25s3.246-7.25 7.25-7.25zm3.75 0c4.004 0 7.25 3.246 7.25 7.25s-3.246 7.25-7.25 7.25c-.983 0-1.936-.19-2.812-.536l1.875-3.321c.312-.553.312-1.218 0-1.771l-1.875-3.321c.876-.346 1.829-.536 2.812-.536z"/></svg>
+                <small>Xbox</small>
+              </span>
+              <!-- Rockstar -->
+              <span class="mbh-partner-badge" title="Rockstar Games">
+                <span class="mbh-r-star">★</span>
+                <small>Rockstar</small>
+              </span>
+              <!-- Take-Two -->
+              <span class="mbh-partner-badge" title="Take-Two Interactive">
+                <span class="mbh-t2-icon">T2</span>
+                <small>Take-Two</small>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: 4 Stacked Floating Stat Pills (Directly matches Image 1) -->
+        <div class="mbh-stats-col">
+          <div class="mbh-stat-pill">
+            <strong class="mbh-stat-val">4.9 / 5</strong>
+            <span class="mbh-stat-txt">Rating &amp; Trust</span>
+          </div>
+
+          <div class="mbh-stat-pill">
+            <strong class="mbh-stat-val">100%</strong>
+            <span class="mbh-stat-txt">Verified Sourced</span>
+          </div>
+
+          <div class="mbh-stat-pill">
+            <strong class="mbh-stat-val">Nov 19</strong>
+            <span class="mbh-stat-txt">2026 Worldwide Lock</span>
+          </div>
+
+          <div class="mbh-stat-pill">
+            <strong class="mbh-stat-val">99.9%</strong>
+            <span class="mbh-stat-txt">Live Clock Uptime</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── MYBOOST HERO BANNER STYLES ──────────────────────────────── */
+.mbh-section {
+  position: relative;
+  padding: 1.5rem 0 2.5rem;
+  background: #05040a;
+  overflow: hidden;
+}
+
+.mbh-frame {
+  position: relative;
+  border-radius: 28px;
+  background: #08060f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  padding: 0.85rem;
+}
+
+/* ── 3-PANE SLICED PANORAMA ──────────────────────────────────── */
+.mbh-panes-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1.25fr 0.85fr;
+  gap: 0.85rem;
+  height: clamp(540px, 72vh, 680px);
+}
+
+.mbh-pane {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  background: #0c0a14;
+}
+
+.mbh-pane-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mbh-frame:hover .mbh-pane-img {
+  transform: scale(1.02);
+}
+
+/* Veils inside each pane for contrast */
+.mbh-pane-veil {
+  position: absolute;
+  inset: 0;
+}
+
+.mbh-pane-veil--left {
+  background: linear-gradient(135deg, rgba(8, 6, 15, 0.85) 0%, rgba(8, 6, 15, 0.4) 60%, rgba(8, 6, 15, 0.2) 100%);
+}
+
+.mbh-pane-veil--mid {
+  background: linear-gradient(180deg, rgba(8, 6, 15, 0.25) 0%, rgba(8, 6, 15, 0.6) 80%, rgba(8, 6, 15, 0.85) 100%);
+}
+
+.mbh-pane-veil--right {
+  background: linear-gradient(180deg, rgba(8, 6, 15, 0.4) 0%, rgba(8, 6, 15, 0.7) 100%);
+}
+
+/* ── OVERLAY CONTENT (Text + CTAs + Floating Stats) ───────────── */
+.mbh-overlay {
+  position: absolute;
+  inset: 0.85rem;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 2.1fr 0.9fr;
+  gap: 2rem;
+  padding: 3rem 3.5rem;
+  box-sizing: border-box;
+  pointer-events: none; /* Allows hover through empty space */
+}
+
+.mbh-content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: auto;
+  max-width: 680px;
+}
+
+.mbh-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #f7c948;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.mbh-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f7c948;
+  box-shadow: 0 0 8px #f7c948;
+}
+
+.mbh-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0 0 1.25rem;
+  text-transform: uppercase;
+}
+
+.mbh-title-top {
+  display: block;
+  font-size: clamp(2.4rem, 4.8vw, 4.5rem);
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.mbh-title-main {
+  display: block;
+  font-size: clamp(2.8rem, 5.6vw, 5.2rem);
+  color: #ffffff;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 40px rgba(255, 91, 168, 0.35), 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+.mbh-desc {
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 2rem;
+  max-width: 580px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.mbh-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.mbh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.mbh-btn--pink {
+  background: #ff5ba8;
+  color: #05040a;
+  box-shadow: 0 8px 24px rgba(255, 91, 168, 0.45);
+}
+
+.mbh-btn--pink:hover {
+  background: #ff75ba;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255, 91, 168, 0.65);
+}
+
+.mbh-btn--glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.mbh-btn--glass:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ── BOTTOM PARTNERS / PAYMENT METHODS ───────────────────────── */
+.mbh-partners-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.mbh-partners-label {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mbh-partner-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mbh-partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  transition: all 0.2s ease;
+}
+
+.mbh-partner-badge:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(247, 201, 72, 0.4);
+  color: #fff;
+}
+
+.mbh-partner-badge small {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.mbh-r-star {
+  color: #f7c948;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.mbh-t2-icon {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-weight: 900;
+  font-size: 0.72rem;
+  color: #f7c948;
+}
+
+/* ── RIGHT COLUMN: 4 FLOATING STAT PILLS (Image 1 Style) ──────── */
+.mbh-stats-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  pointer-events: auto;
+}
+
+.mbh-stat-pill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(14, 11, 22, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 1.15rem 1.4rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mbh-stat-pill:hover {
+  transform: translateX(4px);
+  border-color: rgba(255, 91, 168, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 91, 168, 0.2);
+}
+
+.mbh-stat-val {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.mbh-stat-txt {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE BREAKPOINTS ──────────────────────────────────── */
+@media (max-width: 1080px) {
+  .mbh-panes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .mbh-pane--right {
+    display: none;
+  }
+  .mbh-overlay {
+    grid-template-columns: 1fr;
+    padding: 2.5rem;
+  }
+  .mbh-stats-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mbh-section {
+    padding: 0.75rem 0 1.5rem;
+  }
+  .mbh-frame {
+    padding: 0.5rem;
+    border-radius: 20px;
+  }
+  .mbh-panes-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 520px;
+  }
+  .mbh-pane--mid,
+  .mbh-pane--right {
+    display: none;
+  }
+  .mbh-overlay {
+    position: relative;
+    inset: auto;
+    padding: 2rem 1.25rem;
+  }
+  .mbh-title-top {
+    font-size: 2rem;
+  }
+  .mbh-title-main {
+    font-size: 2.4rem;
+  }
+  .mbh-stats-col {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

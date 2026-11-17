@@ -1,0 +1,65 @@
+---
+/**
+ * CharTooltips — animated avatar stack with tooltip on hover.
+ * Inspired by Aceternity "animated-tooltip".
+ * Shows GTA VI characters. Hover a face → tooltip slides up with name + role.
+ */
+
+const characters = [
+  {
+    name: 'Lucia',
+    role: 'Protagonist — GTA VI',
+    img: '/images/gta6-hero.jpg',
+    focus: '28% 15%',
+    color: '#ff6b3d',
+  },
+  {
+    name: 'Jason',
+    role: 'Co-protagonist — GTA VI',
+    img: '/images/gta6-lockload.jpg',
+    focus: '50% 20%',
+    color: '#f5b400',
+  },
+  {
+    name: 'Vice City',
+    role: 'Setting — Leonida, USA',
+    img: '/images/gta6-rooftop.jpg',
+    focus: 'center 30%',
+    color: '#39d0ff',
+  },
+];
+---
+
+<section class="ct-section" data-reveal>
+  <div class="shell ct-wrap">
+    <div class="ct-text">
+      <h2 class="ct-heading">Meet the cast</h2>
+      <p class="ct-body">
+        Jason and Lucia — Rockstar's most ambitious protagonists yet. Hover to learn more.
+      </p>
+      <a class="button" href="/characters/lucia">Full character profiles</a>
+    </div>
+
+    <div class="ct-avatars" role="list">
+      {characters.map((char, i) => (
+        <div class="ct-avatar-wrap" role="listitem" style={`--char-color: ${char.color}; --z: ${characters.length - i}`}>
+          <div class="ct-tooltip" aria-hidden="true">
+            <div class="ct-tooltip-inner">
+              <strong>{char.name}</strong>
+              <span>{char.role}</span>
+            </div>
+          </div>
+          <div class="ct-avatar">
+            <img
+              src={char.img}
+              alt={char.name}
+              loading="lazy"
+              style={`object-position: ${char.focus}`}
+            />
+          </div>
+        </div>
+      ))}
+      <div class="ct-more" aria-hidden="true">+2</div>
+    </div>
+  </div>
+</section>

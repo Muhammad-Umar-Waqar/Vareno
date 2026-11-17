@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { site, socials } from '../data/site';
+import { breadcrumbSchema } from '../lib/seo';
+
+const title = 'About Vareno Play’s GTA 6 Guide | Vareno Play';
+const description =
+  'Vareno Play publishes an unofficial GTA 6 guide: release date, price, map, cast, and trailers, with dates and prices taken from Rockstar and Take-Two.';
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+];
+---
+
+<Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
+  <article class="shell prose">
+    <Crumbs items={crumbs} />
+    <h1>About Vareno Play</h1>
+    <p class="lead">
+      Vareno Play is a gaming, clips, and entertainment brand. This site is its guide to Grand Theft Auto VI: the
+      release date, the price, the setting, and the trailers, written from public Rockstar and Take-Two statements.
+    </p>
+    <p>
+      The guide is unofficial. {site.name} is not affiliated with Rockstar Games or Take-Two Interactive. Guides are
+      signed {site.author} and show the date they were last updated. The
+      <a href="/editorial-policy">editorial policy</a> explains what we will cite and what we will leave out.
+    </p>
+    <p>
+      The portrait tool makes a new picture from a photo you upload. It is fan art for sharing, not a render from the
+      game. Read the <a href="/tools/portrait">tool page</a> before you upload.
+    </p>
+    <h2>Elsewhere</h2>
+    <ul>
+      {socials.map((item) => (
+        <li>
+          <a href={item.href} rel="noopener noreferrer">{item.name}</a>
+        </li>
+      ))}
+    </ul>
+  </article>
+</Base>
