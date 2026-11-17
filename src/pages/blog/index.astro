@@ -3,34 +3,52 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import InnerPageLayout from '../../components/InnerPageLayout.astro';
 import Keywords from '../../components/Keywords.astro';
-import { breadcrumbSchema } from '../../lib/seo';
+import { breadcrumbSchema, itemListSchema } from '../../lib/seo';
 
-const title = 'GTA 6 News, Delays, and Launch Guides | Vareno';
+const title = 'GTA 6 News, Hot Topics, Specs & Map Guides | Vareno';
 const description =
-  'Vareno notes on GTA 6: how long it has been in public development, how the date moved, the PS5 controller, and a launch-week checklist.';
+  'Verified GTA 6 reports: PC system requirements, Leonida map size comparison, GTA Online reset rules, development history, and launch checklist.';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const crumbs = [
   { name: 'Home', path: '/' },
   { name: 'Blog', path: '/blog' },
 ];
+
+const schemas = [
+  breadcrumbSchema(crumbs),
+  itemListSchema({
+    name: 'GTA 6 Investigative Reports and Technical Guides',
+    description,
+    items: posts.map((p) => ({
+      name: p.data.title,
+      url: `/blog/${p.id}`,
+      description: p.data.description,
+    })),
+  }),
+];
 ---
 
-<Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
+<Base title={title} description={description} schemas={schemas}>
   <InnerPageLayout
-    pageTitle="GTA 6 News & Reports"
+    pageTitle="GTA 6 News & Hot Topics"
     crumbs={crumbs}
     heroImg="/images/gta6-rooftop.webp"
     accentColor="#f7c948"
   >
-    <p class="blog-lead" data-reveal>
-      Latest official updates, detailed investigations, launch preparations, and technical analyses direct from Rockstar
-      Games and Take-Two Interactive.
-    </p>
+    <div class="blog-header-box" data-reveal>
+      <div class="hot-badge-pill">
+        <span class="hot-dot"></span>
+        Trending Intel & Direct AEO Extractions
+      </div>
+      <p class="blog-lead">
+        Authoritative investigations, hardware specifications, map analysis, and verified facts sourced directly from Rockstar Games and Take-Two Interactive SEC filings.
+      </p>
+    </div>
 
     <div class="blog-grid" data-reveal>
       {
         posts.map((post) => (
-          <article class="blog-card">
+          <article class={`blog-card ${post.data.featured ? 'blog-card-featured' : ''}`}>
             <div class="blog-card-meta">
               <time class="blog-date" datetime={post.data.updatedDate.toISOString().slice(0, 10)}>
                 {post.data.updatedDate.toLocaleDateString('en-US', {
@@ -40,13 +58,15 @@ const crumbs = [
                   timeZone: 'UTC',
                 })}
               </time>
-              <span class="blog-tag">Official Report</span>
+              <span class={`blog-tag ${post.data.featured ? 'blog-tag-hot' : ''}`}>
+                {post.data.featured ? '🔥 ' : ''}{post.data.tag ?? 'Official Report'}
+              </span>
             </div>
             <h2 class="blog-title">
               <a href={`/blog/${post.id}`}>{post.data.title}</a>
             </h2>
             <p class="blog-desc">{post.data.description}</p>
-            <a class="blog-read-more" href={`/blog/${post.id}`}>
+            <a class="blog-read-more" href={`/blog/${post.id}`} aria-label={`Read full analysis: ${post.data.title}`}>
               Read Analysis <span>→</span>
             </a>
           </article>
@@ -59,11 +79,46 @@ const crumbs = [
 </Base>
 
 <style>
+.blog-header-box {
+  margin-bottom: 2.5rem;
+}
+
+.hot-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(247, 201, 72, 0.12);
+  color: #f7c948;
+  border: 1px solid rgba(247, 201, 72, 0.28);
+  margin-bottom: 1rem;
+}
+
+.hot-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f7c948;
+  box-shadow: 0 0 8px #f7c948;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
 .blog-lead {
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.7;
-  color: rgba(255,255,255,0.8);
-  margin-bottom: 2.5rem;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
   max-width: 72ch;
 }
 
@@ -75,7 +130,7 @@ const crumbs = [
 }
 
 .blog-card {
-  background: rgba(255,255,255,0.03);
+  background: rgba(16, 19, 26, 0.7);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 1.25rem;
   padding: 2rem;
@@ -83,18 +138,26 @@ const crumbs = [
   flex-direction: column;
   gap: 1rem;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-card-featured {
+  border-color: rgba(247, 201, 72, 0.3);
+  background: linear-gradient(180deg, rgba(247, 201, 72, 0.04) 0%, rgba(16, 19, 26, 0.8) 100%);
 }
 
 .blog-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(247,201,72,0.35);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  border-color: rgba(247,201,72,0.45);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
 }
 
 .blog-card-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .blog-date {
@@ -105,11 +168,18 @@ const crumbs = [
 
 .blog-tag {
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.7);
   background: rgba(255,255,255,0.06);
-  padding: 0.2rem 0.5rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 50px;
-  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.blog-tag-hot {
+  color: #f7c948;
+  background: rgba(247, 201, 72, 0.12);
+  border-color: rgba(247, 201, 72, 0.3);
 }
 
 .blog-title {
@@ -129,7 +199,7 @@ const crumbs = [
 
 .blog-desc {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.7);
   line-height: 1.6;
   margin: 0;
   flex: 1;
