@@ -13,11 +13,18 @@ function initSmoothScroll() {
     return null;
   }
 
+  // Disable Lenis on touch devices and mobile screens (< 992px)
+  // Native touch scrolling is 120Hz hardware-accelerated with 0ms TBT!
+  const isTouch = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 992;
+  if (isTouch) {
+    return null;
+  }
+
   const lenis = new Lenis({
-    lerp: 0.07,
+    lerp: 0.08,
     smoothWheel: true,
-    syncTouch: true,
-    wheelMultiplier: 0.88,
+    syncTouch: false,
+    wheelMultiplier: 0.9,
     autoRaf: false,
   });
 
@@ -195,6 +202,7 @@ function initReveals() {
 // ── 3-D card tilt on mousemove ─────────────────────────────────────────────
 function initCardTilt() {
   if (reduce) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   const cards = document.querySelectorAll<HTMLElement>('.card-link');
 
   cards.forEach((card) => {
@@ -254,12 +262,23 @@ function initMastParallax() {
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────
-initSmoothScroll();
 initHeroEntrance();
-initHeroParallax();
-initMastParallax();
-initReveals();
-initCardTilt();
+
+const runDeferred = () => {
+  initSmoothScroll();
+  initHeroParallax();
+  initMastParallax();
+  initReveals();
+  initCardTilt();
+};
+
+if (typeof window !== 'undefined') {
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(runDeferred, { timeout: 1000 });
+  } else {
+    setTimeout(runDeferred, 120);
+  }
+}
 
 
 // ── Appended: Carousel drag + Sticky Features progress ───────────────────

@@ -12,7 +12,7 @@ import CharCarousel from '../components/CharCarousel.astro';
 import CharTooltips from '../components/CharTooltips.astro';
 import CtaDashedGrid from '../components/CtaDashedGrid.astro';
 import MyBoostHero from '../components/MyBoostHero.astro';
-import { articleSchema } from '../lib/seo';
+import { articleSchema, faqSchema } from '../lib/seo';
 import { isReleased } from '../lib/time';
 
 const title = 'GTA 6: Release Date, Price, and Map | Vareno Play';
@@ -20,6 +20,29 @@ const description =
   'GTA 6 launches November 19, 2026 on PS5 and Xbox Series X|S. Price, Leonida map, Lucia and Jason, trailers, and PC status, cited from Rockstar and Take-Two.';
 const path = '/';
 const out = isReleased();
+
+const homeFaqs = [
+  {
+    q: 'When is the official GTA 6 release date?',
+    a: 'Grand Theft Auto VI officially launches worldwide on November 19, 2026, confirmed by Rockstar Games and Take-Two Interactive earnings reports.',
+  },
+  {
+    q: 'How much does GTA 6 cost to pre-order?',
+    a: 'GTA 6 Standard Edition is priced at $79.99 for PS5 and Xbox Series X|S, while the Ultimate Edition with bonus cosmetic packs retails for $99.99.',
+  },
+  {
+    q: 'What platforms will GTA 6 launch on?',
+    a: 'GTA 6 launches day-and-date on PlayStation 5 and Xbox Series X|S. A PC edition is expected at a later date, following Rockstar’s traditional staggered release timeline.',
+  },
+  {
+    q: 'Where does GTA 6 take place?',
+    a: 'GTA 6 is set in the fictional state of Leonida, encompassing Vice City, the Everglades-inspired Grassrivers wetlands, and the northern wilderness of Mount Kalaga.',
+  },
+  {
+    q: 'Who are the main playable characters in GTA 6?',
+    a: 'GTA 6 features dual protagonists: Lucia Caminos, the franchise’s first female lead, and her partner Jason Duval, operating across Leonida’s criminal underworld.',
+  },
+];
 
 const guides = [
   { href: '/release-date', title: 'GTA 6 Release Date',    text: 'November 19, 2026 lock, pre-load status, and live countdown.', badge: 'Launch Timing',  icon: 'calendar' as const },
@@ -44,7 +67,10 @@ const stats = [
   title={title}
   description={description}
   ogType="article"
-  schemas={[articleSchema({ headline: 'GTA 6: release date, price, and map', description, path })]}
+  schemas={[
+    articleSchema({ headline: 'GTA 6: release date, price, and map', description, path }),
+    faqSchema(homeFaqs),
+  ]}
 >
 
   <!-- ══════════════════════════════════════════════════════════
@@ -166,7 +192,7 @@ const stats = [
             </div>
 
             <div class="hcc-body">
-              <h3 class="hcc-title">November 19, 2026</h3>
+              <h2 class="hcc-title">November 19, 2026</h2>
               <p class="hcc-sub">Count down to the worldwide digital unlock across PlayStation 5 and Xbox Series X|S.</p>
               
               <div class="hcc-timer">

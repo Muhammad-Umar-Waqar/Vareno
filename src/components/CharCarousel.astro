@@ -78,8 +78,8 @@ const cards = [
             <h3 class="cc-card-title">{card.title}</h3>
             <p class="cc-card-sub">{card.sub}</p>
             <p class="cc-card-text">{card.body}</p>
-            <a class="cc-card-link" href={card.href}>
-              Learn more
+            <a class="cc-card-link" href={card.href} aria-label={`Explore ${card.title}: ${card.sub}`}>
+              <span>Explore {card.title}</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>

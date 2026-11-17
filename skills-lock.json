@@ -13,6 +13,12 @@
       "skillPath": "skills/ai-seo/SKILL.md",
       "computedHash": "40f3c5d4aa01f57f2394389e34ecfa1b6263d698fde979b97cc9c5fc3b859afd"
     },
+    "bencium-aeo": {
+      "source": "bencium/bencium-marketplace",
+      "sourceType": "github",
+      "skillPath": "bencium-aeo/skills/bencium-aeo/SKILL.md",
+      "computedHash": "b673cd1d7cb3cadb4afdd7887d7981658e916545eedfd5f0cc8f45cc3753ed31"
+    },
     "design-mobile-apps": {
       "source": "designed-by-ai/skills",
       "sourceType": "github",
@@ -42,6 +48,12 @@
       "sourceType": "github",
       "skillPath": "skills/seo-audit/SKILL.md",
       "computedHash": "c8af5f78df48a884f204f93c28645404e8bb6aec7e466be596af0d4147c44f3f"
+    },
+    "seo-geo": {
+      "source": "resciencelab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo-geo/SKILL.md",
+      "computedHash": "1d38520f453282af8712874c360e3e34a379827f737fb536bd45055e2d60d964"
     },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
