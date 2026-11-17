@@ -20,7 +20,7 @@ const pages = [
 
 export const GET: APIRoute = () => {
   const lines = [
-    '# Vareno Play',
+    '# Vareno',
     '',
     '> Unofficial Grand Theft Auto VI guide. Not affiliated with Rockstar Games or Take-Two Interactive.',
     '',

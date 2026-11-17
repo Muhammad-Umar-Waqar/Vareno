@@ -4,9 +4,9 @@ import Crumbs from '../components/Crumbs.astro';
 import { site, socials } from '../data/site';
 import { breadcrumbSchema } from '../lib/seo';
 
-const title = 'About Vareno Play’s GTA 6 Guide | Vareno Play';
+const title = 'About Vareno’s GTA 6 Guide | Vareno';
 const description =
-  'Vareno Play publishes an unofficial GTA 6 guide: release date, price, map, cast, and trailers, with dates and prices taken from Rockstar and Take-Two.';
+  'Vareno publishes an unofficial GTA 6 guide: release date, price, map, cast, and trailers, with dates and prices taken from Rockstar and Take-Two.';
 const crumbs = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
@@ -16,9 +16,9 @@ const crumbs = [
 <Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
   <article class="shell prose">
     <Crumbs items={crumbs} />
-    <h1>About Vareno Play</h1>
+    <h1>About Vareno</h1>
     <p class="lead">
-      Vareno Play is a gaming, clips, and entertainment brand. This site is its guide to Grand Theft Auto VI: the
+      Vareno is a gaming, clips, and entertainment brand. This site is its guide to Grand Theft Auto VI: the
       release date, the price, the setting, and the trailers, written from public Rockstar and Take-Two statements.
     </p>
     <p>

@@ -6,16 +6,16 @@ function pick(value: string | undefined, fallback: string) {
 }
 
 export const site = {
-  name: 'Vareno Play',
+  name: 'Vareno',
   url: SITE_URL,
-  author: 'Vareno Play',
+  author: 'Vareno',
   locale: 'en-US',
   tagline: 'Gaming, clips, entertainment',
   updatedISO: '2026-11-16',
   updatedLabel: 'November 16, 2026',
   launchISO: '2026-11-19T05:00:00.000Z',
   description:
-    'Unofficial Grand Theft Auto VI guides from Vareno Play: release date, price, map, cast, trailers, and platforms, sourced from Rockstar and Take-Two.',
+    'Unofficial Grand Theft Auto VI guides from Vareno: release date, price, map, cast, trailers, and platforms, sourced from Rockstar and Take-Two.',
 } as const;
 
 export const socials = [
@@ -94,4 +94,4 @@ export const sources = {
 } as const;
 
 export const disclaimer =
-  'Vareno Play is not affiliated with, endorsed by, or sponsored by Rockstar Games or Take-Two Interactive. Grand Theft Auto, Rockstar, and related marks belong to their owners. This is an unofficial guide.';
+  'Vareno is not affiliated with, endorsed by, or sponsored by Rockstar Games or Take-Two Interactive. Grand Theft Auto, Rockstar, and related marks belong to their owners. This is an unofficial guide.';

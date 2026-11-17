@@ -27,21 +27,21 @@ const file = `export const logo = {
   src: '/images/logo.webp',
   width: ${logoMeta.width},
   height: ${logoMeta.height},
-  alt: 'Vareno Play logo: a gold faceted V, a crown, and a white controller on black',
+  alt: 'Vareno logo: a gold faceted V, a crown, and a white controller on black',
 };
 
 export const cover = {
   src: '/images/cover.webp',
   width: ${coverMeta.width},
   height: ${coverMeta.height},
-  alt: 'Vareno Play cover art with a night city, palms, a helicopter, and a sports car',
+  alt: 'Vareno cover art with a night city, palms, a helicopter, and a sports car',
 };
 
 export const og = {
   src: '/images/og.jpg',
   width: 1200,
   height: 630,
-  alt: 'Vareno Play, gaming, clips, and entertainment',
+  alt: 'Vareno, gaming, clips, and entertainment',
 };
 `;
 

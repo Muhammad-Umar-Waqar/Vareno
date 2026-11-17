@@ -9,7 +9,7 @@ export const GET: APIRoute = async (context) => {
   );
 
   return rss({
-    title: 'Vareno Play GTA 6 guides',
+    title: 'Vareno GTA 6 guides',
     description: site.description,
     site: context.site ?? site.url,
     items: posts.map((post) => ({

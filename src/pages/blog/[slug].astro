@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const path = `/blog/${post.id}`;
-const seoTitle = `${post.data.title} | Vareno Play`;
+const seoTitle = `${post.data.title} | Vareno`;
 const crumbs = [
   { name: 'Home', path: '/' },
   { name: 'Blog', path: '/blog' },

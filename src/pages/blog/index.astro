@@ -5,9 +5,9 @@ import InnerPageLayout from '../../components/InnerPageLayout.astro';
 import Keywords from '../../components/Keywords.astro';
 import { breadcrumbSchema } from '../../lib/seo';
 
-const title = 'GTA 6 News, Delays, and Launch Guides | Vareno Play';
+const title = 'GTA 6 News, Delays, and Launch Guides | Vareno';
 const description =
-  'Vareno Play notes on GTA 6: how long it has been in public development, how the date moved, the PS5 controller, and a launch-week checklist.';
+  'Vareno notes on GTA 6: how long it has been in public development, how the date moved, the PS5 controller, and a launch-week checklist.';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const crumbs = [
   { name: 'Home', path: '/' },
