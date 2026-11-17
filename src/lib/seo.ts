@@ -52,6 +52,7 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
 export function articleSchema(input: {
   headline: string;
   description: string;
+  image?: string;
   path: string;
   ogType?: 'Article' | 'BlogPosting';
 }) {
@@ -68,7 +69,7 @@ export function articleSchema(input: {
       name: site.name,
       logo: { '@type': 'ImageObject', url: `${site.url}/images/logo.webp` },
     },
-    image: [`${site.url}/images/og.jpg`],
+    image: [input.image ? (input.image.startsWith('http') ? input.image : `${site.url}${input.image}`) : `${site.url}/images/og.webp`],
     mainEntityOfPage: canonicalFor(input.path),
   };
 }
@@ -77,6 +78,7 @@ export function blogPostingSchema(input: {
   headline: string;
   description: string;
   path: string;
+  image?: string;
   published: Date;
   modified: Date;
 }) {
@@ -93,7 +95,7 @@ export function blogPostingSchema(input: {
       name: site.name,
       logo: { '@type': 'ImageObject', url: `${site.url}/images/logo.webp` },
     },
-    image: [`${site.url}/images/og.jpg`],
+    image: [input.image ? (input.image.startsWith('http') ? input.image : `${site.url}${input.image}`) : `${site.url}/images/og.webp`],
     mainEntityOfPage: canonicalFor(input.path),
   };
 }
