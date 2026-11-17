@@ -111,3 +111,47 @@ export function faqSchema(faqs: { q: string; a: string }[]) {
     })),
   };
 }
+
+export function howToSchema(input: {
+  name: string;
+  description: string;
+  totalTime?: string;
+  image?: string;
+  steps: { name: string; text: string; url?: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: input.name,
+    description: input.description,
+    totalTime: input.totalTime ?? 'PT2M',
+    step: input.steps.map((step, idx) => ({
+      '@type': 'HowToStep',
+      position: idx + 1,
+      name: step.name,
+      text: step.text,
+      ...(step.url ? { url: step.url } : {}),
+    })),
+    ...(input.image ? { image: input.image } : {}),
+  };
+}
+
+export function itemListSchema(input: {
+  name: string;
+  description: string;
+  items: { name: string; url: string; description?: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: input.name,
+    description: input.description,
+    itemListElement: input.items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: item.url.startsWith('http') ? item.url : canonicalFor(item.url),
+      ...(item.description ? { description: item.description } : {}),
+    })),
+  };
+}

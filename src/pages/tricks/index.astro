@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import InnerPageLayout from '../../components/InnerPageLayout.astro';
 import Byline from '../../components/Byline.astro';
-import { articleSchema, breadcrumbSchema } from '../../lib/seo';
+import { articleSchema, breadcrumbSchema, itemListSchema } from '../../lib/seo';
 
 const title = 'GTA 6 Tricks, Early Access & Launch Workarounds | Vareno Play';
 const description =
@@ -93,6 +93,14 @@ const tricks = [
   schemas={[
     articleSchema({ headline: 'GTA 6 Tricks, Early Access & Launch Workarounds', description, path }),
     breadcrumbSchema(crumbs),
+    itemListSchema({
+      name: 'GTA 6 Launch Tricks & Early Access Guides',
+      description,
+      items: [
+        { name: featuredTrick.title, url: featuredTrick.href, description: featuredTrick.desc },
+        ...tricks.map((t) => ({ name: t.title, url: t.href, description: t.desc })),
+      ],
+    }),
   ]}
 >
   <InnerPageLayout
