@@ -4,6 +4,7 @@ import InnerPageLayout from '../../components/InnerPageLayout.astro';
 import Byline from '../../components/Byline.astro';
 import Countdown from '../../components/Countdown.astro';
 import GuideIcon from '../../components/icons/GuideIcon.astro';
+import LocalTimeCalculator from '../../components/LocalTimeCalculator.astro';
 import { articleSchema, breadcrumbSchema, faqSchema } from '../../lib/seo';
 
 const title = 'GTA 6 New Zealand Trick: Play Up to 21 Hours Early | Vareno Play';
@@ -13,7 +14,7 @@ const path = '/tricks/new-zealand-trick';
 
 const crumbs = [
   { name: 'Home', path: '/' },
-  { name: 'Tricks', path: '/tricks/new-zealand-trick' },
+  { name: 'Tricks', path: '/tricks' },
   { name: 'New Zealand Trick', path: '/tricks/new-zealand-trick' },
 ];
 
@@ -124,6 +125,11 @@ const timezones = [
         </p>
       </div>
     </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         INTERACTIVE TIME ZONE & COUNTRY CALCULATOR
+         ══════════════════════════════════════════════════════════ -->
+    <LocalTimeCalculator />
 
     <!-- ══════════════════════════════════════════════════════════
          SECTION 2: WHAT IS THE NEW ZEALAND TRICK?

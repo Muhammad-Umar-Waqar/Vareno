@@ -26,7 +26,7 @@ export const socials = [
 
 export const nav = [
   { href: '/release-date', label: 'Release date' },
-  { href: '/tricks/new-zealand-trick', label: 'NZ Trick' },
+  { href: '/tricks', label: 'Tricks' },
   { href: '/price', label: 'Price' },
   { href: '/map', label: 'Map' },
   { href: '/characters/lucia', label: 'Lucia' },

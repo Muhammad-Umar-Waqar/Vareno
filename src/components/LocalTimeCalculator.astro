@@ -1,0 +1,507 @@
+---
+/**
+ * LocalTimeCalculator.astro
+ * Automatically detects user's local timezone & country
+ * Computes exact local unlock time when New Zealand strikes midnight (Nov 18, 11:00 UTC)
+ * Shows hours gained vs local midnight + live ticking countdown!
+ */
+---
+
+<div class="ltc-card" id="ltc-widget" data-reveal>
+  <div class="ltc-header">
+    <div class="ltc-header-left">
+      <span class="ltc-badge">
+        <span class="ltc-badge-pulse"></span>
+        Auto-Detected Location
+      </span>
+      <h3 class="ltc-title">Your Local Launch Calculator</h3>
+      <p class="ltc-sub">See the exact second GTA 6 unlocks in your city with the New Zealand trick.</p>
+    </div>
+
+    <!-- Country / City Switcher -->
+    <div class="ltc-select-wrap">
+      <label for="ltc-timezone-select" class="ltc-label">Select City / Timezone:</label>
+      <select id="ltc-timezone-select" class="ltc-select">
+        <option value="AUTO" selected>📍 Auto-Detect My Location</option>
+        <optgroup label="Asia &amp; Middle East">
+          <option value="Asia/Karachi">🇵🇰 Pakistan (PKT - Karachi/Lahore/Islamabad)</option>
+          <option value="Asia/Kolkata">🇮🇳 India (IST - Mumbai/Delhi)</option>
+          <option value="Asia/Dhaka">🇧🇩 Bangladesh (BST - Dhaka)</option>
+          <option value="Asia/Dubai">🇦🇪 UAE &amp; Gulf (GST - Dubai)</option>
+          <option value="Asia/Riyadh">🇸🇦 Saudi Arabia (AST - Riyadh)</option>
+          <option value="Asia/Tokyo">🇯🇵 Japan (JST - Tokyo)</option>
+          <option value="Asia/Singapore">🇸🇬 Singapore (SGT)</option>
+        </optgroup>
+        <optgroup label="Europe &amp; UK">
+          <option value="Europe/London">🇬🇧 United Kingdom (GMT - London)</option>
+          <option value="Europe/Paris">🇫🇷 France &amp; Central Europe (CET - Paris/Berlin)</option>
+          <option value="Europe/Athens">🇬🇷 Eastern Europe (EET - Athens/Bucharest)</option>
+        </optgroup>
+        <optgroup label="Americas">
+          <option value="America/New_York">🇺🇸 US East Coast (EST - New York/Miami)</option>
+          <option value="America/Chicago">🇺🇸 US Central (CST - Chicago/Dallas)</option>
+          <option value="America/Denver">🇺🇸 US Mountain (MST - Denver)</option>
+          <option value="America/Los_Angeles">🇺🇸 US West Coast (PST - Los Angeles/Seattle)</option>
+          <option value="America/Toronto">🇨🇦 Canada (EST - Toronto)</option>
+          <option value="America/Vancouver">🇨🇦 Canada (PST - Vancouver)</option>
+          <option value="America/Sao_Paulo">🇧🇷 Brazil (BRT - São Paulo)</option>
+        </optgroup>
+        <optgroup label="Oceania">
+          <option value="Pacific/Auckland">🇳🇿 New Zealand (NZDT - Auckland - Origin)</option>
+          <option value="Australia/Sydney">🇦🇺 Australia East (AEDT - Sydney/Melbourne)</option>
+          <option value="Australia/Perth">🇦🇺 Australia West (AWST - Perth)</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+
+  <div class="ltc-results-grid">
+    <!-- Box 1: NZ Trick Local Unlock Time -->
+    <div class="ltc-result-box ltc-result-box--highlight">
+      <span class="ltc-box-label">🚀 NZ Trick Unlock In Your City</span>
+      <div class="ltc-box-val" id="ltc-nz-time">Calculating...</div>
+      <div class="ltc-box-date" id="ltc-nz-date">Please wait...</div>
+      <span class="ltc-advantage-pill" id="ltc-advantage-badge">⚡ Play Early</span>
+    </div>
+
+    <!-- Box 2: Standard Local Midnight (Without Trick) -->
+    <div class="ltc-result-box">
+      <span class="ltc-box-label">🕒 Regular Local Midnight Unlock</span>
+      <div class="ltc-box-val" id="ltc-std-time">12:00 AM (Midnight)</div>
+      <div class="ltc-box-date" id="ltc-std-date">Thursday, Nov 19, 2026</div>
+      <span class="ltc-subtext">Official regular store rollout</span>
+    </div>
+
+    <!-- Box 3: Live Countdown to Your Early Unlock -->
+    <div class="ltc-result-box ltc-result-box--countdown">
+      <span class="ltc-box-label">⏱ Countdown To Your Early Access</span>
+      <div class="ltc-timer" id="ltc-timer">
+        <div class="ltc-timer-segment"><span id="ltc-d">--</span><small>Days</small></div>
+        <div class="ltc-timer-colon">:</div>
+        <div class="ltc-timer-segment"><span id="ltc-h">--</span><small>Hours</small></div>
+        <div class="ltc-timer-colon">:</div>
+        <div class="ltc-timer-segment"><span id="ltc-m">--</span><small>Mins</small></div>
+        <div class="ltc-timer-colon">:</div>
+        <div class="ltc-timer-segment"><span id="ltc-s">--</span><small>Secs</small></div>
+      </div>
+      <span class="ltc-timer-tag" id="ltc-timer-tag">Live Target Locked</span>
+    </div>
+  </div>
+
+  <div class="ltc-footer-note">
+    <span class="ltc-info-icon">ℹ️</span>
+    <p id="ltc-explanation">
+      Detecting your time zone...
+    </p>
+  </div>
+</div>
+
+<script>
+  // New Zealand Midnight Launch moment:
+  // Nov 19, 2026 00:00:00 NZDT = Nov 18, 2026 11:00:00 UTC
+  const NZ_UNLOCK_UTC_MS = Date.UTC(2026, 10, 18, 11, 0, 0); // Month is 0-indexed: 10 = November
+
+  function initCalculator() {
+    const select = document.getElementById('ltc-timezone-select') as HTMLSelectElement | null;
+    const nzTimeEl = document.getElementById('ltc-nz-time');
+    const nzDateEl = document.getElementById('ltc-nz-date');
+    const advantageEl = document.getElementById('ltc-advantage-badge');
+    const stdDateEl = document.getElementById('ltc-std-date');
+    const explanationEl = document.getElementById('ltc-explanation');
+
+    if (!select || !nzTimeEl || !nzDateEl || !advantageEl || !stdDateEl || !explanationEl) return;
+
+    // Detect browser default timezone
+    let detectedTz = 'UTC';
+    try {
+      detectedTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+    } catch (e) {
+      detectedTz = 'UTC';
+    }
+
+    function updateDisplay(targetTz: string) {
+      const tz = targetTz === 'AUTO' ? detectedTz : targetTz;
+      const targetDate = new Date(NZ_UNLOCK_UTC_MS);
+
+      // Format time in selected timezone
+      const timeFormatter = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz,
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      });
+
+      const dateFormatter = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz,
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      });
+
+      const nzLocalTimeStr = timeFormatter.format(targetDate);
+      const nzLocalDateStr = dateFormatter.format(targetDate);
+
+      nzTimeEl.textContent = nzLocalTimeStr;
+      nzDateEl.textContent = nzLocalDateStr;
+
+      // Regular midnight time in this timezone is Nov 19 00:00:00 local time
+      // Let's compute local hour difference between NZ midnight and local midnight
+      // In hours:
+      const localStandardMidnight = new Date(`2026-11-19T00:00:00`);
+      // Hour difference calculation:
+      // NZ target in UTC is 11:00 AM Nov 18.
+      // Standard local midnight is 12:00 AM Nov 19.
+      // Let's compute exact difference in hours:
+      // We can inspect the local hour of the NZ unlock in target timezone:
+      const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz,
+        day: 'numeric',
+        hour: 'numeric',
+        hour12: false,
+      }).formatToParts(targetDate);
+
+      let day = 18;
+      let hour = 11;
+      parts.forEach(p => {
+        if (p.type === 'day') day = parseInt(p.value, 10);
+        if (p.type === 'hour') hour = parseInt(p.value, 10);
+      });
+
+      // Regular midnight is Day 19 at Hour 0 (or 24 hours after Day 18 at 0:00)
+      let hoursEarlier = 0;
+      if (day === 18) {
+        hoursEarlier = 24 - hour;
+      } else if (day === 19) {
+        hoursEarlier = 0;
+      }
+
+      if (hoursEarlier > 0) {
+        advantageEl.textContent = `⚡ Play ${hoursEarlier} Hours Earlier!`;
+        advantageEl.style.display = 'inline-block';
+        explanationEl.innerHTML = `<strong>In ${tz}:</strong> With the New Zealand trick, you can begin playing on <strong>${nzLocalDateStr} at ${nzLocalTimeStr}</strong> — that is <strong>${hoursEarlier} hours earlier</strong> than waiting for normal local midnight on Nov 19!`;
+      } else {
+        advantageEl.textContent = `📍 First Region Worldwide`;
+        explanationEl.innerHTML = `<strong>In ${tz}:</strong> You are already in the earliest timezone on earth! The game unlocks directly at midnight local time on November 19.`;
+      }
+    }
+
+    // Initial update
+    updateDisplay('AUTO');
+
+    // On select change
+    select.addEventListener('change', () => {
+      updateDisplay(select.value);
+    });
+
+    // Countdown tick
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = NZ_UNLOCK_UTC_MS - now;
+
+      const dEl = document.getElementById('ltc-d');
+      const hEl = document.getElementById('ltc-h');
+      const mEl = document.getElementById('ltc-m');
+      const sEl = document.getElementById('ltc-s');
+
+      if (!dEl || !hEl || !mEl || !sEl) return;
+
+      if (diff <= 0) {
+        dEl.textContent = '00';
+        hEl.textContent = '00';
+        mEl.textContent = '00';
+        sEl.textContent = '00';
+        const tag = document.getElementById('ltc-timer-tag');
+        if (tag) tag.textContent = 'UNLOCKED!';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      dEl.textContent = String(days).padStart(2, '0');
+      hEl.textContent = String(hours).padStart(2, '0');
+      mEl.textContent = String(mins).padStart(2, '0');
+      sEl.textContent = String(secs).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCalculator);
+  } else {
+    initCalculator();
+  }
+</script>
+
+<style>
+  .ltc-card {
+    background: radial-gradient(ellipse at top right, rgba(57, 208, 255, 0.1), transparent 60%), rgba(16, 19, 26, 0.85);
+    border: 1px solid rgba(57, 208, 255, 0.3);
+    border-radius: 1.25rem;
+    padding: 2.25rem;
+    margin: 3rem 0;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .ltc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 1.75rem;
+  }
+
+  .ltc-header-left {
+    max-width: 38rem;
+  }
+
+  .ltc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(46, 213, 115, 0.15);
+    border: 1px solid rgba(46, 213, 115, 0.4);
+    border-radius: 999px;
+    color: #2ed573;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+  }
+
+  .ltc-badge-pulse {
+    width: 6px;
+    height: 6px;
+    background: #2ed573;
+    border-radius: 50%;
+    animation: ltcPulse 1.8s infinite;
+  }
+
+  @keyframes ltcPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(2.2); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .ltc-title {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    font-weight: 800;
+    color: var(--paper);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.25;
+  }
+
+  .ltc-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .ltc-select-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .ltc-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .ltc-select {
+    appearance: none;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(57, 208, 255, 0.4);
+    border-radius: 0.65rem;
+    color: var(--paper);
+    padding: 0.65rem 2.2rem 0.65rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2339d0ff' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ltc-select:focus {
+    outline: none;
+    border-color: #39d0ff;
+    box-shadow: 0 0 12px rgba(57, 208, 255, 0.3);
+  }
+
+  .ltc-select option,
+  .ltc-select optgroup {
+    background: #10131a;
+    color: var(--paper);
+  }
+
+  /* Results Grid */
+  .ltc-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .ltc-result-box {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ltc-result-box--highlight {
+    border-color: rgba(57, 208, 255, 0.4);
+    background: linear-gradient(145deg, rgba(57, 208, 255, 0.08) 0%, rgba(0, 0, 0, 0.45) 100%);
+  }
+
+  .ltc-result-box--countdown {
+    border-color: rgba(245, 180, 0, 0.35);
+    background: linear-gradient(145deg, rgba(245, 180, 0, 0.06) 0%, rgba(0, 0, 0, 0.45) 100%);
+  }
+
+  .ltc-box-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+  }
+
+  .ltc-box-val {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    font-weight: 800;
+    color: var(--paper);
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+  }
+
+  .ltc-result-box--highlight .ltc-box-val {
+    color: #39d0ff;
+    text-shadow: 0 0 20px rgba(57, 208, 255, 0.4);
+  }
+
+  .ltc-box-date {
+    font-size: 0.95rem;
+    color: var(--paper);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .ltc-advantage-pill {
+    align-self: flex-start;
+    padding: 0.3rem 0.75rem;
+    background: rgba(46, 213, 115, 0.2);
+    border: 1px solid rgba(46, 213, 115, 0.5);
+    border-radius: 999px;
+    color: #2ed573;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+
+  .ltc-subtext {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* Countdown Timer */
+  .ltc-timer {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0.4rem 0 1rem 0;
+  }
+
+  .ltc-timer-segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.55rem;
+    min-width: 3.2rem;
+  }
+
+  .ltc-timer-segment span {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #f5b400;
+    line-height: 1;
+  }
+
+  .ltc-timer-segment small {
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  .ltc-timer-colon {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--muted);
+  }
+
+  .ltc-timer-tag {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #f5b400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Footer Note */
+  .ltc-footer-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .ltc-info-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .ltc-footer-note p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .ltc-footer-note strong {
+    color: var(--paper);
+  }
+</style>

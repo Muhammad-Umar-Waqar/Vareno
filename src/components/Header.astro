@@ -8,7 +8,7 @@ const buyHref = stores[0]?.href ?? '/price';
 // Nav icon SVG paths (simple, clean, 20x20 viewBox)
 const navIcons: Record<string, string> = {
   '/release-date':     'M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zM4 9h16M8 4V2M16 4V2M8 14h2M12 14h2',
-  '/tricks/new-zealand-trick': 'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
+  '/tricks':           'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
   '/price':            'M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 5v1.5m0 7V17m-2.5-9C10 7.6 10.9 7 12 7c1.4 0 2.5.9 2.5 2S13.4 11 12 11s-2.5.9-2.5 2 1.1 2 2.5 2c1.1 0 2-.6 2.5-1.5',
   '/map':              'M9 4L3 7v13l6-3 6 3 6-3V4l-6 3-6-3zM9 4v13M15 7v13',
   '/characters/lucia': 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 8c0-3.9 3.1-7 7-7s7 3.1 7 7',
@@ -36,7 +36,7 @@ const navIcons: Record<string, string> = {
       {nav.map((item) => (
         <a
           href={item.href}
-          class:list={['hdr-pill-link', { 'is-active': path === item.href }]}
+          class:list={['hdr-pill-link', { 'is-active': path === item.href || (item.href === '/tricks' && path.startsWith('/tricks')) }]}
           aria-current={path === item.href ? 'page' : undefined}
         >
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hdr-link-icon">
@@ -92,7 +92,7 @@ const navIcons: Record<string, string> = {
     {nav.map((item) => (
       <a
         href={item.href}
-        class:list={['hdr-drawer-link', { 'is-active': path === item.href }]}
+        class:list={['hdr-drawer-link', { 'is-active': path === item.href || (item.href === '/tricks' && path.startsWith('/tricks')) }]}
         aria-current={path === item.href ? 'page' : undefined}
       >
         <span class="hdr-drawer-link-icon">
