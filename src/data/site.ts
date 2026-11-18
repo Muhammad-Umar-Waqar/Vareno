@@ -36,7 +36,7 @@ export const moreNav = [
   { href: '/characters/lucia', label: 'Characters', desc: 'Lucia Caminos & Jason Duval' },
   { href: '/platforms', label: 'Platforms', desc: 'PS5, Xbox Series X|S & PC' },
   { href: '/trailers', label: 'Trailers', desc: 'Official 4K trailers & breakdowns' },
-  { href: '/blog', label: 'Hot Topics & News', desc: 'PC specs, map size & launch intel' },
+  { href: '/blog', label: 'Hot Topics & News', desc: 'Reviews, PSN status, 30 FPS & specs' },
   { href: '/tools/portrait', label: 'Your Photo Tool', desc: 'Leonida AI portrait generator' },
 ] as const;
 
