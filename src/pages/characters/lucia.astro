@@ -593,11 +593,57 @@ const faqs = [
   box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
 }
 
+:global(html[data-theme="light"]) .hud-badge {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: rgba(200, 110, 0, 0.25);
+}
+
+:global(html[data-theme="light"]) .hud-title,
 :global(html[data-theme="light"]) .hud-main-title {
   color: #090d16;
 }
 
 :global(html[data-theme="light"]) .hud-sub {
   color: #475569;
+}
+
+:global(html[data-theme="light"]) .hud-card-label {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+:global(html[data-theme="light"]) .hud-card-sub {
+  color: rgba(255, 255, 255, 0.88) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+:global(html[data-theme="light"]) .hud-tag {
+  background: rgba(247, 201, 72, 0.25) !important;
+  color: #ffd84a !important;
+  border: 1px solid rgba(247, 201, 72, 0.4) !important;
+}
+
+:global(html[data-theme="light"]) .hud-neon-brand {
+  background: #f8fafc;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+:global(html[data-theme="light"]) .hud-wm-gta {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .hud-wm-vi {
+  color: #ff5c8a;
+  text-shadow: 0 0 12px rgba(255, 92, 138, 0.4);
+}
+
+:global(html[data-theme="light"]) .hud-brand-info strong {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .hud-brand-info small {
+  color: #64748b;
 }
 </style>

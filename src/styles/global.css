@@ -3356,22 +3356,22 @@ article.shell,
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Global Typography & Headings (Light Mode: Deep Ink Contrast) ── */
-html[data-theme="light"] h1:not(.ip-title):not(.stage-copy h1):not(.vh-title *):not(.cc-card *):not(.vh-hero *),
-html[data-theme="light"] h2:not(.ip-title):not(.stage-copy *):not(.vh-title *):not(.cc-card *):not(.vh-hero *),
-html[data-theme="light"] h3:not(.cc-card *):not(.vh-hero *),
-html[data-theme="light"] h4:not(.vh-hero *),
-html[data-theme="light"] h5:not(.vh-hero *),
-html[data-theme="light"] h6:not(.vh-hero *) {
+html[data-theme="light"] h1:not(.ip-title):not(.stage-copy h1):not(.vh-title *):not(.cc-card *):not(.vh-hero *):not(.hud-card *),
+html[data-theme="light"] h2:not(.ip-title):not(.stage-copy *):not(.vh-title *):not(.cc-card *):not(.vh-hero *):not(.hud-card *),
+html[data-theme="light"] h3:not(.cc-card *):not(.vh-hero *):not(.hud-card *),
+html[data-theme="light"] h4:not(.vh-hero *):not(.hud-card *),
+html[data-theme="light"] h5:not(.vh-hero *):not(.hud-card *),
+html[data-theme="light"] h6:not(.vh-hero *):not(.hud-card *) {
   color: #090d16 !important;
 }
 
-html[data-theme="light"] p:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *),
-html[data-theme="light"] li:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *) {
+html[data-theme="light"] p:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *):not(.hud-card *),
+html[data-theme="light"] li:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *):not(.hud-card *) {
   color: #334155 !important;
 }
 
-html[data-theme="light"] strong:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *),
-html[data-theme="light"] b:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *) {
+html[data-theme="light"] strong:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *):not(.hud-card *),
+html[data-theme="light"] b:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *):not(.hud-card *) {
   color: #090d16 !important;
 }
 
@@ -3471,7 +3471,7 @@ html[data-theme="light"] a {
   text-decoration-color: rgba(200, 110, 0, 0.5);
 }
 
-html[data-theme="light"] a:hover {
+html[data-theme="light"] a:not(.vh-btn):not(.hdr-cta):not(.btn):not(.home-btn):not(.cta-button):not(.nav-cta-btn):hover {
   color: #a85800 !important;
   text-decoration-color: #a85800;
 }
@@ -3779,17 +3779,27 @@ html[data-theme="light"] .footer-tagline {
 
 html[data-theme="light"] .footer-social-link {
   background: #ffffff !important;
-  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
   color: #0f172a !important;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05) !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06) !important;
+}
+
+html[data-theme="light"] .footer-social-link svg {
+  fill: #0f172a !important;
+  color: #0f172a !important;
 }
 
 html[data-theme="light"] .footer-social-link:hover {
   background: #ffffff !important;
   border-color: #c86e00 !important;
   color: #c86e00 !important;
-  box-shadow: 0 4px 12px rgba(200, 110, 0, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(200, 110, 0, 0.18) !important;
   transform: translateY(-2px);
+}
+
+html[data-theme="light"] .footer-social-link:hover svg {
+  fill: #c86e00 !important;
+  color: #c86e00 !important;
 }
 
 html[data-theme="light"] .footer-col-label {

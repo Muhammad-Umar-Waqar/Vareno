@@ -866,9 +866,17 @@ const wallpapers = [
   color: #475569;
 }
 
+:global(html[data-theme="light"]) .rm-esrb-badge {
+  background: #ffffff;
+  border: 1.5px solid #090d16;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
 :global(html[data-theme="light"]) .rm-esrb-m {
   background: #090d16;
   color: #ffffff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
 }
 
 :global(html[data-theme="light"]) .rm-esrb-info strong {
@@ -876,7 +884,7 @@ const wallpapers = [
 }
 
 :global(html[data-theme="light"]) .rm-esrb-info small {
-  color: #64748b;
+  color: #475569;
 }
 
 :global(html[data-theme="light"]) .rm-esrb-descriptors {

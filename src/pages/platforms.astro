@@ -175,8 +175,8 @@ const hardwareFeatures = [
         <div class="plat-card plat-card--pc">
           <div class="plat-card-icon">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <rect width="40" height="40" rx="8" fill="rgba(255,255,255,0.05)"/>
-              <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.4)" font-weight="bold">PC</text>
+              <rect class="plat-pc-bg" width="40" height="40" rx="8" fill="rgba(255,255,255,0.05)"/>
+              <text class="plat-pc-text" x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="16" fill="rgba(255,255,255,0.4)" font-weight="bold">PC</text>
             </svg>
           </div>
           <div class="plat-card-body">
@@ -537,6 +537,14 @@ const hardwareFeatures = [
   background: #ffffff;
   border-color: rgba(15, 23, 42, 0.12);
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .plat-pc-bg {
+  fill: #e2e8f0;
+}
+
+:global(html[data-theme="light"]) .plat-pc-text {
+  fill: #090d16;
 }
 
 :global(html[data-theme="light"]) .plat-card-name {
