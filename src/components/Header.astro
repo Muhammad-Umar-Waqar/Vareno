@@ -106,8 +106,35 @@ const navIcons: Record<string, string> = {
       </div>
     </nav>
 
-    <!-- Right side: Pre-order CTA + mobile menu button -->
+    <!-- Right side: Theme Toggle + Pre-order CTA + mobile menu button -->
     <div class="hdr-right">
+      <button
+        type="button"
+        class="hdr-theme-toggle"
+        id="hdr-theme-toggle"
+        aria-label="Toggle dark/light theme"
+        title="Toggle dark/light theme"
+      >
+        <span class="theme-icon-box theme-icon-sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </span>
+        <span class="theme-icon-box theme-icon-moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </span>
+      </button>
+
       <a class="hdr-cta" href={buyHref} rel="sponsored noopener noreferrer">
         <span class="hdr-cta-dot" aria-hidden="true"></span>
         Pre-order
@@ -138,11 +165,39 @@ const navIcons: Record<string, string> = {
       <img src={logo.src} width={32} height={32} alt="" />
       <span>Vareno</span>
     </a>
-    <button class="hdr-drawer-close" id="hdr-drawer-close" type="button" aria-label="Close menu">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M18 6 6 18M6 6l12 12"/>
-      </svg>
-    </button>
+    <div class="hdr-drawer-actions">
+      <button
+        type="button"
+        class="hdr-theme-toggle hdr-theme-toggle--drawer"
+        id="hdr-drawer-theme-toggle"
+        aria-label="Toggle dark/light theme"
+        title="Toggle dark/light theme"
+      >
+        <span class="theme-icon-box theme-icon-sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </span>
+        <span class="theme-icon-box theme-icon-moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </span>
+      </button>
+      <button class="hdr-drawer-close" id="hdr-drawer-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <nav class="hdr-drawer-nav" aria-label="Mobile navigation links">
@@ -276,6 +331,24 @@ const navIcons: Record<string, string> = {
       hoverTimeout = window.setTimeout(closeMoreMenu, 250);
     });
   }
+
+  // ── Theme toggle logic ──
+  function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme') || 'dark';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', nextTheme);
+    try {
+      localStorage.setItem('vareno_theme', nextTheme);
+      localStorage.setItem('theme', nextTheme);
+    } catch (e) {}
+  }
+
+  const themeToggle = document.getElementById('hdr-theme-toggle');
+  if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+
+  const drawerThemeToggle = document.getElementById('hdr-drawer-theme-toggle');
+  if (drawerThemeToggle) drawerThemeToggle.addEventListener('click', toggleTheme);
 </script>
 
 <style>
@@ -496,6 +569,82 @@ const navIcons: Record<string, string> = {
   align-items: center;
   gap: 0.65rem;
   flex-shrink: 0;
+}
+
+/* ── Theme Switcher Toggle Button ── */
+.hdr-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: rgba(16, 19, 26, 0.7);
+  border: 1px solid rgba(245, 180, 0, 0.25);
+  color: #f5b400;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hdr-theme-toggle:hover {
+  background: rgba(245, 180, 0, 0.15);
+  border-color: rgba(245, 180, 0, 0.5);
+  color: #ffe56a;
+  transform: scale(1.05);
+  box-shadow: 0 0 14px rgba(245, 180, 0, 0.25);
+}
+
+.hdr-theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* In dark mode (default): show sun icon, hide moon */
+:global(html:not([data-theme="light"])) .theme-icon-moon {
+  display: none;
+}
+:global(html:not([data-theme="light"])) .theme-icon-sun {
+  display: flex;
+}
+
+/* In light mode: show moon icon, hide sun */
+:global(html[data-theme="light"]) .theme-icon-sun {
+  display: none;
+}
+:global(html[data-theme="light"]) .theme-icon-moon {
+  display: flex;
+}
+
+:global(html[data-theme="light"]) .hdr-theme-toggle {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .hdr-theme-toggle:hover {
+  background: rgba(217, 119, 6, 0.1);
+  border-color: rgba(217, 119, 6, 0.4);
+  color: #d97706;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.15);
+}
+
+.hdr-drawer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hdr-theme-toggle--drawer {
+  width: 36px;
+  height: 36px;
 }
 
 /* Pre-order CTA */
