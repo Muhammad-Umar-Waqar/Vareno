@@ -219,4 +219,50 @@ const schemas = [
 .blog-read-more:hover {
   gap: 0.7rem;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+:global(html[data-theme="light"]) .blog-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .blog-card-featured {
+  border-color: #c86e00;
+  box-shadow: 0 8px 24px rgba(200, 110, 0, 0.12);
+}
+
+:global(html[data-theme="light"]) .blog-title a {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .blog-title a:hover {
+  color: #c86e00;
+}
+
+:global(html[data-theme="light"]) .blog-desc {
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .blog-date {
+  color: #c86e00;
+}
+
+:global(html[data-theme="light"]) .blog-tag {
+  background: #f1f5f9;
+  border-color: rgba(15, 23, 42, 0.1);
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .blog-tag-hot {
+  background: #fef3c7;
+  border-color: #fde047;
+  color: #92400e;
+}
+
+:global(html[data-theme="light"]) .blog-read-more {
+  color: #a85800;
+}
 </style>

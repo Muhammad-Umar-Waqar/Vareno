@@ -316,6 +316,88 @@ const crumbs = [
   height: auto;
   display: block;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+:global(html[data-theme="light"]) .tool-box {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .tool-upload-box {
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+:global(html[data-theme="light"]) .preview-frame {
+  background: #f8fafc;
+  border-color: rgba(15, 23, 42, 0.15);
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .tool-btn {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+}
+
+:global(html[data-theme="light"]) .tool-btn:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+:global(html[data-theme="light"]) .tool-btn--gold {
+  background: #c86e00;
+  border-color: #c86e00;
+  color: #ffffff;
+}
+
+:global(html[data-theme="light"]) .tool-btn--gold:hover {
+  background: #a85800;
+  color: #ffffff;
+}
+
+:global(html[data-theme="light"]) .tool-tip {
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .tool-legend {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .scene-radio-content {
+  background: #f8fafc;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+:global(html[data-theme="light"]) .scene-radio-card input:checked + .scene-radio-content {
+  background: #fefce8;
+  border-color: #c86e00;
+  box-shadow: 0 0 16px rgba(200, 110, 0, 0.15);
+}
+
+:global(html[data-theme="light"]) .scene-name {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .scene-desc {
+  color: #475569;
+}
+
+:global(html[data-theme="light"]) .tool-disclaimer {
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .result-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .result-title {
+  color: #090d16;
+}
 </style>
 
 <script>

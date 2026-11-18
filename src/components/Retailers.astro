@@ -325,6 +325,20 @@ const stores = [
   color: #475569;
 }
 
+:global(html[data-theme="light"]) .rc-btn {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+}
+
+:global(html[data-theme="light"]) .rc-btn:hover {
+  background: var(--store-color, #c86e00);
+  border-color: var(--store-color, #c86e00);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
 :global(html[data-theme="light"]) .rc-footer {
   border-top-color: rgba(15, 23, 42, 0.08);
 }

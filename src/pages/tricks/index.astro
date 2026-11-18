@@ -489,4 +489,68 @@ const tricks = [
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LIGHT MODE OVERRIDES
+     ═══════════════════════════════════════════════════════════════════════════ */
+  :global(html[data-theme="light"]) .sec-title {
+    color: #090d16;
+  }
+
+  :global(html[data-theme="light"]) .ft-card {
+    background: #ffffff;
+    border: 1px solid rgba(46, 213, 115, 0.45);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  }
+
+  :global(html[data-theme="light"]) .ft-title {
+    color: #090d16;
+  }
+
+  :global(html[data-theme="light"]) .ft-desc {
+    color: #334155;
+  }
+
+  :global(html[data-theme="light"]) .ft-stat-item {
+    background: #f8fafc;
+    border-color: rgba(15, 23, 42, 0.1);
+  }
+
+  :global(html[data-theme="light"]) .ft-stat-label {
+    color: #64748b;
+  }
+
+  :global(html[data-theme="light"]) .ft-stat-val {
+    color: #090d16;
+  }
+
+  :global(html[data-theme="light"]) .ft-helper-note {
+    color: #64748b;
+  }
+
+  :global(html[data-theme="light"]) .trick-card {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.12);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .tc-title {
+    color: #090d16;
+  }
+
+  :global(html[data-theme="light"]) .tc-desc {
+    color: #334155;
+  }
+
+  :global(html[data-theme="light"]) .tc-stat {
+    color: #090d16;
+  }
+
+  :global(html[data-theme="light"]) .tc-badge {
+    background: #f1f5f9;
+  }
+
+  :global(html[data-theme="light"]) .tc-footer {
+    border-top-color: rgba(15, 23, 42, 0.08);
+  }
 </style>

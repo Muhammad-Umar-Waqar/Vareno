@@ -26,11 +26,11 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   LIGHT MODE DESIGN SYSTEM TOKENS (Vice City South Beach Day)
+   LIGHT MODE DESIGN SYSTEM TOKENS (Vice City South Beach Day - Luminous Ivory)
    ═══════════════════════════════════════════════════════════════════════════ */
 html[data-theme="light"] {
-  --void: #ebf0f7; /* High-contrast clean silver-stone canvas */
-  --asphalt: #dfe5ef;
+  --void: #fbfbfd; /* Refined luminous off-white/porcelain canvas */
+  --asphalt: #f1f5f9;
   --panel: #ffffff;
   --gold: #c86e00; /* Rich contrast amber */
   --highlight: #a85800; /* Darker amber for hovers */
@@ -38,7 +38,7 @@ html[data-theme="light"] {
   --neon: #0284c7; /* Vibrant ocean cerulean */
   --paper: #090d16; /* Deep black ink */
   --muted: #475569; /* Slate 600 */
-  --line: rgba(15, 23, 42, 0.12); /* Crisp visible borders */
+  --line: rgba(15, 23, 42, 0.08); /* Crisp visible borders */
   --glow: rgba(200, 110, 0, 0.15);
   color-scheme: light;
 }
@@ -73,13 +73,13 @@ body {
 
 html[data-theme="light"] body {
   background:
-    radial-gradient(ellipse 80% 50% at 12% -10%, rgba(200, 110, 0, 0.05), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 90% 8%, rgba(2, 132, 199, 0.04), transparent 50%),
-    linear-gradient(180deg, #ebf0f7 0%, #e5ebf4 40%, #dee5ef 100%);
+    radial-gradient(ellipse 80% 50% at 15% -5%, rgba(200, 110, 0, 0.04), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 85% 0%, rgba(2, 132, 199, 0.03), transparent 45%),
+    #fbfbfd;
 }
 
 html[data-theme="light"] body::before {
-  opacity: 0.12;
+  opacity: 0.04;
   mix-blend-mode: multiply;
 }
 
@@ -3356,22 +3356,22 @@ article.shell,
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Global Typography & Headings (Light Mode: Deep Ink Contrast) ── */
-html[data-theme="light"] h1:not(.ip-title):not(.stage-copy h1):not(.vh-title *):not(.cc-card *),
-html[data-theme="light"] h2:not(.ip-title):not(.stage-copy *):not(.vh-title *):not(.cc-card *),
-html[data-theme="light"] h3:not(.cc-card *),
-html[data-theme="light"] h4,
-html[data-theme="light"] h5,
-html[data-theme="light"] h6 {
+html[data-theme="light"] h1:not(.ip-title):not(.stage-copy h1):not(.vh-title *):not(.cc-card *):not(.vh-hero *),
+html[data-theme="light"] h2:not(.ip-title):not(.stage-copy *):not(.vh-title *):not(.cc-card *):not(.vh-hero *),
+html[data-theme="light"] h3:not(.cc-card *):not(.vh-hero *),
+html[data-theme="light"] h4:not(.vh-hero *),
+html[data-theme="light"] h5:not(.vh-hero *),
+html[data-theme="light"] h6:not(.vh-hero *) {
   color: #090d16 !important;
 }
 
-html[data-theme="light"] p:not(.cc-card *):not(.vh-title *):not(.stage-copy *),
-html[data-theme="light"] li:not(.cc-card *):not(.vh-title *):not(.stage-copy *) {
+html[data-theme="light"] p:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *),
+html[data-theme="light"] li:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *) {
   color: #334155 !important;
 }
 
-html[data-theme="light"] strong:not(.cc-card *):not(.vh-title *):not(.stage-copy *),
-html[data-theme="light"] b:not(.cc-card *):not(.vh-title *):not(.stage-copy *) {
+html[data-theme="light"] strong:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *),
+html[data-theme="light"] b:not(.cc-card *):not(.vh-title *):not(.stage-copy *):not(.vh-hero *) {
   color: #090d16 !important;
 }
 
@@ -3386,7 +3386,7 @@ html[data-theme="light"] .post-lead {
   color: #090d16 !important;
 }
 
-/* ── Maintain white text on photographic dark overlay cards only ── */
+/* ── Maintain white/gold text on photographic dark overlay cards & hero ── */
 html[data-theme="light"] .cc-card-title,
 html[data-theme="light"] .vh-title-line,
 html[data-theme="light"] .stage-copy h1,
@@ -3402,6 +3402,68 @@ html[data-theme="light"] .cc-card-title {
 html[data-theme="light"] .cc-card-sub {
   color: rgba(255, 255, 255, 0.88) !important;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ── Homepage Hero Section (Photo Overlay - Always Crisp White & Gold) ── */
+html[data-theme="light"] .vh-hero {
+  background: #060509 !important;
+}
+
+html[data-theme="light"] .vh-eyebrow {
+  color: #f7c948 !important;
+  opacity: 0.95 !important;
+}
+
+html[data-theme="light"] .vh-title,
+html[data-theme="light"] .vh-title-line {
+  color: #ffffff !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7) !important;
+}
+
+html[data-theme="light"] .vh-title-line--gold {
+  color: #f7c948 !important;
+  text-shadow: 0 0 60px rgba(245, 180, 0, 0.45) !important;
+}
+
+html[data-theme="light"] .vh-sub {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8) !important;
+}
+
+html[data-theme="light"] .vh-btn--primary {
+  background: linear-gradient(120deg, #f59e0b 0%, #ffd84a 55%, #ea580c 100%) !important;
+  color: #090d16 !important;
+  box-shadow: 0 10px 32px rgba(245, 158, 11, 0.35) !important;
+}
+
+html[data-theme="light"] .vh-btn--ghost {
+  border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+}
+
+html[data-theme="light"] .vh-btn--ghost:hover {
+  border-color: #f7c948 !important;
+  color: #f7c948 !important;
+  background: rgba(245, 180, 0, 0.15) !important;
+}
+
+html[data-theme="light"] .vh-scroll-hint {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+html[data-theme="light"] .vh-statbar {
+  background: rgba(10, 9, 16, 0.92) !important;
+  border-top: 1px solid rgba(245, 180, 0, 0.22) !important;
+}
+
+html[data-theme="light"] .vh-stat strong {
+  color: #f7c948 !important;
+}
+
+html[data-theme="light"] .vh-stat span {
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 /* ── Links ── */
@@ -3592,6 +3654,20 @@ html[data-theme="light"] .sheet-segment {
   background: var(--void) !important;
 }
 
+html[data-theme="light"] .source-list a {
+  color: #c86e00 !important;
+  text-decoration: underline;
+}
+
+html[data-theme="light"] .source-list a:hover {
+  color: #a85800 !important;
+}
+
+html[data-theme="light"] .source-list li {
+  border-top-color: rgba(15, 23, 42, 0.08) !important;
+  color: #334155 !important;
+}
+
 /* ── Data Tables & Spec Matrices ── */
 html[data-theme="light"] table {
   background: #ffffff !important;
@@ -3600,7 +3676,7 @@ html[data-theme="light"] table {
 }
 
 html[data-theme="light"] th {
-  background: #dfe5ef !important;
+  background: #f1f5f9 !important;
   color: #090d16 !important;
   border-bottom: 2px solid rgba(15, 23, 42, 0.12) !important;
 }
@@ -3611,12 +3687,12 @@ html[data-theme="light"] td {
 }
 
 html[data-theme="light"] tr:nth-child(even) td {
-  background: rgba(240, 244, 250, 0.7) !important;
+  background: rgba(241, 245, 249, 0.6) !important;
 }
 
 /* ── Code & Pre Blocks ── */
 html[data-theme="light"] code {
-  background: #dfe5ef !important;
+  background: #f1f5f9 !important;
   color: #090d16 !important;
   border: 1px solid rgba(15, 23, 42, 0.1) !important;
 }
@@ -3673,10 +3749,10 @@ html[data-theme="light"] .err-link-card:hover {
   color: #a85800 !important;
 }
 
-/* ── Footer ── */
+/* ── Footer (Clean Luminous Surface) ── */
 html[data-theme="light"] .site-footer {
-  background: #dfe5ef !important;
-  border-top: 1px solid rgba(15, 23, 42, 0.12) !important;
+  background: #f1f5f9 !important;
+  border-top: 1px solid rgba(15, 23, 42, 0.08) !important;
   color: #475569 !important;
 }
 
@@ -3686,6 +3762,21 @@ html[data-theme="light"] .footer-brand {
 
 html[data-theme="light"] .footer-tagline {
   color: #64748b !important;
+}
+
+html[data-theme="light"] .footer-social-link {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05) !important;
+}
+
+html[data-theme="light"] .footer-social-link:hover {
+  background: #ffffff !important;
+  border-color: #c86e00 !important;
+  color: #c86e00 !important;
+  box-shadow: 0 4px 12px rgba(200, 110, 0, 0.15) !important;
+  transform: translateY(-2px);
 }
 
 html[data-theme="light"] .footer-col-label {

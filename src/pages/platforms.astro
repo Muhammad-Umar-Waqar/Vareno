@@ -494,4 +494,71 @@ const hardwareFeatures = [
     gap: 2rem;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+:global(html[data-theme="light"]) .plat-heading {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .plat-lead {
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .plat-status-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .psc-top {
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+:global(html[data-theme="light"]) .psc-row {
+  background: #f8fafc;
+  border-color: rgba(15, 23, 42, 0.09);
+}
+
+:global(html[data-theme="light"]) .psc-info strong {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .psc-info span {
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .plat-section-title {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .plat-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .plat-card-name {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .plat-card-note {
+  color: #475569;
+}
+
+:global(html[data-theme="light"]) .plat-table-wrap thead th {
+  background: #f1f5f9;
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .plat-table-wrap th[scope="row"] {
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .plat-table-wrap th,
+:global(html[data-theme="light"]) .plat-table-wrap td {
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+  color: #334155;
+}
 </style>
