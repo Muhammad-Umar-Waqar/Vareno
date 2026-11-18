@@ -1,12 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
-import Crumbs from '../components/Crumbs.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
 import { socials } from '../data/site';
 import { breadcrumbSchema } from '../lib/seo';
 
-const title = 'Contact Vareno about the GTA 6 Guide | Vareno';
+const title = 'Contact Vareno | Corrections & Inquiries';
 const description =
-  'Send GTA 6 guide corrections to Vareno on YouTube, TikTok, or Instagram. The site has no separate newsroom inbox.';
+  'Send GTA 6 guide corrections or editorial inquiries to Vareno across YouTube, TikTok, or Instagram.';
 const crumbs = [
   { name: 'Home', path: '/' },
   { name: 'Contact', path: '/contact' },
@@ -14,23 +14,143 @@ const crumbs = [
 ---
 
 <Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
-  <article class="shell prose">
-    <Crumbs items={crumbs} />
-    <h1>Contact</h1>
-    <p class="lead">
-      For a wrong date, a broken store link, or a line that no longer matches Rockstar, message @VarenoPlay on one of
-      the networks below. There is no separate email inbox for this guide.
-    </p>
-    <ul>
-      {socials.map((item) => (
-        <li>
-          <a href={item.href} rel="noopener noreferrer">{item.name}</a>
-        </li>
-      ))}
-    </ul>
-    <p>
-      Say which page you mean, and link the Rockstar or Take-Two page that disagrees. The
-      <a href="/editorial-policy">editorial policy</a> is what we update against.
-    </p>
-  </article>
+  <InnerPageLayout
+    pageTitle="Contact Vareno"
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.webp"
+    accentColor="#f5b400"
+  >
+    <div class="legal-card" data-reveal>
+      <p class="legal-lead">
+        Spotted a discrepancy in a countdown timezone, a broken console store link, or a new Take-Two press announcement? We welcome direct community tips and corrections.
+      </p>
+
+      <div class="legal-divider"></div>
+
+      <section class="legal-section">
+        <h2>Direct Social Channels</h2>
+        <p>
+          Our editorial team actively monitors direct messages across our verified social channels:
+        </p>
+        <div class="social-links-grid">
+          {socials.map((item) => (
+            <a href={item.href} target="_blank" rel="noopener noreferrer" class="social-pill">
+              <span>{item.name} (@VarenoPlay)</span>
+              <span class="social-arrow">↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="legal-section">
+        <h2>Submitting a Data Correction</h2>
+        <p>
+          When reporting an update (e.g. unexpected release movement or revised retailer pricing), please include:
+        </p>
+        <ul class="contact-bullets">
+          <li>The specific Vareno guide URL.</li>
+          <li>A direct link to the primary source (Rockstar Games Newswire, Take-Two SEC filing, or official console store listing).</li>
+        </ul>
+        <p>
+          All submissions are reviewed according to our <a href="/editorial-policy" class="gold-link">Editorial Verification Policy</a>.
+        </p>
+      </section>
+    </div>
+  </InnerPageLayout>
 </Base>
+
+<style>
+.legal-card {
+  max-width: 82ch;
+  background: rgba(16, 19, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  backdrop-filter: blur(16px);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+}
+
+.legal-lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #fff;
+  margin: 0;
+}
+
+.legal-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(245, 180, 0, 0.4), rgba(255, 255, 255, 0.06));
+  margin: 1.75rem 0;
+}
+
+.legal-section {
+  margin-bottom: 2rem;
+}
+
+.legal-section h2 {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.75rem;
+}
+
+.legal-section p {
+  margin: 0 0 0.85rem;
+}
+
+.contact-bullets {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.contact-bullets li {
+  margin-bottom: 0.5rem;
+}
+
+.gold-link {
+  color: #f5b400;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.social-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(245, 180, 0, 0.1);
+  border: 1px solid rgba(245, 180, 0, 0.3);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.social-pill:hover {
+  background: #f5b400;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.social-arrow {
+  color: #f5b400;
+  font-size: 0.95rem;
+}
+
+.social-pill:hover .social-arrow {
+  color: #000;
+}
+</style>

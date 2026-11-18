@@ -488,8 +488,8 @@ article.shell,
 .shell.prose {
   width: min(88rem, calc(100% - 2.5rem));
   max-width: none;
-  padding: 0 0 2rem;
-  margin-top: -5.5rem;
+  padding: 3.5rem 0 4rem;
+  margin-top: 0;
   position: relative;
   z-index: 1;
 }
@@ -1146,6 +1146,7 @@ legend {
 }
 
 
+/* ============================================================
    INNER PAGES — WIDER LAYOUT & DRAMATIC MAST
    ============================================================ */
 
@@ -1154,7 +1155,7 @@ article.shell,
 .shell.prose {
   width: min(90rem, calc(100% - 3rem));
   max-width: none;
-  padding: 0 0 3rem;
+  padding: 3.5rem 0 4rem;
 }
 
 /* Inner page mast — more dramatic, taller */
@@ -1808,6 +1809,7 @@ article.shell,
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
    GUIDE CARDS - Enhanced tilt
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -1949,7 +1951,7 @@ article.shell,
 .shell.prose {
   width: min(90rem, calc(100% - 3rem));
   max-width: none;
-  padding: 0 0 3rem;
+  padding: 3.5rem 0 4rem;
 }
 
 .page-mast {

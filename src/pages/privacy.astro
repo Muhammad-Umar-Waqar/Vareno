@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import Crumbs from '../components/Crumbs.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
 import { breadcrumbSchema } from '../lib/seo';
 
 const title = 'Privacy Policy | Vareno GTA 6 Guide';
@@ -13,30 +13,113 @@ const crumbs = [
 ---
 
 <Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
-  <article class="shell prose">
-    <Crumbs items={crumbs} />
-    <h1>Privacy</h1>
-    <p class="lead">
-      Reading the guides does not require an account. The only personal file this site asks for is the photo you
-      choose to upload on the portrait tool.
-    </p>
-    <h2>The portrait photo</h2>
-    <p>
-      When you create a portrait, the server sends that photo to RunComfy so Google’s Nano Banana 2 Edit model can
-      make a new image. The photo is held in server memory only long enough to run that request, or for up to 15
-      minutes if the image service has to fetch it from a short-lived link on this site. We do not sell the photo and
-      we do not build a public gallery from it.
-    </p>
-    <p>
-      The tool allows 5 portraits an hour from the same network address. That counter stays in memory on the server.
-      Use a photo you have the right to upload.
-    </p>
-    <h2>Ads and store links</h2>
-    <p>
-      Store buttons go to PlayStation, Microsoft, or Rockstar and are marked as sponsored links. If an ad slot is
-      turned on later, the ad partner’s own policy will apply to that slot. Empty slots are not filled with placeholder
-      claims.
-    </p>
-    <p>This notice was last updated on November 16, 2026.</p>
-  </article>
+  <InnerPageLayout
+    pageTitle="Privacy Policy"
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.webp"
+    accentColor="#f5b400"
+  >
+    <div class="legal-card" data-reveal>
+      <p class="legal-lead">
+        Your privacy is paramount. Reading the Vareno GTA 6 guides, calculating local release dates, and exploring interactive maps requires <strong>zero account registration</strong> and collects no personal dossiers.
+      </p>
+
+      <div class="legal-divider"></div>
+
+      <section class="legal-section">
+        <h2>1. The AI Portrait Photo Processing</h2>
+        <p>
+          When you use our optional fan-art portrait generator, the photo you submit is temporarily processed via RunComfy's encrypted cloud pipeline to synthesize a Vice City art portrait using Google's Nano Banana 2 Edit model.
+        </p>
+        <p>
+          Your original photo is retained only in transient memory during generation (typically under 60 seconds, or up to 15 minutes for temporary token verification) and is permanently flushed. We do not sell your likeness, train foundational models on your faces, or publish private photos to public galleries.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>2. Anonymous Usage & Rate Limiting</h2>
+        <p>
+          To maintain server stability and prevent automated abuse, our API applies an in-memory rate limit (5 portrait generations per IP per hour). Network IP hashes are ephemeral and not linked to individual identities.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>3. External Store Links & Third-Party Cookies</h2>
+        <p>
+          Outbound retailer links (PlayStation Store, Microsoft Store, Rockstar Games launcher) direct users to official platforms. Once you navigate off Vareno, the respective privacy and cookie policies of Sony Interactive Entertainment, Microsoft Corporation, and Take-Two Interactive apply.
+        </p>
+      </section>
+
+      <div class="legal-footer">
+        <span>Last modified: November 16, 2026</span>
+        <a href="/terms" class="legal-link">Review Terms of Use →</a>
+      </div>
+    </div>
+  </InnerPageLayout>
 </Base>
+
+<style>
+.legal-card {
+  max-width: 82ch;
+  background: rgba(16, 19, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  backdrop-filter: blur(16px);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+}
+
+.legal-lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #fff;
+  margin: 0;
+}
+
+.legal-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(245, 180, 0, 0.4), rgba(255, 255, 255, 0.06));
+  margin: 1.75rem 0;
+}
+
+.legal-section {
+  margin-bottom: 2rem;
+}
+
+.legal-section h2 {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.75rem;
+}
+
+.legal-section p {
+  margin: 0 0 0.85rem;
+}
+
+.legal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--display, 'Unbounded', sans-serif);
+}
+
+.legal-link {
+  color: #f5b400;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.legal-link:hover {
+  text-decoration: underline;
+}
+</style>

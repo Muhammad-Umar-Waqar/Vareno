@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import Crumbs from '../components/Crumbs.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
 import { breadcrumbSchema } from '../lib/seo';
 
 const title = 'Terms of Use | Vareno GTA 6 Guide';
@@ -13,20 +13,119 @@ const crumbs = [
 ---
 
 <Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
-  <article class="shell prose">
-    <Crumbs items={crumbs} />
-    <h1>Terms</h1>
-    <p class="lead">
-      This site is an unofficial guide and a portrait tool from Vareno. It is not a Rockstar Games or Take-Two
-      product, and nothing here is a promise about the game.
-    </p>
-    <ul>
-      <li>Grand Theft Auto, Rockstar, and related names belong to their owners. We use them to identify the game the guides discuss.</li>
-      <li>Prices and dates can change. Check the linked Rockstar or store page before you pay.</li>
-      <li>Upload only a photo you have the right to use. Do not upload someone else’s private picture.</li>
-      <li>Portraits are new images, not files from the game. You are responsible for how you share them.</li>
-      <li>The portrait service can be unavailable, rate-limited, or turned off when no API token is configured.</li>
-    </ul>
-    <p>These terms were last updated on November 16, 2026.</p>
-  </article>
+  <InnerPageLayout
+    pageTitle="Terms of Use"
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.webp"
+    accentColor="#f5b400"
+  >
+    <div class="legal-card" data-reveal>
+      <p class="legal-lead">
+        This site is an unofficial fan guide and community portal from <strong>Vareno</strong>. It is not affiliated with, endorsed by, or sponsored by Rockstar Games, Take-Two Interactive, Sony PlayStation, or Microsoft Xbox.
+      </p>
+
+      <div class="legal-divider"></div>
+
+      <ul class="legal-list">
+        <li>
+          <strong>Intellectual Property:</strong> <em>Grand Theft Auto</em>, <em>GTA VI</em>, <em>Rockstar Games</em>, and associated logos, artwork, and characters belong to Take-Two Interactive Software, Inc. and Rockstar Games. They are referenced strictly under fair-use editorial commentary and informational reporting.
+        </li>
+        <li>
+          <strong>Accuracy & Pricing Notice:</strong> Release dates, edition prices, pre-load dates, and system specifications are subject to official modification by Rockstar Games. Always verify current prices and availability on official PlayStation Store, Microsoft Store, or Rockstar Games storefronts before making purchases.
+        </li>
+        <li>
+          <strong>User Uploads & AI Portrait Tool:</strong> You agree to upload only photos for which you hold legal rights and consent. Do not upload copyrighted imagery, harmful material, or photos of non-consenting individuals.
+        </li>
+        <li>
+          <strong>Fan Art Classification:</strong> AI-generated portraits and images created via our portrait tool are synthetic fan art interpretations and do not represent in-game digital assets or software code.
+        </li>
+        <li>
+          <strong>Service Availability:</strong> Interactive tools, timezone countdown clocks, and API features are provided on an "as-is" basis and may be subject to maintenance, rate-limiting, or downtime without prior notice.
+        </li>
+      </ul>
+
+      <div class="legal-footer">
+        <span>Last modified: November 16, 2026</span>
+        <a href="/privacy" class="legal-link">Review Privacy Policy →</a>
+      </div>
+    </div>
+  </InnerPageLayout>
 </Base>
+
+<style>
+.legal-card {
+  max-width: 82ch;
+  background: rgba(16, 19, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  backdrop-filter: blur(16px);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+}
+
+.legal-lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #fff;
+  margin: 0;
+}
+
+.legal-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(245, 180, 0, 0.4), rgba(255, 255, 255, 0.06));
+  margin: 1.75rem 0;
+}
+
+.legal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.legal-list li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.legal-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #f5b400;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.legal-list strong {
+  color: #fff;
+}
+
+.legal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--display, 'Unbounded', sans-serif);
+}
+
+.legal-link {
+  color: #f5b400;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.legal-link:hover {
+  text-decoration: underline;
+}
+</style>

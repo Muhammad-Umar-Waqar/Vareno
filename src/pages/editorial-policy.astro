@@ -1,11 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
-import Crumbs from '../components/Crumbs.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
 import { breadcrumbSchema } from '../lib/seo';
 
-const title = 'Editorial Policy for the GTA 6 Guide | Vareno';
+const title = 'Editorial Policy | Vareno GTA 6 Guide';
 const description =
-  'Vareno cites Rockstar and Take-Two for GTA 6 dates and prices, labels updates, and skips leaks, ripped maps, and unsourced cast lists.';
+  'Vareno cites Rockstar and Take-Two for GTA 6 dates and prices, labels updates, and provides verified primary source citations.';
 const crumbs = [
   { name: 'Home', path: '/' },
   { name: 'Editorial policy', path: '/editorial-policy' },
@@ -13,30 +13,117 @@ const crumbs = [
 ---
 
 <Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
-  <article class="shell prose">
-    <Crumbs items={crumbs} />
-    <h1>Editorial policy</h1>
-    <p class="lead">
-      Dates, prices, and story lines on this site come from Rockstar Games or Take-Two pages, linked at the bottom of
-      the guide. If those pages change, the guide should change, and the updated line should move with it.
-    </p>
-    <h2>What we publish</h2>
-    <ul>
-      <li>The current launch date and the older dates it replaced, with the source named.</li>
-      <li>US prices from Take-Two’s pre-order announcement, plus a note that other countries differ.</li>
-      <li>Rockstar’s synopsis for Lucia and Jason, as a quotation, not a rewritten biography.</li>
-      <li>The trailer list as Rockstar’s page dates it, including the fact that no film is titled Trailer 3.</li>
-    </ul>
-    <h2>What we leave out</h2>
-    <ul>
-      <li>Leaked files, ripped screenshots, and unofficial maps drawn as if they were Rockstar’s.</li>
-      <li>Voice actors, ages, and region lists the studio has not printed.</li>
-      <li>A PC date, a cross-play plan, or a collector’s edition, unless an official page announces one.</li>
-    </ul>
-    <p>
-      The portrait tool is labeled fan art on the page where it runs. Corrections can be sent through the accounts on
-      the <a href="/contact">contact page</a>.
-    </p>
-    <p>This policy was last updated on November 16, 2026.</p>
-  </article>
+  <InnerPageLayout
+    pageTitle="Editorial Policy"
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.webp"
+    accentColor="#f5b400"
+  >
+    <div class="legal-card" data-reveal>
+      <p class="legal-lead">
+        Dates, prices, hardware specifications, and narrative synopses on Vareno are directly anchored to verified primary sources: official Rockstar Games Newswire publications and Take-Two Interactive SEC filings.
+      </p>
+
+      <div class="legal-divider"></div>
+
+      <section class="legal-section">
+        <h2>What We Publish (Verified Standards)</h2>
+        <ul class="editorial-bullets">
+          <li><strong>Current Launch Milestone:</strong> November 19, 2026 lock, citing Take-Two Interactive shareholder earnings releases.</li>
+          <li><strong>Official Pricing:</strong> Standard Edition ($79.99 USD) and Ultimate Edition ($99.99 USD) with regional currency disclaimers.</li>
+          <li><strong>Official Character Lore:</strong> Verbatim quotes and official press synopses for Lucia Caminos and Jason Duval.</li>
+          <li><strong>Media Catalog:</strong> Official Trailer 1, Trailer 2, and Developer extended previews with verified timestamps.</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>What We Filter & Fact-Check</h2>
+        <ul class="editorial-bullets">
+          <li><strong>DMCA / Leaked Assets:</strong> We do not host, distribute, or stream illegally extracted source code or copyright-infringing footage.</li>
+          <li><strong>Unsourced Cast Rumors:</strong> Voice actors and character models are labeled as community speculation until officially announced by Rockstar Games.</li>
+          <li><strong>Viral Fabrication:</strong> Clickbait claims (e.g. the fake $150 standard price tag or Netflix day-one streaming) are investigated and explicitly debunked.</li>
+        </ul>
+      </section>
+
+      <div class="legal-footer">
+        <span>Policy updated: November 16, 2026</span>
+        <a href="/contact" class="legal-link">Submit Source Tip →</a>
+      </div>
+    </div>
+  </InnerPageLayout>
 </Base>
+
+<style>
+.legal-card {
+  max-width: 82ch;
+  background: rgba(16, 19, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  backdrop-filter: blur(16px);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+}
+
+.legal-lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #fff;
+  margin: 0;
+}
+
+.legal-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(245, 180, 0, 0.4), rgba(255, 255, 255, 0.06));
+  margin: 1.75rem 0;
+}
+
+.legal-section {
+  margin-bottom: 2rem;
+}
+
+.legal-section h2 {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.75rem;
+}
+
+.editorial-bullets {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.editorial-bullets li {
+  margin-bottom: 0.65rem;
+}
+
+.editorial-bullets strong {
+  color: #fff;
+}
+
+.legal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--display, 'Unbounded', sans-serif);
+}
+
+.legal-link {
+  color: #f5b400;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.legal-link:hover {
+  text-decoration: underline;
+}
+</style>

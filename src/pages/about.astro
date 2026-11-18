@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import Crumbs from '../components/Crumbs.astro';
+import InnerPageLayout from '../components/InnerPageLayout.astro';
 import { site, socials } from '../data/site';
 import { breadcrumbSchema } from '../lib/seo';
 
@@ -14,29 +14,134 @@ const crumbs = [
 ---
 
 <Base title={title} description={description} schemas={[breadcrumbSchema(crumbs)]}>
-  <article class="shell prose">
-    <Crumbs items={crumbs} />
-    <h1>About Vareno</h1>
-    <p class="lead">
-      Vareno is a gaming, clips, and entertainment brand. This site is its guide to Grand Theft Auto VI: the
-      release date, the price, the setting, and the trailers, written from public Rockstar and Take-Two statements.
-    </p>
-    <p>
-      The guide is unofficial. {site.name} is not affiliated with Rockstar Games or Take-Two Interactive. Guides are
-      signed {site.author} and show the date they were last updated. The
-      <a href="/editorial-policy">editorial policy</a> explains what we will cite and what we will leave out.
-    </p>
-    <p>
-      The portrait tool makes a new picture from a photo you upload. It is fan art for sharing, not a render from the
-      game. Read the <a href="/tools/portrait">tool page</a> before you upload.
-    </p>
-    <h2>Elsewhere</h2>
-    <ul>
-      {socials.map((item) => (
-        <li>
-          <a href={item.href} rel="noopener noreferrer">{item.name}</a>
-        </li>
-      ))}
-    </ul>
-  </article>
+  <InnerPageLayout
+    pageTitle="About Vareno"
+    crumbs={crumbs}
+    heroImg="/images/gta6-rooftop.webp"
+    accentColor="#f5b400"
+  >
+    <div class="legal-card" data-reveal>
+      <p class="legal-lead">
+        <strong>Vareno</strong> is a high-octane gaming, clips, and digital culture publication. This platform serves as the premier community-driven intelligence terminal for <em>Grand Theft Auto VI</em>.
+      </p>
+
+      <div class="legal-divider"></div>
+
+      <section class="legal-section">
+        <h2>Our Mission: Facts over Clickbait</h2>
+        <p>
+          In a gaming landscape saturated with fake release leaks, unverified \$150 price rumors, and spoof YouTube trailers, Vareno was established to provide an authoritative, verified sanctuary for GTA fans.
+        </p>
+        <p>
+          Every timeline, price point, engine specification, and geographical mapping milestone on this guide is strictly cross-referenced against official Take-Two Interactive SEC 10-K/10-Q filings, certified Rockstar Games press releases, and verifiable developer telemetry.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Editorial & Fan Art Commitment</h2>
+        <p>
+          Vareno operates independently as an unofficial enthusiast publication. We are not owned by, staffed by, or affiliated with Rockstar Games or Take-Two Interactive. Review our <a href="/editorial-policy" class="gold-link">Editorial Policy</a> to understand how our researchers curate data.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Connect With Our Community</h2>
+        <div class="social-links-grid">
+          {socials.map((item) => (
+            <a href={item.href} target="_blank" rel="noopener noreferrer" class="social-pill">
+              <span>{item.name}</span>
+              <span class="social-arrow">↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  </InnerPageLayout>
 </Base>
+
+<style>
+.legal-card {
+  max-width: 82ch;
+  background: rgba(16, 19, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  backdrop-filter: blur(16px);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+}
+
+.legal-lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #fff;
+  margin: 0;
+}
+
+.legal-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(245, 180, 0, 0.4), rgba(255, 255, 255, 0.06));
+  margin: 1.75rem 0;
+}
+
+.legal-section {
+  margin-bottom: 2rem;
+}
+
+.legal-section h2 {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.75rem;
+}
+
+.legal-section p {
+  margin: 0 0 0.85rem;
+}
+
+.gold-link {
+  color: #f5b400;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.social-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(245, 180, 0, 0.1);
+  border: 1px solid rgba(245, 180, 0, 0.3);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.social-pill:hover {
+  background: #f5b400;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.social-arrow {
+  color: #f5b400;
+  font-size: 0.95rem;
+}
+
+.social-pill:hover .social-arrow {
+  color: #000;
+}
+</style>

@@ -1,19 +1,250 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const title = 'Page not found | Vareno';
-const description = 'That page is not on the Vareno GTA 6 guide. Try the release date, price, map, or home page.';
+const title = '404 - Page Not Found | Vareno GTA 6';
+const description = 'The requested GTA 6 page does not exist in the state of Leonida. Return to verified release dates, tricks, leaks, and guides.';
+
+const quickLinks = [
+  { href: '/', title: 'Home', desc: 'Main hub, countdown & synopsis', icon: '🏠' },
+  { href: '/release-date', title: 'Release Date', desc: 'Nov 19, 2026 lock & timezones', icon: '📅' },
+  { href: '/tricks', title: 'GTA 6 Tricks', desc: 'Viral New Zealand 21h early access', icon: '⚡' },
+  { href: '/leaks', title: 'Leaks & Facts', desc: 'Confirmed features vs debunked myths', icon: '🕵️' },
+  { href: '/price', title: 'Price & Editions', desc: 'Standard ($79.99) & Ultimate ($99.99)', icon: '💰' },
+  { href: '/map', title: 'Leonida Map', desc: 'Vice City, Port Gellhorn & Keys', icon: '🗺️' },
+  { href: '/blog', title: 'Hot Topics & Intel', desc: 'PC specs, map size & online reset', icon: '🔥' },
+];
 ---
 
 <Base title={title} description={description} noindex={true}>
-  <article class="shell prose">
-    <h1>Page not found</h1>
-    <p class="lead">That address is not on this guide. The release date, the price, and the map are linked below.</p>
-    <ul class="guide-index">
-      <li><a href="/">GTA 6 home</a></li>
-      <li><a href="/release-date">GTA 6 release date</a></li>
-      <li><a href="/price">How much is GTA 6</a></li>
-      <li><a href="/map">GTA 6 map</a></li>
-    </ul>
-  </article>
+  <section class="notfound-section" data-reveal>
+    <div class="notfound-ambient" aria-hidden="true"></div>
+
+    <div class="shell notfound-container">
+      <div class="notfound-badge">
+        <span class="badge-dot"></span>
+        <span>ERROR 404 • SIGNAL LOST IN LEONIDA</span>
+      </div>
+
+      <h1 class="notfound-title">
+        LOST IN <span class="text-gradient">VICE CITY</span>
+      </h1>
+
+      <p class="notfound-lead">
+        The GPS coordinates you requested don't exist in the state of Leonida or have been wiped.
+        Recalibrate your route using one of our verified intel stations below:
+      </p>
+
+      <div class="notfound-grid">
+        {quickLinks.map((link) => (
+          <a href={link.href} class="notfound-card">
+            <span class="card-icon">{link.icon}</span>
+            <div class="card-text">
+              <span class="card-title">{link.title}</span>
+              <span class="card-desc">{link.desc}</span>
+            </div>
+            <span class="card-arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="notfound-footer-action">
+        <a href="/" class="home-btn">
+          <span>← Back to Vareno Homepage</span>
+        </a>
+      </div>
+    </div>
+  </section>
 </Base>
+
+<style>
+.notfound-section {
+  position: relative;
+  min-height: 80vh;
+  padding: 4.5rem 0 6rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.notfound-ambient {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(245, 180, 0, 0.12) 0%, rgba(255, 71, 87, 0.06) 50%, transparent 70%);
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.notfound-container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notfound-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 71, 87, 0.12);
+  color: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff4757;
+  box-shadow: 0 0 8px #ff4757;
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.notfound-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  line-height: 1.15;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #f5b400 0%, #ff4757 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.notfound-lead {
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 60ch;
+  line-height: 1.65;
+  margin: 0 0 2.5rem;
+}
+
+.notfound-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.notfound-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: 1rem;
+  background: rgba(16, 19, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  text-align: left;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.notfound-card:hover {
+  transform: translateY(-3px);
+  background: rgba(245, 180, 0, 0.06);
+  border-color: rgba(245, 180, 0, 0.4);
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.card-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.card-title {
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.notfound-card:hover .card-title {
+  color: #f5b400;
+}
+
+.card-desc {
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.card-arrow {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.notfound-card:hover .card-arrow {
+  transform: translateX(4px);
+  color: #f5b400;
+}
+
+.notfound-footer-action {
+  margin-top: 1rem;
+}
+
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  background: rgba(245, 180, 0, 0.15);
+  border: 1px solid rgba(245, 180, 0, 0.35);
+  color: #f5b400;
+  text-decoration: none;
+  font-family: var(--display, 'Unbounded', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.home-btn:hover {
+  background: #f5b400;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(245, 180, 0, 0.3);
+}
+
+@media (max-width: 640px) {
+  .notfound-section {
+    padding: 3rem 0 4rem;
+  }
+  .notfound-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
