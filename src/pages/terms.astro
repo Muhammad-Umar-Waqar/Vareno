@@ -128,4 +128,36 @@ const crumbs = [
 .legal-link:hover {
   text-decoration: underline;
 }
+
+:global(html[data-theme="light"]) .legal-card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #334155;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+:global(html[data-theme="light"]) .legal-lead {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .legal-list strong {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .legal-list li::before {
+  color: #c86e00;
+}
+
+:global(html[data-theme="light"]) .legal-divider {
+  background: linear-gradient(90deg, rgba(200, 110, 0, 0.4), rgba(15, 23, 42, 0.08));
+}
+
+:global(html[data-theme="light"]) .legal-footer {
+  border-top-color: rgba(15, 23, 42, 0.1);
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .legal-link {
+  color: #c86e00;
+}
 </style>

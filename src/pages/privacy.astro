@@ -122,4 +122,35 @@ const crumbs = [
 .legal-link:hover {
   text-decoration: underline;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+:global(html[data-theme="light"]) .legal-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .legal-lead {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .legal-section h2 {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .legal-divider {
+  background: linear-gradient(90deg, rgba(200, 110, 0, 0.35), rgba(15, 23, 42, 0.08));
+}
+
+:global(html[data-theme="light"]) .legal-footer {
+  border-top-color: rgba(15, 23, 42, 0.1);
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .legal-link {
+  color: #a85800;
+}
 </style>

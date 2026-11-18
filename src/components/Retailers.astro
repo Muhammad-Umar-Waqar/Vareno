@@ -289,6 +289,46 @@ const stores = [
   box-shadow: 0 6px 20px var(--store-glow, rgba(0,0,0,0.3));
 }
 
+:global(html[data-theme="light"]) .retailers-title {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .retailers-subtitle {
+  color: #475569;
+}
+
+:global(html[data-theme="light"]) .retailer-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .rc-name {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .rc-platform {
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .rc-desc {
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .rc-icon-wrap {
+  background: rgba(15, 23, 42, 0.05);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+:global(html[data-theme="light"]) .rc-badge {
+  background: rgba(15, 23, 42, 0.06);
+  color: #475569;
+}
+
+:global(html[data-theme="light"]) .rc-footer {
+  border-top-color: rgba(15, 23, 42, 0.08);
+}
+
 @media (max-width: 768px) {
   .retailers-section {
     padding: 2rem 1.15rem;

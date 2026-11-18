@@ -624,16 +624,109 @@ const navIcons: Record<string, string> = {
 
 :global(html[data-theme="light"]) .hdr-theme-toggle {
   background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  color: #0f172a;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  color: #090d16;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
 :global(html[data-theme="light"]) .hdr-theme-toggle:hover {
-  background: rgba(217, 119, 6, 0.1);
-  border-color: rgba(217, 119, 6, 0.4);
-  color: #d97706;
-  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.15);
+  background: rgba(200, 110, 0, 0.1);
+  border-color: rgba(200, 110, 0, 0.45);
+  color: #b45309;
+  box-shadow: 0 4px 14px rgba(200, 110, 0, 0.2);
+}
+
+:global(html[data-theme="light"]) .site-header.is-scrolled {
+  background: rgba(235, 240, 247, 0.94);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+:global(html[data-theme="light"]) .hdr-brand-text {
+  color: #c86e00;
+}
+
+:global(html[data-theme="light"]) .hdr-pill-nav {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+:global(html[data-theme="light"]) .hdr-pill-link {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+:global(html[data-theme="light"]) .hdr-pill-link:hover {
+  color: #c86e00;
+  background: rgba(200, 110, 0, 0.1);
+}
+
+:global(html[data-theme="light"]) .hdr-pill-link.is-active {
+  color: #ffffff;
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  box-shadow: 0 2px 10px rgba(217, 119, 6, 0.35);
+}
+
+:global(html[data-theme="light"]) .hdr-more-menu {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.14);
+}
+
+:global(html[data-theme="light"]) .hdr-more-item {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .hdr-more-item:hover {
+  background: rgba(200, 110, 0, 0.08);
+}
+
+:global(html[data-theme="light"]) .hdr-more-item-desc {
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .hdr-drawer {
+  background: #ebf0f7;
+  border-left: 1px solid rgba(15, 23, 42, 0.14);
+  box-shadow: -10px 0 40px rgba(15, 23, 42, 0.15);
+}
+
+:global(html[data-theme="light"]) .hdr-drawer-top {
+  border-bottom-color: rgba(15, 23, 42, 0.12);
+}
+
+:global(html[data-theme="light"]) .hdr-drawer-link {
+  color: #090d16;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+:global(html[data-theme="light"]) .hdr-drawer-link:hover {
+  background: #ffffff;
+  border-color: #c86e00;
+  color: #b45309;
+}
+
+:global(html[data-theme="light"]) .hdr-drawer-link.is-active {
+  background: rgba(200, 110, 0, 0.12);
+  color: #b45309;
+  border-color: rgba(200, 110, 0, 0.35);
+}
+
+:global(html[data-theme="light"]) .hdr-drawer-close {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.14);
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .hdr-menu-btn {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.14);
+}
+
+:global(html[data-theme="light"]) .hdr-menu-bar {
+  background: #090d16;
 }
 
 .hdr-drawer-actions {

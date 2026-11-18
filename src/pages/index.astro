@@ -577,6 +577,84 @@ const stats = [
   }
 }
 
+/* ── Light Mode Overrides for Home Page ── */
+:global(html[data-theme="light"]) .his-chip {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.15);
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .home-clock-card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+}
+
+:global(html[data-theme="light"]) .hcc-title {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .hcc-sub {
+  color: #475569;
+}
+
+:global(html[data-theme="light"]) .hcc-utc {
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .hcc-footer {
+  border-top-color: rgba(15, 23, 42, 0.1);
+}
+
+:global(html[data-theme="light"]) .guides-badge {
+  background: rgba(200, 110, 0, 0.1);
+  color: #b45309;
+}
+
+:global(html[data-theme="light"]) .guides-title {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .guides-subtitle {
+  color: #475569;
+}
+
+:global(html[data-theme="light"]) .guide-card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .guide-card:hover {
+  border-color: rgba(200, 110, 0, 0.45);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+}
+
+:global(html[data-theme="light"]) .gc-title {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .gc-text {
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .gc-icon-wrap {
+  background: rgba(200, 110, 0, 0.08);
+  border-color: rgba(200, 110, 0, 0.2);
+  color: #c86e00;
+}
+
+:global(html[data-theme="light"]) .gc-badge {
+  background: rgba(15, 23, 42, 0.06);
+  color: #475569;
+}
+
+:global(html[data-theme="light"]) .gc-action {
+  border-top-color: rgba(15, 23, 42, 0.08);
+  color: #c86e00;
+}
+
 @media (max-width: 768px) {
   .home-intro-card,
   .home-clock-card {

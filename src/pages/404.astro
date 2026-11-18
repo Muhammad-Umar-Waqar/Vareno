@@ -247,4 +247,55 @@ const quickLinks = [
     grid-template-columns: 1fr;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+:global(html[data-theme="light"]) .notfound-title {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .notfound-lead {
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .notfound-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+:global(html[data-theme="light"]) .notfound-card:hover {
+  background: #ffffff;
+  border-color: #c86e00;
+  box-shadow: 0 8px 24px rgba(200, 110, 0, 0.15);
+}
+
+:global(html[data-theme="light"]) .card-title {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .notfound-card:hover .card-title {
+  color: #c86e00;
+}
+
+:global(html[data-theme="light"]) .card-desc {
+  color: #64748b;
+}
+
+:global(html[data-theme="light"]) .card-arrow {
+  color: #94a3b8;
+}
+
+:global(html[data-theme="light"]) .home-btn {
+  background: #ffffff;
+  border-color: #c86e00;
+  color: #a85800;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .home-btn:hover {
+  background: #c86e00;
+  color: #ffffff;
+}
 </style>

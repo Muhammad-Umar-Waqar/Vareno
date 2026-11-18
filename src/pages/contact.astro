@@ -153,4 +153,49 @@ const crumbs = [
 .social-pill:hover .social-arrow {
   color: #000;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+:global(html[data-theme="light"]) .legal-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .legal-lead {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .legal-section h2 {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .legal-divider {
+  background: linear-gradient(90deg, rgba(200, 110, 0, 0.35), rgba(15, 23, 42, 0.08));
+}
+
+:global(html[data-theme="light"]) .gold-link {
+  color: #a85800;
+}
+
+:global(html[data-theme="light"]) .social-pill {
+  background: #f1f5f9;
+  border-color: rgba(15, 23, 42, 0.15);
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .social-arrow {
+  color: #a85800;
+}
+
+:global(html[data-theme="light"]) .social-pill:hover {
+  background: #c86e00;
+  color: #ffffff;
+}
+
+:global(html[data-theme="light"]) .social-pill:hover .social-arrow {
+  color: #ffffff;
+}
 </style>
