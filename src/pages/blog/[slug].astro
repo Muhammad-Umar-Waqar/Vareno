@@ -211,4 +211,53 @@ if (post.data.faqs && post.data.faqs.length > 0) {
   text-decoration: none;
   font-weight: 600;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+:global(html[data-theme="light"]) .article-content {
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .article-content :global(h2),
+:global(html[data-theme="light"]) .article-content :global(h3) {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .article-content :global(table) {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+:global(html[data-theme="light"]) .article-content :global(th) {
+  background: #f1f5f9;
+  color: #090d16;
+  border-bottom-color: rgba(15, 23, 42, 0.12);
+}
+
+:global(html[data-theme="light"]) .article-content :global(td) {
+  color: #334155;
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+:global(html[data-theme="light"]) .article-content :global(blockquote) {
+  background: rgba(200, 110, 0, 0.06);
+  border-left-color: #c86e00;
+  color: #1e293b;
+}
+
+:global(html[data-theme="light"]) .article-tag-badge {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: rgba(200, 110, 0, 0.25);
+}
+
+:global(html[data-theme="light"]) .article-nav {
+  border-top-color: rgba(15, 23, 42, 0.08);
+}
+
+:global(html[data-theme="light"]) .article-back-link {
+  color: #c86e00;
+}
 </style>

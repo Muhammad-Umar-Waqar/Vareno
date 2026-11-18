@@ -269,6 +269,57 @@ const cards = [
     height: 140px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+:global(html[data-theme="light"]) .draggable-showcase {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .draggable-header {
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+:global(html[data-theme="light"]) .draggable-badge {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+:global(html[data-theme="light"]) .draggable-title {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .draggable-sub {
+  color: #334155;
+}
+
+:global(html[data-theme="light"]) .draggable-hint {
+  color: #090d16;
+  background: #f1f5f9;
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+:global(html[data-theme="light"]) .draggable-board {
+  background: #f8fafc;
+  border: 1px dashed rgba(15, 23, 42, 0.16);
+}
+
+:global(html[data-theme="light"]) .drag-card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1), 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+:global(html[data-theme="light"]) .drag-card-title {
+  color: #090d16;
+}
+
+:global(html[data-theme="light"]) .drag-card-sub {
+  color: #64748b;
+}
 </style>
 
 <script>

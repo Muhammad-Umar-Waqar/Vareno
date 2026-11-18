@@ -331,6 +331,16 @@ const {
     font-size: 0.75rem;
   }
 }
+:global(html[data-theme="light"]) .faq-aceternity {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.05);
+}
+
+:global(html[data-theme="light"]) .faq-bg-ambient {
+  background: radial-gradient(circle, rgba(200, 110, 0, 0.06) 0%, rgba(2, 132, 199, 0.04) 50%, transparent 70%);
+}
+
 :global(html[data-theme="light"]) .faq-title {
   color: #090d16;
 }
@@ -340,24 +350,29 @@ const {
 }
 
 :global(html[data-theme="light"]) .faq-item {
-  background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.12);
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  background: #f8fafc;
+  border-color: rgba(15, 23, 42, 0.09);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
 }
 
 :global(html[data-theme="light"]) .faq-item:hover {
   background: #ffffff;
   border-color: rgba(200, 110, 0, 0.45);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
 }
 
 :global(html[data-theme="light"]) .faq-item[open] {
   background: #ffffff;
   border-color: rgba(200, 110, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
 }
 
 :global(html[data-theme="light"]) .faq-question {
   color: #090d16;
+}
+
+:global(html[data-theme="light"]) .faq-answer {
+  color: #334155;
 }
 
 :global(html[data-theme="light"]) .faq-answer-inner {
