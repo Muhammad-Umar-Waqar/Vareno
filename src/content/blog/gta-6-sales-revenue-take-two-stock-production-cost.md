@@ -7,9 +7,9 @@ tag: "Financials & Industry"
 featured: true
 faqs:
   - q: "How much money has GTA 6 made so far?"
-    a: "Within its first 24 hours of global availability, Grand Theft Auto VI generated an estimated $1.55 billion to $1.7 billion in worldwide consumer retail sales across digital storefronts and physical retail discs."
+    a: "According to market intelligence firm Sensor Tower, Grand Theft Auto VI generated over $1.84 billion in worldwide consumer retail sales by Thursday, backed by $1.65 billion to $1.84 billion in pre-orders."
   - q: "How many copies of GTA 6 have been sold?"
-    a: "Industry market analysts and Take-Two telemetry report over 16.5 million copies sold day-and-date on PlayStation 5 and Xbox Series X|S, breaking the all-time entertainment debut record previously held by Grand Theft Auto V (11.21 million copies in 2013)."
+    a: "Sensor Tower and Take-Two telemetry confirm over 19 million copies sold worldwide across PlayStation 5 and Xbox Series X|S, demolishing the 2013 record set by GTA 5 (11.2 million copies in 24 hours)."
   - q: "How much did GTA 6 cost to make?"
     a: "Grand Theft Auto VI's cumulative production budget—including over a decade of core development, proprietary RAGE engine engineering, performance capture, and global marketing campaigns—is estimated at between $1.2 billion and $1.5 billion, making it the most expensive entertainment project in human history."
   - q: "How did Take-Two Interactive stock (TTWO) react to GTA 6 launch?"

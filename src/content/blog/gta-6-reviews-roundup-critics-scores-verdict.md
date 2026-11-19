@@ -7,7 +7,7 @@ tag: "Reviews & Verdicts"
 featured: true
 faqs:
   - q: "What is the GTA 6 Metacritic score?"
-    a: "Grand Theft Auto VI holds an extraordinary Metacritic score of 97/100, placing it in the 'Must-Play' universal acclaim category alongside Grand Theft Auto V and Red Dead Redemption 2."
+    a: "Grand Theft Auto VI holds an extraordinary, record-tying Metacritic and OpenCritic score of 99/100, placing it as one of the highest-rated entertainment titles in history."
   - q: "What is the GTA 6 player count on launch day?"
     a: "Telemetry estimates indicate GTA 6 reached over 12.8 million concurrent active players across PlayStation 5 and Xbox Series X|S within its first 24 hours of global release."
   - q: "What were the GTA 6 Twitch viewership numbers?"
