@@ -12,8 +12,10 @@ faqs:
     a: "Lucia Caminos is voiced and performed by New York actress Manni L. Perez (known for Law & Order: Special Victims Unit, Blindspot, and prior voice work in Grand Theft Auto V and The Blacklist)."
   - q: "Are famous celebrities voicing characters in GTA 6?"
     a: "Following Rockstar's modern casting philosophy established in GTA 5 and Red Dead Redemption 2, primary protagonists are portrayed by dedicated theater and film character actors rather than Hollywood A-listers, while radio stations feature celebrity DJs and real-world musicians."
+  - q: "Who does Stephen Root play in GTA 6?"
+    a: "Emmy-nominated actor Stephen Root (Office Space, Barry, King of the Hill) portrays Brian Heder, a retired smuggler and landlord in Key Lento who gives Jason and Lucia crucial early-game missions."
   - q: "Who plays Mandy in GTA 6?"
-    a: "Mandy, the diner witness whose reaction video goes viral on in-game social media in Leonida, is voiced by comedic voice actress Stefanie Butler."
+    a: "Mandy, the eccentric tenant in Key Lento who tasks Jason with the viral 'Pipework' sink mission, is voiced by comedic voice actress Stefanie Butler."
   - q: "How long did performance capture take for GTA 6?"
     a: "Performance capture (mocap) and voice recording for Grand Theft Auto VI spanned over five years between 2019 and 2024 at Rockstar's motion capture studios in Long Island City, New York."
 ---
@@ -80,9 +82,10 @@ Beyond the central Bonnie & Clyde duo, Leonida is populated by hundreds of eccen
 ├────────────────────────┼────────────────────────┼─────────────────────────┤
 │ Lucia Caminos          │ Manni L. Perez         │ Female Lead Protagonist │
 │ Jason Duval            │ Dylan Rourke           │ Male Lead Protagonist   │
-│ Stefanie (Prison Counselor)│ Laura Patalano     │ Leonida Penitentiary    │
-│ Mandy (Viral Diner Witness)│ Stefanie Butler    │ Social Media Sensation  │
-│ Cal Hampton            │ Wyatt Russell (Rumored)│ Key Smuggler Informant  │
+│ Brian Heder            │ Stephen Root           │ Key Lento Smuggler/Boss │
+│ Stefanie (Counselor)   │ Laura Patalano         │ Leonida Penitentiary    │
+│ Mandy                  │ Stefanie Butler        │ Key Lento Resident      │
+│ Cal Hampton            │ Wyatt Russell (Rumored)│ Smuggler Informant      │
 │ Arnold                 │ Roberto Sanchez        │ Port Gellhorn Foreman   │
 └────────────────────────┴────────────────────────┴─────────────────────────┘
 ```

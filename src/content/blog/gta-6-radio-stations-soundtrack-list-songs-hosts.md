@@ -48,7 +48,9 @@ Here is the complete guide to the confirmed radio stations, soundtrack highlight
 Rockstar Games invested heavily in securing premier music licensing for GTA 6. Key songs featured across the stations include:
 
 * **Tom Petty — *"Love Is a Long Road"*** (Featured on Classic Rock; legendary Floridian anthem from the debut trailer).
+* **Chappell Roan — *"HOT TO GO!"*** (Featured on Vice Pop FM; high-energy synth-pop sensation dominating Vice Beach airwaves).
 * **The Weeknd — *"Blinding Lights"*** (Featured on Vice Pop FM; modern synthpop tribute to neon Vice City nightlife).
+* **Kodak Black** (Featured on Coastline Hip-Hop; authentic Florida native trap anthem representation).
 * **Bad Bunny & Rauw Alejandro** (Featured on Fuego 98.5; capturing modern South Florida Latin urban dominance).
 * **Hall & Oates — *"Out of Touch"*** (Featured on Flash FM; beloved franchise throwback returning from original Vice City).
 * **Dua Lipa & Peggy Gou** (Featured on Club Deep; poolside and beach club anthems).
