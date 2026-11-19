@@ -46,17 +46,31 @@ We strongly recommend **sparing Arnold**. Sparing him keeps communication channe
 
 ---
 
-## 2. How to "Fix Railing" in GTA 6 (Safehouse Objective)
+## 2. How to "Fix Railing" & All Safehouse Projects at Jason's House (Key Lento)
 
-One of the most viral and confusing early objectives occurs during the Vice City beach motel sequence, where players receive the task to **"Fix Railing"** on the upper balcony to obscure the police view of their getaway vehicle:
+One of the most viral and puzzling early sequences occurs at **Jason’s stilt house in Key Lento**, where players unlock several home improvement maintenance projects to convert the run-down marina property into a fully functional operational base:
 
-1. **Locate the Toolkit:** Enter the motel unit and walk into the bathroom. The red maintenance toolkit rests beneath the sink. Press the interact button to pick it up.
-2. **Approach the Balcony Railing:** Walk out onto the exterior wooden balcony toward the highlighted yellow waypoint where the wooden balustrade has rotted or fallen away.
-3. **Trigger the Interaction:** Stand directly in front of the broken section and hold the **Interact prompt** (`Right D-Pad` on PlayStation / Xbox).
-4. **Complete the Stick Alignment:** Gently rotate the Right Analog Stick until the controller haptics vibrate steadily, then press `R2 / RT` to fasten the wooden brace.
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                   ALL KEY LENTO SAFEHOUSE REPAIR PROJECTS              │
+├─────────────────────┬──────────────────────────┬───────────────────────┤
+│ Safehouse Project   │ Location & Tool Needed   │ Unlocked Gameplay Perk│
+├─────────────────────┼──────────────────────────┼───────────────────────┤
+│ Fix Balcony Railing │ Bathroom Red Toolkit     │ Blocks Police Line-of-Sight│
+│ Repair Generator    │ Shed Wrench & Fuel Can   │ Restores Interior Lighting │
+│ Dock Piling Repair  │ Marina Hammer & Timber   │ Unlocks Speedboat Docking  │
+│ Water Heater Fix    │ Utility Closet Pipe Kit  │ Rested XP & Stamina Buff   │
+└─────────────────────┴──────────────────────────┴───────────────────────┘
+```
+
+### Step-by-Step: Fixing the Balcony Railing:
+1. **Locate the Toolkit:** Walk inside the stilt cabin and enter the bathroom. Grab the red maintenance toolkit resting beneath the sink.
+2. **Approach the Balcony Railing:** Step onto the exterior wooden balcony toward the highlighted yellow marker where the wooden balustrade has rotted away.
+3. **Trigger the Interaction:** Stand before the gap and hold the **Interact prompt** (`Right D-Pad` on PlayStation / Xbox).
+4. **Complete the Stick Alignment:** Gently rotate the Right Analog Stick until haptic feedback vibrates steadily, then pull `R2 / RT` to hammer in the wooden brace.
 
 > [!TIP]
-> **Bug Workaround:** If the "Fix Railing" interaction prompt fails to appear, your character may be carrying an active weapon. Open your weapon wheel, select **Unarmed**, take three steps backward into the room, and re-approach the ledge.
+> **Bug Workaround:** If the interaction prompt fails to appear, your character is likely carrying a drawn weapon. Open your weapon wheel, select **Unarmed**, take three steps backward into the room, and re-approach the ledge.
 
 ---
 
@@ -89,8 +103,8 @@ Because of Leonida's aggressive law enforcement response and dynamic world event
 
 ## 5. Frequently Asked Questions
 
-### Can you replay missions in GTA 6?
-Yes. Just like *GTA 5* and *Red Dead Redemption 2*, you can pause the game, navigate to the **Game > Missions** menu, and replay any completed heist or story chapter to achieve gold medal objectives.
+### Can you replay story missions in GTA 6?
+No. In a major shift confirmed by *IGN*, **GTA 6 removes the traditional mission replay feature** found in GTA 5. Rockstar designed narrative choices (like Arnold's fate) to carry permanent consequences throughout your campaign. To explore alternate paths, players must maintain separate manual save slots before major heists.
 
-### What happens if your partner dies in free-roam?
-If Lucia or Jason is critically wounded in free-roam, they will be transported to the nearest hospital in Vice City or Port Gellhorn. You will receive an in-game phone notification to pick them up, incurring a modest medical bill.
+### Can you keep playing GTA 6 after the credits roll?
+Yes. As confirmed by *Kotaku*, once the main campaign narrative concludes, players seamlessly return to free-roam Leonida. All side quests, street races, property management, wildlife tracking, and collectibles remain fully accessible indefinitely.
