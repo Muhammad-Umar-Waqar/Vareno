@@ -18,6 +18,8 @@ faqs:
     a: "Yes. GTA 6 features high-fidelity interactive adult nightclubs, including the premier 'Vice Strip' club located in downtown Vice City near the Ocean Drive nightlife district. It includes fully realized interiors, VIP private booths, bouncers, and crowd AI."
   - q: "Is GTA 6 inappropriate content?"
     a: "Yes, for younger audiences. The game includes uncensored adult language, suggestive humor, satirical adult billboards, strip clubs, narcotics deals, and armed robberies."
+  - q: "Why is 'Tacón' (high heels) trending in GTA 6?"
+    a: "Tacón (high heels in Spanish / 高跟鞋 in Chinese) went viral because GTA 6 features groundbreaking footwear inverse kinematics (IK) physics that dynamically adjust Lucia's posture, calf muscle tension, and terrain step sounds when wearing designer heels."
   - q: "What was leaked from GTA 6?"
     a: "The September 2022 leaks revealed 90 developer clips showing Lucia and Jason's motel dialogue, dynamic robbery mechanics, weapon inventory wheel, the rural nudist enclave coordinates, strip club interior physics, and police AI response cordons."
 ---
@@ -84,6 +86,11 @@ Unlike *GTA 5*, where Michael, Franklin, and Trevor operated largely as separate
 > *"Trust."*
 
 **Can you kiss random NPCs?** No. Rockstar Games has designed the romance system around narrative emotional depth rather than arbitrary dating minigames. You cannot flirt with or kiss random pedestrians on the street.
+
+### Why is "Tacón" (High Heels) Trending in GTA 6?
+One of the most viral technical trends across TikTok, Reddit, and global search engines (including Spanish searches for *"tacón GTA 6"* and Asian searches for *"GTA 6 高跟鞋"*) revolves around Lucia's **revolutionary high heel footwear physics**:
+* **Dynamic Skeletal Inverse Kinematics (IK):** Unlike previous titles where wearing heels caused characters to either clip into the ground or maintain identical flat-footed walking animations, GTA 6 dynamically recalculates posture, arch angle, and calf muscle contraction when Lucia equips high heels.
+* **Surface Audio & Friction:** Walking across marble hotel lobbies, wooden docks, or sandy beaches produces distinct physical audio clicks and subtle balance adjustments during sprinting.
 
 ---
 

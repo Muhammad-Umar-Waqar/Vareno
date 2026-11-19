@@ -25,6 +25,8 @@ const pages = [
   ['/blog/gta-6-launch-day-trends-30-fps-debate-player-shifts', 'GTA 6 Launch Trends & 30 FPS Debate', 'Console 30 FPS cap analysis, competing game player shifts, PC wait window, and the Kalshi economic analyst.'],
   ['/blog/gta-6-campaign-guide-spare-arnold-fix-railing-autosave', 'GTA 6 Campaign Guide: Spare Arnold, Fix Railing & Saves', 'Should you spare or eliminate Arnold, how to fix the motel balcony railing puzzle, auto-save settings, and 70-hour story length.'],
   ['/blog/gta-6-easter-eggs-bigfoot-cheats-criminal-profile', 'GTA 6 Easter Eggs: Bigfoot, Cheats & Criminal Profile', 'Mount Caga Bigfoot sightings, cell phone cheat codes, unwanted attention evasion, and law enforcement criminal database.'],
+  ['/blog/gta-6-voice-actors-cast-jason-lucia-dylan-rourke', 'GTA 6 Voice Actors & Cast', 'Dylan Rourke as Jason Duval, Manni L. Perez as Lucia Caminos, motion capture actors, and full cast profile.'],
+  ['/blog/gta-6-radio-stations-soundtrack-list-songs-hosts', 'GTA 6 Radio Stations & Soundtrack', 'Confirmed 18+ stations, Tom Petty Love Is a Long Road, Latin urban beats, celebrity DJs, and mobile phone music player.'],
   ['/about', 'About', 'Who publishes this guide.'],
   ['/editorial-policy', 'Editorial policy', 'How dates and prices are sourced and updated.'],
 ];
@@ -63,6 +65,9 @@ export const GET: APIRoute = () => {
     '- Bigfoot Easter Egg: Discovered in northern Mount Caga and Ambrosia pine forests between 2:30 AM and 4:00 AM during foggy weather, accompanied by mud footprints and thermal howling.',
     '- Cheat Codes & Trophies: Activated via the in-game cell phone dial pad (e.g., 1-999-887-853 for Max Health & Armor); entering cheats disables trophies and achievements for that save session.',
     '- Unwanted Attention Mechanic: A pre-wanted stealth state where police observe suspicious behavior before triggering stars; cleared by ducking in cars, obeying traffic laws, or changing clothes.',
+    '- Voice Actors & Protagonists: Jason Duval is portrayed by Dylan Rourke (Modern Family, Grey\'s Anatomy) and Lucia Caminos is portrayed by Manni L. Perez (Law & Order SVU, Blindspot).',
+    '- Radio Stations & Music: Over 18 stations including Vice Pop FM, Flash FM, and Fuego 98.5. Features Tom Petty\'s Love Is a Long Road, The Weeknd, and Bad Bunny alongside smartphone headphone streaming.',
+    '- Metacritic & Player Records: Holds a 97 Metascore on Metacritic with over 12.8 million launch day concurrent players and 1.62 million peak Twitch viewers.',
     '',
     '## Complete Guides Directory',
     '',
