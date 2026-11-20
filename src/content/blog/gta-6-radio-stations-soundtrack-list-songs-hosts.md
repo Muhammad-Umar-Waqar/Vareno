@@ -5,6 +5,7 @@ pubDate: 2026-11-19
 updatedDate: 2026-11-19
 tag: "Music & Audio"
 featured: true
+image: "/images/gta6-album.webp"
 faqs:
   - q: "What radio stations are in GTA 6?"
     a: "GTA 6 features over 18 dynamic radio stations spanning diverse genres, including Vice City Pop FM, Flash FM Revival, Wave 103, Leonida Latin Beats (Fuego FM), Gulf Coast Hip-Hop, Country Outlaw Radio, and satirical talk radio stations."
@@ -25,6 +26,11 @@ Here is the complete guide to the confirmed radio stations, soundtrack highlight
 ---
 
 ## 1. Confirmed GTA 6 Radio Stations & Genres
+
+<figure>
+  <img src="/images/gta6-album.webp" alt="GTA 6 Official Radio Stations and Soundtrack in Vice City" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Vice City Airwaves — Over 18 stations featuring Chappell Roan, Tom Petty, Bad Bunny, and Kodak Black.</figcaption>
+</figure>
 
 ```
 ┌────────────────────────┬──────────────────────────┬───────────────────────┐

@@ -5,6 +5,7 @@ pubDate: 2026-11-19
 updatedDate: 2026-11-19
 tag: "World & Wildlife"
 featured: true
+image: "/images/gta6-post-grassrivers.webp"
 faqs:
   - q: "Are birdwatchers really buying GTA 6?"
     a: "Yes. Major media outlets including VICE, Fox News, and Vulture reported that real-world birders and wildlife photographers are buying GTA 6 specifically to observe its scientifically authentic avian simulation, migratory flocking AI, and diverse Floridian habitats."
@@ -25,6 +26,11 @@ Reported by *VICE*, *Vulture*, and *Fox News*, Reddit's birding communities have
 ---
 
 ## 1. The Avian Summit: 62 Scientifically Authentic Bird Species
+
+<figure>
+  <img src="/images/gta6-post-grassrivers.webp" alt="Everglades Grassrivers and Wetlands Wildlife in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>The Grassrivers Wetlands — Home to over 62 bird species and authentic wading bird ecosystems in Leonida.</figcaption>
+</figure>
 
 Following the standard set by *Red Dead Redemption 2*, Rockstar's ecological design team spent years collaborating with Floridian environmentalists to capture authentic behavior:
 

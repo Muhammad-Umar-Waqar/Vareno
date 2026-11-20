@@ -5,6 +5,7 @@ pubDate: 2026-11-19
 updatedDate: 2026-11-19
 tag: "Cast & Characters"
 featured: true
+image: "/images/gta6-hero.webp"
 faqs:
   - q: "Who is the voice actor for Jason in GTA 6?"
     a: "Jason Duval is widely identified and reported to be performed by American actor Dylan Rourke (known for Modern Family, Grey's Anatomy, and The Mentalist), providing both voiceover and full motion-capture performance."
@@ -28,6 +29,11 @@ Rockstar Games has historically maintained tight non-disclosure agreements regar
 
 ## 1. Jason Duval: Performed by Dylan Rourke
 
+<figure>
+  <img src="/images/gta6-shot-duval.webp" alt="Jason Duval portrayed by Dylan Rourke in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Jason Duval — Tactical ex-military driver in Leonida, portrayed by Dylan Rourke.</figcaption>
+</figure>
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                 JASON DUVAL CASTING PROFILE                 │
@@ -50,6 +56,11 @@ The male co-protagonist of GTA 6, **Jason Duval**, is brought to life by America
 ---
 
 ## 2. Lucia Caminos: Performed by Manni L. Perez
+
+<figure>
+  <img src="/images/gta6-shot-lucia.webp" alt="Lucia Caminos portrayed by Manni L. Perez in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Lucia Caminos — First playable female lead in Rockstar's modern era, portrayed by Manni L. Perez.</figcaption>
+</figure>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐

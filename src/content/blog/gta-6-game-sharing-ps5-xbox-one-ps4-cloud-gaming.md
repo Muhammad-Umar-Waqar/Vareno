@@ -5,6 +5,7 @@ pubDate: 2026-11-19
 updatedDate: 2026-11-19
 tag: "Hardware & Console"
 featured: true
+image: "/images/gta6-shot-vc1.webp"
 faqs:
   - q: "Can you game share GTA 6 on PS5?"
     a: "Yes. Using PlayStation 5's official 'Console Sharing and Offline Play' feature, two players across two separate PS5 consoles can share a single digital purchase of Grand Theft Auto VI and play simultaneously."
@@ -25,6 +26,11 @@ Here is the complete, official step-by-step guide on how to game share *GTA 6* o
 ---
 
 ## 1. How to Game Share GTA 6 on PlayStation 5
+
+<figure>
+  <img src="/images/gta6-shot-vc1.webp" alt="PlayStation 5 and Xbox Series X GTA 6 Console Game Sharing" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Console Sharing & Remote Play — Playing GTA 6 across two consoles simultaneously with official platform sharing.</figcaption>
+</figure>
 
 Sony PlayStation officially supports family game sharing through the **Console Sharing and Offline Play** system:
 

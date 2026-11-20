@@ -5,6 +5,7 @@ pubDate: 2026-11-20
 updatedDate: 2026-11-20
 tag: "Characters & Lore"
 featured: true
+image: "/images/gta6-post-vicecity.webp"
 faqs:
   - q: "Is Niko Bellic in GTA 6?"
     a: "Yes. Niko Bellic from Grand Theft Auto IV makes a surprise story cameo in Chapter 5 during the mission 'Taking Liberties', appearing as an older, hardened Balkan syndicate enforcer operating in Vice City, voiced once again by Michael Hollick (masked in the credits as 'The Hitman')."
@@ -47,6 +48,11 @@ Eighteen years after stepping off the *Platypus* cargo freighter in Liberty City
 
 ## 2. Jimmy De Santa in Vice City: The Jack of Hearts Crypto Bro
 
+<figure>
+  <img src="/images/gta6-post-vicecity.webp" alt="Vice City Nightlife and Strip Club District in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Vice City Nightlife — Jimmy De Santa hangs out in the VIP lounge of the Jack of Hearts club.</figcaption>
+</figure>
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                JIMMY DE SANTA IN GTA 6 PROFILE              │
@@ -68,6 +74,11 @@ If Niko represents the dark, tragic side of Rockstar's universe, **Jimmy De Sant
 ---
 
 ## 3. How Old is Jason in GTA 6?
+
+<figure>
+  <img src="/images/gta6-shot-duval.webp" alt="Jason Duval Solo Character Portrait in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Jason Duval — Tactical ex-military driver in his early thirties operating across Leonida.</figcaption>
+</figure>
 
 Following intense interest on Google Trends regarding Jason Duval's character lore, here is what the official lore confirms:
 

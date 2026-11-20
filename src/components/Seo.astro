@@ -9,11 +9,12 @@ interface Props {
   pathname: string;
   ogType?: 'website' | 'article';
   noindex?: boolean;
+  image?: string;
 }
 
-const { title, description, pathname, ogType = 'website', noindex = false } = Astro.props;
+const { title, description, pathname, ogType = 'website', noindex = false, image: customImage } = Astro.props;
 const canonical = canonicalFor(pathname);
-const image = `${site.url}${og.src}`;
+const image = customImage ? (customImage.startsWith('http') ? customImage : `${site.url}${customImage}`) : `${site.url}${og.src}`;
 ---
 
 <meta charset="utf-8" />

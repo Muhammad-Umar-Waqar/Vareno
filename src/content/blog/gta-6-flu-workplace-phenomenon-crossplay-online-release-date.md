@@ -5,6 +5,7 @@ pubDate: 2026-11-20
 updatedDate: 2026-11-20
 tag: "News & Community"
 featured: true
+image: "/images/gta6-shot-vc2.webp"
 faqs:
   - q: "What is the 'GTA Flu'?"
     a: "The 'GTA Flu' is a viral term coined by HR firms and news outlets describing the massive global spike in employees calling in sick, taking PTO, or claiming sudden illness on November 19-20, 2026, to binge Grand Theft Auto VI at launch."
@@ -25,6 +26,11 @@ From corporate offices reporting unprecedented waves of the viral **"GTA Flu"** 
 ---
 
 ## 1. What is the "GTA Flu"? (The Great Global Sick Day)
+
+<figure>
+  <img src="/images/gta6-shot-vc2.webp" alt="Downtown Vice City Streets and Global GTA Flu Phenomenon" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>The "GTA Flu" — Millions of gamers taking time off to explore the sun-drenched streets of Vice City.</figcaption>
+</figure>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐

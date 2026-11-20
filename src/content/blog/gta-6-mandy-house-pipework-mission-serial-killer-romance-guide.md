@@ -5,6 +5,7 @@ pubDate: 2026-11-20
 updatedDate: 2026-11-20
 tag: "Missions & Guides"
 featured: true
+image: "/images/gta6-post-keys.webp"
 faqs:
   - q: "Where is Mandy's house in GTA 6?"
     a: "Mandy's house is a light-blue single-story bungalow located in Key Lento within Mariana County (the Leonida Keys), situated just down the street from Jason's safehouse."
@@ -27,6 +28,11 @@ Here is the complete walkthrough for finding **Mandy’s house**, beating the **
 ---
 
 ## 1. Where is Mandy's House in GTA 6?
+
+<figure>
+  <img src="/images/gta6-post-keys.webp" alt="Key Lento Coastal Roads in Mariana County GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Key Lento, Mariana County — The coastal Florida Keys setting where Mandy's house and Jason's safehouse are located.</figcaption>
+</figure>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐

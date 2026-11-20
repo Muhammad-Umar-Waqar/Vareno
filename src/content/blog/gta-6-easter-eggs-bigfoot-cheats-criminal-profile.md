@@ -5,6 +5,7 @@ pubDate: 2026-11-19
 updatedDate: 2026-11-19
 tag: "Secrets & Myths"
 featured: true
+image: "/images/gta6-post-kalaga.webp"
 faqs:
   - q: "Is Bigfoot in GTA 6?"
     a: "Yes. In the northern forests and swamps of Mount Caga and Ambrosia, players can discover physical Bigfoot easter eggs, including massive hominid footprints in the mud, chilling 3:00 AM howling audio cues, and an abandoned hunter campsite containing a cryptic sasquatch research map."
@@ -27,6 +28,11 @@ Here is an exhaustive breakdown of the top easter eggs, cheats, and stealth mech
 ---
 
 ## 1. Bigfoot Sightings in the Leonida Swamps & Mount Caga
+
+<figure>
+  <img src="/images/gta6-post-kalaga.webp" alt="Mount Caga and Kalaga Wilderness for Bigfoot Hunting in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Mount Caga & Ambrosia Wilderness — Chilling Bigfoot footprints and 3:00 AM howling cues in the dense pine forests.</figcaption>
+</figure>
 
 Ever since *GTA: San Andreas* in 2004, searching for Bigfoot has been the most celebrated myth-hunting tradition in gaming. In *GTA 6*, Rockstar Games has embraced the legend with legitimate environmental easter eggs:
 

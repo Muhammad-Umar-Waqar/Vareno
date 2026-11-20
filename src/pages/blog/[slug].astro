@@ -25,11 +25,14 @@ const crumbs = [
   { name: post.data.title, path },
 ];
 
+const articleHero = post.data.image || '/images/gta6-hero.webp';
+
 const schemas: any[] = [
   blogPostingSchema({
     headline: post.data.title,
     description: post.data.description,
     path,
+    image: articleHero,
     published: post.data.pubDate,
     modified: post.data.updatedDate,
   }),
@@ -46,11 +49,12 @@ if (post.data.faqs && post.data.faqs.length > 0) {
   description={post.data.description}
   ogType="article"
   schemas={schemas}
+  image={articleHero}
 >
   <InnerPageLayout
     pageTitle={post.data.title}
     crumbs={crumbs}
-    heroImg="/images/gta6-rooftop.webp"
+    heroImg={articleHero}
     accentColor="#f7c948"
   >
     <div class="article-meta-bar">
@@ -192,6 +196,39 @@ if (post.data.faqs && post.data.faqs.length > 0) {
   border-radius: 0 10px 10px 0;
   color: rgba(255, 255, 255, 0.95);
   font-style: italic;
+}
+
+.article-content :global(figure) {
+  margin: 2.25rem 0;
+  text-align: center;
+}
+
+.article-content :global(figure img),
+.article-content :global(p > img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  display: block;
+  margin: 0 auto;
+}
+
+.article-content :global(figcaption) {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+:global(html[data-theme="light"]) .article-content :global(figure img),
+:global(html[data-theme="light"]) .article-content :global(p > img) {
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+:global(html[data-theme="light"]) .article-content :global(figcaption) {
+  color: #64748b;
 }
 
 .article-faqs-wrapper {

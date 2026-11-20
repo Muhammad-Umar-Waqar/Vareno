@@ -5,6 +5,7 @@ pubDate: 2026-11-20
 updatedDate: 2026-11-20
 tag: "News & Live Updates"
 featured: true
+image: "/images/gta6-hero.webp"
 faqs:
   - q: "What is the official GTA 6 Metacritic score on launch day?"
     a: "Grand Theft Auto VI achieved an unprecedented 99/100 on Metacritic and OpenCritic, making it the highest-rated entertainment title in modern gaming history, described by Bloomberg as an artistic masterpiece and by IGN as the single most impressive video game ever made."
@@ -56,6 +57,11 @@ According to comprehensive global data released by market intelligence firm **Se
 ---
 
 ## 3. "Grand Theft Auto VI: The Festival" in Miami (Mana Wynwood)
+
+<figure>
+  <img src="/images/gta6-post-vicecity.webp" alt="Vice City Skyline and Miami Launch Celebration in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Vice City & Miami — Celebrating the launch with a live charity music festival in Mana Wynwood featuring Travis Scott and Cardi B.</figcaption>
+</figure>
 
 To celebrate the game’s release in its real-world cultural birthplace, Rockstar Games announced **"Grand Theft Auto VI: The Festival"**:
 

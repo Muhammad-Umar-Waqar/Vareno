@@ -5,6 +5,7 @@ pubDate: 2026-11-20
 updatedDate: 2026-11-20
 tag: "Gameplay & Guides"
 featured: true
+image: "/images/gta6-lockload.webp"
 faqs:
   - q: "What is the Brooks Boatworks safe code in GTA 6?"
     a: "The Brooks Boatworks safe code in Port Gellhorn is 6823. The safe is located in the upper mezzanine supervisor office behind a framed nautical map."
@@ -25,6 +26,11 @@ Here are the verified safe combinations, room locations, alternative breach tact
 ---
 
 ## 1. Brooks Boatworks Safe Combination & Location
+
+<figure>
+  <img src="/images/gta6-lockload.webp" alt="Tactical Safe Cracking and Weaponry in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Tactical Heists & Lockboxes — Prepare the necessary tools and stealth weapons before infiltrating Port Gellhorn safes.</figcaption>
+</figure>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐

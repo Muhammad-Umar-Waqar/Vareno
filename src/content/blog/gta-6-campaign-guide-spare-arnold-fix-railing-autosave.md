@@ -5,6 +5,7 @@ pubDate: 2026-11-19
 updatedDate: 2026-11-19
 tag: "Walkthrough & Guides"
 featured: true
+image: "/images/gta6-gas-station.webp"
 faqs:
   - q: "Should I spare Arnold in GTA 6?"
     a: "Yes, you should spare Arnold. Sparing Arnold keeps him as a valuable dock informant who texts you lucrative cargo shipping tip-offs later in the campaign, boosts Lucia and Jason's trust synergy, and prevents retaliatory dock union hits. Killing him grants only temporary cash ($4,500) and locks out his future intel missions."
@@ -47,6 +48,11 @@ We strongly recommend **sparing Arnold**. Sparing him keeps communication channe
 ---
 
 ## 2. How to "Fix Railing" & All Safehouse Projects at Jason's House (Key Lento)
+
+<figure>
+  <img src="/images/gta6-post-keys.webp" alt="Jason Duval Key Lento Safehouse and Coastal Repairs in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Key Lento Safehouse — Jason's coastal stilt home where players repair the balcony railing and dock.</figcaption>
+</figure>
 
 One of the most viral and puzzling early sequences occurs at **Jason’s stilt house in Key Lento**, where players unlock several home improvement maintenance projects to convert the run-down marina property into a fully functional operational base:
 

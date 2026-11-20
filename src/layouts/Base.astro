@@ -13,9 +13,10 @@ interface Props {
   ogType?: 'website' | 'article';
   noindex?: boolean;
   schemas?: unknown[];
+  image?: string;
 }
 
-const { title, description, ogType = 'website', noindex = false, schemas = [] } = Astro.props;
+const { title, description, ogType = 'website', noindex = false, schemas = [], image } = Astro.props;
 const pathname = Astro.url.pathname;
 const isHome = pathname === '/' || pathname === '';
 ---
@@ -35,7 +36,7 @@ const isHome = pathname === '/' || pathname === '';
         document.documentElement.setAttribute('data-theme', 'dark');
       }
     </script>
-    <Seo title={title} description={description} pathname={pathname} ogType={ogType} noindex={noindex} />
+    <Seo title={title} description={description} pathname={pathname} ogType={ogType} noindex={noindex} image={image} />
     <JsonLd data={organizationSchema()} />
     <JsonLd data={websiteSchema()} />
     {schemas.map((schema) => <JsonLd data={schema} />)}

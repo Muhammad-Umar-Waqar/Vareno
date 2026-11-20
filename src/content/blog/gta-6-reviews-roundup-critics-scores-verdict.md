@@ -5,6 +5,7 @@ pubDate: 2026-11-18
 updatedDate: 2026-11-18
 tag: "Reviews & Verdicts"
 featured: true
+image: "/images/gta6-hero.webp"
 faqs:
   - q: "What is the GTA 6 Metacritic score?"
     a: "Grand Theft Auto VI holds an extraordinary, record-tying Metacritic and OpenCritic score of 99/100, placing it as one of the highest-rated entertainment titles in history."
@@ -37,6 +38,11 @@ Below is our comprehensive critical synthesis, reviewing major publication score
 ---
 
 ## 1. Scorecard: Major Publication Verdicts
+
+<figure>
+  <img src="/images/gta6-hero.webp" alt="GTA 6 Worldwide Critical Acclaim and 99 Metacritic Masterpiece" width="1440" height="810" loading="lazy" decoding="async" />
+  <figcaption>Global Acclaim — Major publications award GTA 6 a 99/100 Metascore, praising its narrative and graphical power.</figcaption>
+</figure>
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐

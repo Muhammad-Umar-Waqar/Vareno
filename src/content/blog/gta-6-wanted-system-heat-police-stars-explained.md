@@ -5,6 +5,7 @@ pubDate: 2026-11-18
 updatedDate: 2026-11-18
 tag: "Gameplay & Mechanics"
 featured: true
+image: "/images/gta6-car.webp"
 faqs:
   - q: "Does GTA 6 have a 6-star wanted level?"
     a: "Yes. GTA 6 returns to the franchise-classic 6-star wanted level, bringing back high-tier militarized response units, tactical SWAT barricades, and attack helicopters."
@@ -50,6 +51,11 @@ The mini-map HUD in *GTA 6* provides real-time situational awareness through dyn
 ---
 
 ## 3. The New "Heat" Tracking Icons
+
+<figure>
+  <img src="/images/gta6-car.webp" alt="High-Speed Police Evasion and Vehicle Heat in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Evading Police Dragnet — Switch cars, break line-of-sight, or respray hot getaway vehicles to escape dispatch tracking.</figcaption>
+</figure>
 
 Unlike older games where escaping a circular radar zone instantly cleared your record, *GTA 6* introduces **persistent forensic Heat**:
 

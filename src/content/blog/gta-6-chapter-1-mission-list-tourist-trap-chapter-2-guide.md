@@ -5,6 +5,7 @@ pubDate: 2026-11-20
 updatedDate: 2026-11-20
 tag: "Missions & Guides"
 featured: true
+image: "/images/gta6-post-keys.webp"
 faqs:
   - q: "How many missions are in Chapter 1 of GTA 6?"
     a: "Chapter 1 ('Just Like Paradise') contains 22 main storyline missions, serving as the prologue and early partnership establishment between Jason and Lucia in Key Lento."
@@ -25,6 +26,11 @@ Here is the complete **22-mission list for Chapter 1**, the warning regarding th
 ---
 
 ## 1. Complete Chapter 1 Mission List (All 22 Missions)
+
+<figure>
+  <img src="/images/gta6-post-keys.webp" alt="Chapter 1 Just Like Paradise in the Leonida Keys GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Chapter 1: "Just Like Paradise" — Starting in the humid fishing enclaves of Key Lento and Mariana County.</figcaption>
+</figure>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -81,6 +87,11 @@ The 22nd mission, **"Tourist Trap"**, serves as the dramatic narrative climax of
 ---
 
 ## 3. What Happens in Chapter 2 ("Paradise Lost")?
+
+<figure>
+  <img src="/images/gta6-motel.webp" alt="Port Gellhorn Motel Safehouse in Chapter 2 GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Chapter 2 Safehouse — Relocating to an industrial highway motel in Port Gellhorn to plan shipping yard heists.</figcaption>
+</figure>
 
 Completing *Tourist Trap* rolls the Chapter 2 title card **"Paradise Lost"**, moving the story north into **Port Gellhorn**:
 

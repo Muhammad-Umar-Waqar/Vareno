@@ -5,6 +5,7 @@ pubDate: 2026-11-19
 updatedDate: 2026-11-19
 tag: "Financials & Industry"
 featured: true
+image: "/images/gta6-official-cover.webp"
 faqs:
   - q: "How much money has GTA 6 made so far?"
     a: "According to market intelligence firm Sensor Tower, Grand Theft Auto VI generated over $1.84 billion in worldwide consumer retail sales by Thursday, backed by $1.65 billion to $1.84 billion in pre-orders."
@@ -25,6 +26,11 @@ Here is an in-depth financial analysis of GTA 6’s historic launch day revenues
 ---
 
 ## 1. Historic Launch Revenue: $1.55+ Billion in 24 Hours
+
+<figure>
+  <img src="/images/gta6-official-cover.webp" alt="GTA 6 Record-Breaking Sales Revenue and Pre-Orders" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Unprecedented Commercial Milestone — Generating over $1.84 billion and 19 million copies sold in launch week.</figcaption>
+</figure>
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐

@@ -5,6 +5,7 @@ pubDate: 2026-11-20
 updatedDate: 2026-11-20
 tag: "Gameplay & Guides"
 featured: true
+image: "/images/gta6-car.webp"
 faqs:
   - q: "What is the Wink (WAINK) app in GTA 6?"
     a: "The WAINK app is an in-game smartphone tool used by Jason and Lucia to scan parked vehicles, inspect anti-theft immobilizers, detect GPS trackers, determine required break-in tools (slim jims, OBD port hack units), and calculate chop-shop fence payouts."
@@ -50,6 +51,11 @@ In previous GTA titles, stealing any car was as simple as pressing the enter but
 ---
 
 ## 2. Vehicle Respray Tactics: Losing Police Heat (The Phoenix Trick)
+
+<figure>
+  <img src="/images/gta6-car.webp" alt="Custom Muscle Car Cruising Leonida Highways in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>High-Speed Getaways — Break line-of-sight and respray your muscle car to instantly erase vehicle heat.</figcaption>
+</figure>
 
 A viral gameplay guide by creator ZLaner demonstrated how players can escape aggressive 3-star and 4-star police chases by utilizing **vehicle respray mechanics**:
 

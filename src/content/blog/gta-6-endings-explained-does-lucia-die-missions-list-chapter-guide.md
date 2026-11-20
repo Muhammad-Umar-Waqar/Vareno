@@ -5,6 +5,7 @@ pubDate: 2026-11-20
 updatedDate: 2026-11-20
 tag: "Story & Endings"
 featured: true
+image: "/images/gta6-shot-lucia.webp"
 faqs:
   - q: "Does Lucia die in GTA 6?"
     a: "Whether Lucia dies depends entirely on your choices. GTA 6 features four branching endings. In the canonical Best Ending, both Lucia and Jason survive. However, in two tragic alternative endings driven by low trust or reckless betrayal, Lucia or Jason can die."
@@ -78,6 +79,11 @@ The narrative arc follows Lucia Caminos and Jason Duval through a five-act crime
 ---
 
 ## 3. Does Lucia Die? All 4 Endings Explained
+
+<figure>
+  <img src="/images/gta6-shot-lucia.webp" alt="Lucia Caminos Solo Character Portrait in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Lucia Caminos — Her ultimate survival in GTA 6 depends on your narrative choices, heist savings, and trust meter.</figcaption>
+</figure>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐

@@ -5,6 +5,7 @@ pubDate: 2026-11-18
 updatedDate: 2026-11-19
 tag: "Gameplay & Story"
 featured: true
+image: "/images/gta6-beach-logo.webp"
 faqs:
   - q: "Is GTA 6 18+ or 21+?"
     a: "GTA 6 is rated ESRB M (Mature 17+) in the United States and PEGI 18 in the UK and Europe. There is no official '21+' video game rating anywhere in the world; video game age ratings cap at 18+. However, because of adult nightclub themes, strip clubs, and alcohol consumption, some venues mirror real-world 21+ environments."
@@ -66,6 +67,11 @@ Because the legal drinking and clubbing age in the United States (where the fict
 ---
 
 ## 2. Romance System: Can You Kiss in GTA 6?
+
+<figure>
+  <img src="/images/gta6-beach-logo.webp" alt="Lucia and Jason Sunset Romance in GTA 6" width="960" height="540" loading="lazy" decoding="async" />
+  <figcaption>Bonnie & Clyde Narrative — The passionate bond between Lucia and Jason is the emotional center of GTA VI.</figcaption>
+</figure>
 
 Unlike *GTA 5*, where Michael, Franklin, and Trevor operated largely as separate criminal associates, *GTA 6* centers on a passionate romantic connection between **Lucia and Jason**.
 
